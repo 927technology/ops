@@ -12,8 +12,8 @@ Junos - Native Json via API
 Linux - Native Json via osquery and NRPE  
 Cisco - Translated JSON from SNMP  
 
-Usage:
-install docker-compose
+Usage:  
+install docker-compose  
 https://docs.docker.com/compose/install/
 
 Clone repisitory  
