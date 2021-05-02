@@ -7,9 +7,13 @@ To expand the limitations of monitoring and accreditaion compliance, i have foun
 i have created a polling engine to parse hosts from Nagios and consume their statuses utilzing various collection mechanisms such as SNMP, WMIC, API calls and NRPE.  This data is consumed and stored as json for easy consumption by Nagios.
 
 Current Polling Agents
+
 GNS3 - Native Json via API
+
 Junos - Native Json via API
+
 Linux - Native Json via osquery and NRPE
+
 Cisco - Translated JSON from SNMP
 
 
