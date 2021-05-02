@@ -8,10 +8,10 @@ i have created a polling engine to parse hosts from Nagios and consume their sta
 
 #current devices that have polling agents
 
--GNS3 - Native Json via API
--Junos - Native Json via API
--Linux - Native Json via osquery and NRPE
--Cisco - Translated JSON from SNMP
+GNS3 - Native Json via API
+Junos - Native Json via API
+Linux - Native Json via osquery and NRPE
+Cisco - Translated JSON from SNMP
 
 
 Usage:
