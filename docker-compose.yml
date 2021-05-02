@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   ms:
-    image: ops:210430
+    image: 927technology/ops:210430
     stdin_open: true
     tty: true 
     environment:
