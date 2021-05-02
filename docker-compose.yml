@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   ms:
-    image: 927technology/ops:210430
+    image: 927technology/ops:210501
     stdin_open: true
     tty: true 
     environment:
@@ -16,7 +16,7 @@ services:
       - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
       - ./config/ms/etc/mod_gearman:/etc/mod_gearman
 #  poller:
-#    image: 927technology/ops:210430
+#    image: 927technology/ops:210501
 #    stdin_open: true
 #    tty: true 
 #    environment:
@@ -28,7 +28,7 @@ services:
 #      - ./config/trap/etc/snmp/snmptrapd.conf:/etc/snmp/snmptrapd.conf
 #      - ./config/trap/etc/snmp/snmptt.conf:/etc/snmp/snmptt.conf
   trap:
-    image: 927technology/ops:210430
+    image: 927technology/ops:210501
     stdin_open: true
     tty: true 
     environment:
@@ -43,7 +43,7 @@ services:
       - ./config/shared/var/spool/snmptt:/var/spool/snmptt
       - ./config/trap/etc/snmp:/etc/snmp
   web:
-    image: 927technology/ops:210430
+    image: 927technology/ops:210501
     stdin_open: true
     tty: true 
     environment:
@@ -59,7 +59,7 @@ services:
       - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
       - ./config/web/etc/thruk:/etc/thruk
   wkr01:
-    image: 927technology/ops:210430
+    image: 927technology/ops:210501
     stdin_open: true
     tty: true 
     environment:
@@ -70,7 +70,7 @@ services:
       - ./config/shared/var/log:/var/log
       - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
   wkr02:
-    image: 927technology/ops:210430
+    image: 927technology/ops:210501
     stdin_open: true
     tty: true 
     environment:
