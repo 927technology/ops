@@ -9,12 +9,12 @@ services:
       - role=management
     hostname: ms
     volumes:
-      - ./ms/etc/nagios:/etc/nagios
-      - ./shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
-      - ./shared/var/spool/nagios:/var/spool/nagios
-      - ./shared/var/log:/var/log
-      - ./shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
-      - ./ms/etc/mod_gearman:/etc/mod_gearman
+      - ./config/ms/etc/nagios:/etc/nagios
+      - ./config/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+      - ./config/shared/var/spool/nagios:/var/spool/nagios
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
+      - ./config/ms/etc/mod_gearman:/etc/mod_gearman
 #  poller:
 #    image: 927technology/ops:210430
 #    stdin_open: true
@@ -23,10 +23,10 @@ services:
 #      - role=poller
 #    hostname: trap
 #    volumes:
-#      - ./shared/var/spool/nagios:/var/spool/nagios
-#      - ./shared/var/log:/var/log
-#      - ./trap/etc/snmp/snmptrapd.conf:/etc/snmp/snmptrapd.conf
-#      - ./trap/etc/snmp/snmptt.conf:/etc/snmp/snmptt.conf
+#      - ./config/shared/var/spool/nagios:/var/spool/nagios
+#      - ./config/shared/var/log:/var/log
+#      - ./config/trap/etc/snmp/snmptrapd.conf:/etc/snmp/snmptrapd.conf
+#      - ./config/trap/etc/snmp/snmptt.conf:/etc/snmp/snmptt.conf
   trap:
     image: 927technology/ops:210430
     stdin_open: true
@@ -38,10 +38,10 @@ services:
       - 162:162/tcp
       - 162:162/udp
     volumes:
-      - ./shared/var/spool/nagios:/var/spool/nagios
-      - ./shared/var/log:/var/log
-      - ./shared/var/spool/snmptt:/var/spool/snmptt
-      - ./trap/etc/snmp:/etc/snmp
+      - ./config/shared/var/spool/nagios:/var/spool/nagios
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/var/spool/snmptt:/var/spool/snmptt
+      - ./config/trap/etc/snmp:/etc/snmp
   web:
     image: 927technology/ops:210430
     stdin_open: true
@@ -52,12 +52,12 @@ services:
     ports:
       - 8000:80/tcp
     volumes:
-      - ./shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
-      - ./web/etc/httpd/conf:/etc/httpd/conf
-      - ./web/etc/httpd/conf.d:/etc/httpd/conf.d
-      - ./shared/var/log:/var/log
-      - ./shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
-      - ./web/etc/thruk:/etc/thruk
+      - ./config/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+      - ./config/web/etc/httpd/conf:/etc/httpd/conf
+      - ./config/web/etc/httpd/conf.d:/etc/httpd/conf.d
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
+      - ./config/web/etc/thruk:/etc/thruk
   wkr01:
     image: 927technology/ops:210430
     stdin_open: true
@@ -66,9 +66,9 @@ services:
       - role=worker
     hostname: wkr01
     volumes:
-      - ./shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
-      - ./shared/var/log:/var/log
-      - ./wkr/etc/mod_gearman:/etc/mod_gearman
+      - ./config/shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
+      - ./config/shared/var/log:/var/log
+      - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
   wkr02:
     image: 927technology/ops:210430
     stdin_open: true
@@ -77,6 +77,6 @@ services:
       - role=worker
     hostname: wkr02
     volumes:
-      - ./shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
-      - ./shared/var/log:/var/log
-      - ./wkr/etc/mod_gearman:/etc/mod_gearman
+      - ./config/shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
+      - ./config/shared/var/log:/var/log
+      - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
