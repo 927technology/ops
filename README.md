@@ -10,4 +10,5 @@ https://docs.docker.com/compose/install/
 tar xzf 927_ops.tar.gz
 
 #start container
+cd ops
 docker-compose up
