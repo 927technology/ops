@@ -16,10 +16,10 @@ Usage:
 install docker-compose  
 https://docs.docker.com/compose/install/
 
-Clone repisitory  
+Clone repisitory:  
 Extract 927_ops.tar.gz  
 tar xzf 927_ops.tar.gz  
 
-Start Container  
+Start Container:  
 cd ops  
 docker-compose up
