@@ -1,0 +1,13 @@
+210515
+
+load balancer (lb) - trap, flow
+  configure lb to forward traps to trap server
+  configure lb to forward flow to flow server 
+  can we forward based on container name and not expose the web 
+
+flow - capture
+  configure flow to capture incomming flows
+  configure flow to log captures to mariadb
+  
+image - worker
+  add powershell to base image
