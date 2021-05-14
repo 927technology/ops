@@ -1,0 +1,17 @@
+210515
+
+
+management server (ms) - livestatus pipe changes
+  moved pipe from gfs root /vol/ops/config/usr/lib64/nagios/live/rw to local files system /vol/ops/local/usr/lib64/nagios /live/rw.  
+  mount the local pipe into the container, and increase the repica count to equal to the number of nodes.  3 in my test environment.
+  
+all - logging
+  changed entrypoint.sh to allow logging to console, and pushed the application into the background
+  configured the docker-compose file with logging settings
+  configured manager node with rsyslog to allow external logging
+  
+load balancer (lb) - web server
+  added haprxoy to base image
+  added role lb to entrypoint.sh
+  configured replicas to be equal to number of nodes
+  forward all 80/tcp traffic to all nodes
