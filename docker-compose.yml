@@ -1,0 +1,164 @@
+version: "3.2"
+#210515
+
+services:
+  db:
+    hostname: db    
+    environment:
+      - MYSQL_ROOT_PASSWORD=2wsx3edc@WSX#EDC
+    image: mariadb
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    volumes:
+      - ./config/db/etc/mysql/mariadb.cnf:/etc/mysql/mariadb.cnf  
+      - ./config/db/var/lib/mysql:/var/lib/mysql
+  flow:
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=trap
+    hostname: flow
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    ports:
+      - 3000:3000/tcp
+      - 6379:6379/tcp
+  lb:
+    deploy:
+      replicas: 3
+    image: 927technology/lb:210513
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=lb
+    hostname: lb
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    ports:
+      - 80:80/tcp
+    volumes:
+      - ./config/lb/etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
+  ms:
+    deploy:
+      replicas: 3
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=management
+    hostname: ms
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    volumes:
+      - ./config/ms/etc/nagios:/etc/nagios
+      - ../local/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+#      - ./config/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+      - ./config/shared/var/spool/nagios:/var/spool/nagios
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
+      - ./config/ms/etc/mod_gearman:/etc/mod_gearman
+      - ./config/ms/etc/xinetd.d/livestatus:/etc/xinetd.d/livestatus
+#  poller:
+#    image: 927technology/ops:210509
+#    stdin_open: true
+#    tty: true 
+#    environment:
+#      - role=poller
+#    hostname: poll
+#    volumes:
+#      - ./config/shared/var/spool/nagios:/var/spool/nagios
+#      - ./config/shared/var/log:/var/log
+#      - ./config/trap/etc/snmp/snmptrapd.conf:/etc/snmp/snmptrapd.conf
+#      - ./config/trap/etc/snmp/snmptt.conf:/etc/snmp/snmptt.conf
+#      - ../local/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+  trap:
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=trap
+    hostname: trap
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    ports:
+      - 162:162/tcp
+      - 162:162/udp
+    volumes:
+      - ./config/shared/var/spool/nagios:/var/spool/nagios
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/var/spool/snmptt:/var/spool/snmptt
+      - ./config/trap/etc/snmp:/etc/snmp
+      - ./config/trap/usr/share/snmp/mibs:/usr/share/snmp/mibs2
+  web:
+#    deploy:
+#      replicas: 3
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=web
+    hostname: web
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    ports:
+      - 8000:80/tcp
+    volumes:
+      - ../local/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+#      - ./config/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
+      - ./config/web/etc/httpd/conf:/etc/httpd/conf
+      - ./config/web/etc/httpd/conf.d:/etc/httpd/conf.d
+      - ./config/shared/var/log:/var/log
+      - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
+      - ./config/web/etc/thruk:/etc/thruk
+  wkr01:
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=worker
+    hostname: wkr01
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    volumes:
+      - ./config/shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
+      - ./config/shared/var/log:/var/log
+      - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
+  wkr02:
+    image: 927technology/ops:210509
+    stdin_open: true
+    tty: true 
+    environment:
+      - role=worker
+    hostname: wkr02
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.1.201:514"
+        tag: "{{.Name}}/{{.ID}}"
+    volumes:
+      - ./config/shared/usr/lib64/nagios/plugins:/usr/lib64/nagios/plugins
+      - ./config/shared/var/log:/var/log
+      - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
+
