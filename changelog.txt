@@ -1,3 +1,12 @@
+210521
+
+cluster
+  removed the flow container.  will reintroduce at a later time.  focusing efforts in montoring core only.
+  
+trap
+  issues with entrypoint.sh for the trap.  constantly failing and restarting.  reverted changes made in 210515 to those that were working in 210509 for the binary exectution of the trap only.
+
+
 210515
 
 
