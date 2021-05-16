@@ -1,39 +1,39 @@
 version: "3.2"
-#210515
+#210521
 
 services:
-  db:
-    hostname: db    
-    environment:
-      - MYSQL_ROOT_PASSWORD=2wsx3edc@WSX#EDC
-    image: mariadb
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "udp://192.168.1.201:514"
-        tag: "{{.Name}}/{{.ID}}"
-    volumes:
-      - ./config/db/etc/mysql/mariadb.cnf:/etc/mysql/mariadb.cnf  
-      - ./config/db/var/lib/mysql:/var/lib/mysql
-  flow:
-    image: 927technology/ops:210509
-    stdin_open: true
-    tty: true 
-    environment:
-      - role=trap
-    hostname: flow
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "udp://192.168.1.201:514"
-        tag: "{{.Name}}/{{.ID}}"
-    ports:
-      - 3000:3000/tcp
-      - 6379:6379/tcp
+#  db:
+#    hostname: db    
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=2wsx3edc@WSX#EDC
+#    image: mariadb
+#    logging:
+#      driver: syslog
+#      options:
+#        syslog-address: "udp://192.168.1.201:514"
+#        tag: "{{.Name}}/{{.ID}}"
+#    volumes:
+#      - ./config/db/etc/mysql/mariadb.cnf:/etc/mysql/mariadb.cnf  
+#      - ./config/db/var/lib/mysql:/var/lib/mysql
+#  flow:
+#    image: 927technology/ops:210521
+#    stdin_open: true
+#    tty: true 
+#    environment:
+#      - role=trap
+#    hostname: flow
+#    logging:
+#      driver: syslog
+#      options:
+#        syslog-address: "udp://192.168.1.201:514"
+#        tag: "{{.Name}}/{{.ID}}"
+#    ports:
+#      - 3000:3000/tcp
+#      - 6379:6379/tcp
   lb:
     deploy:
       replicas: 3
-    image: 927technology/lb:210513
+    image: 927technology/lb:210521
     stdin_open: true
     tty: true 
     environment:
@@ -51,7 +51,7 @@ services:
   ms:
     deploy:
       replicas: 3
-    image: 927technology/ops:210509
+    image: 927technology/ops:210521
     stdin_open: true
     tty: true 
     environment:
@@ -72,7 +72,7 @@ services:
       - ./config/ms/etc/mod_gearman:/etc/mod_gearman
       - ./config/ms/etc/xinetd.d/livestatus:/etc/xinetd.d/livestatus
 #  poller:
-#    image: 927technology/ops:210509
+#    image: 927technology/ops:210521
 #    stdin_open: true
 #    tty: true 
 #    environment:
@@ -85,7 +85,7 @@ services:
 #      - ./config/trap/etc/snmp/snmptt.conf:/etc/snmp/snmptt.conf
 #      - ../local/shared/usr/lib64/nagios/rw:/usr/lib64/nagios/rw
   trap:
-    image: 927technology/ops:210509
+    image: 927technology/ops:210521
     stdin_open: true
     tty: true 
     environment:
@@ -108,7 +108,7 @@ services:
   web:
 #    deploy:
 #      replicas: 3
-    image: 927technology/ops:210509
+    image: 927technology/ops:210521
     stdin_open: true
     tty: true 
     environment:
@@ -130,7 +130,7 @@ services:
       - ./config/shared/usr/local/pnp4nagios/var/perfdata:/usr/local/pnp4nagios/var/perfdata
       - ./config/web/etc/thruk:/etc/thruk
   wkr01:
-    image: 927technology/ops:210509
+    image: 927technology/ops:210521
     stdin_open: true
     tty: true 
     environment:
@@ -146,7 +146,7 @@ services:
       - ./config/shared/var/log:/var/log
       - ./config/wkr/etc/mod_gearman:/etc/mod_gearman
   wkr02:
-    image: 927technology/ops:210509
+    image: 927technology/ops:210521
     stdin_open: true
     tty: true 
     environment:
