@@ -2,34 +2,6 @@ version: "3.2"
 #210521
 
 services:
-#  db:
-#    hostname: db    
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=2wsx3edc@WSX#EDC
-#    image: mariadb
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: "udp://192.168.1.201:514"
-#        tag: "{{.Name}}/{{.ID}}"
-#    volumes:
-#      - ./config/db/etc/mysql/mariadb.cnf:/etc/mysql/mariadb.cnf  
-#      - ./config/db/var/lib/mysql:/var/lib/mysql
-#  flow:
-#    image: 927technology/ops:210521
-#    stdin_open: true
-#    tty: true 
-#    environment:
-#      - role=trap
-#    hostname: flow
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: "udp://192.168.1.201:514"
-#        tag: "{{.Name}}/{{.ID}}"
-#    ports:
-#      - 3000:3000/tcp
-#      - 6379:6379/tcp
   lb:
     deploy:
       replicas: 3
