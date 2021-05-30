@@ -1,0 +1,4 @@
+##210605
+
+##entrypoint.sh
+210521 gave me alot of problems when i mvoed the job server from the management server.  adding test role to the entrypoint script to allow for testing
