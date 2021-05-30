@@ -29,3 +29,6 @@ load balancer (lb) - web server
   added role lb to entrypoint.sh
   configured replicas to be equal to number of nodes
   forward all 80/tcp traffic to all nodes
+
+
+##branch incomplete, promoting to 210605
