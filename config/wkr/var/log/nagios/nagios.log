@@ -1,0 +1,282 @@
+[1619386834] Nagios 4.4.6 starting... (PID=474)
+[1619386834] Local time is Sun Apr 25 21:40:34 UTC 2021
+[1619386834] LOG VERSION: 2.0
+[1619386834] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619386834] qh: core query handler registered
+[1619386834] qh: echo service query handler registered
+[1619386834] qh: help for the query handler registered
+[1619386834] wproc: Successfully registered manager as @wproc with query handler
+[1619386834] wproc: Registry request: name=Core Worker 475;pid=475
+[1619386834] wproc: Registry request: name=Core Worker 476;pid=476
+[1619386834] wproc: Registry request: name=Core Worker 478;pid=478
+[1619386834] wproc: Registry request: name=Core Worker 477;pid=477
+[1619386834] wproc: Registry request: name=Core Worker 479;pid=479
+[1619386834] wproc: Registry request: name=Core Worker 480;pid=480
+[1619386834] wproc: Registry request: name=Core Worker 483;pid=483
+[1619386834] wproc: Registry request: name=Core Worker 486;pid=486
+[1619386834] wproc: Registry request: name=Core Worker 484;pid=484
+[1619386834] wproc: Registry request: name=Core Worker 481;pid=481
+[1619386834] wproc: Registry request: name=Core Worker 482;pid=482
+[1619386834] wproc: Registry request: name=Core Worker 485;pid=485
+[1619386834] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619386834] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619386834] livestatus: Please visit us at http://mathias-kettner.de/
+[1619386834] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619386834] livestatus: Please visit OMD at http://omdistro.org
+[1619386834] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619386834] livestatus: your event_broker_options are sufficient for livestatus..
+[1619386834] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619386834] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619386837] Successfully launched command file worker with pid 487
+[1619386837] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619386837] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619386837] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619386837] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619386837] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619386837] livestatus: starting main thread and 10 client threads
+[1619386837] livestatus: default stack size is 8388608
+[1619386837] livestatus: setting thread stack size to 1048576
+[1619386984] Nagios 4.4.6 starting... (PID=509)
+[1619386984] Local time is Sun Apr 25 21:43:04 UTC 2021
+[1619386984] LOG VERSION: 2.0
+[1619386984] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619386984] qh: core query handler registered
+[1619386984] qh: echo service query handler registered
+[1619386984] qh: help for the query handler registered
+[1619386984] wproc: Successfully registered manager as @wproc with query handler
+[1619386984] wproc: Registry request: name=Core Worker 510;pid=510
+[1619386984] wproc: Registry request: name=Core Worker 511;pid=511
+[1619386984] wproc: Registry request: name=Core Worker 512;pid=512
+[1619386984] wproc: Registry request: name=Core Worker 513;pid=513
+[1619386984] wproc: Registry request: name=Core Worker 514;pid=514
+[1619386984] wproc: Registry request: name=Core Worker 515;pid=515
+[1619386984] wproc: Registry request: name=Core Worker 519;pid=519
+[1619386984] wproc: Registry request: name=Core Worker 521;pid=521
+[1619386984] wproc: Registry request: name=Core Worker 516;pid=516
+[1619386984] wproc: Registry request: name=Core Worker 517;pid=517
+[1619386984] wproc: Registry request: name=Core Worker 518;pid=518
+[1619386984] wproc: Registry request: name=Core Worker 520;pid=520
+[1619386984] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619386984] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619386984] livestatus: Please visit us at http://mathias-kettner.de/
+[1619386984] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619386984] livestatus: Please visit OMD at http://omdistro.org
+[1619386984] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619386984] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619386984] livestatus: your event_broker_options are sufficient for livestatus..
+[1619386984] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619386984] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619386984] Successfully launched command file worker with pid 522
+[1619386984] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619386984] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619386984] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619386984] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619386984] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619386984] livestatus: starting main thread and 10 client threads
+[1619386984] livestatus: default stack size is 8388608
+[1619386984] livestatus: setting thread stack size to 1048576
+[1619387755] Nagios 4.4.6 starting... (PID=797)
+[1619387755] Local time is Sun Apr 25 21:55:55 UTC 2021
+[1619387755] LOG VERSION: 2.0
+[1619387755] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619387755] qh: core query handler registered
+[1619387755] qh: echo service query handler registered
+[1619387755] qh: help for the query handler registered
+[1619387755] wproc: Successfully registered manager as @wproc with query handler
+[1619387755] wproc: Registry request: name=Core Worker 798;pid=798
+[1619387755] wproc: Registry request: name=Core Worker 799;pid=799
+[1619387755] wproc: Registry request: name=Core Worker 800;pid=800
+[1619387755] wproc: Registry request: name=Core Worker 801;pid=801
+[1619387755] wproc: Registry request: name=Core Worker 802;pid=802
+[1619387755] wproc: Registry request: name=Core Worker 803;pid=803
+[1619387755] wproc: Registry request: name=Core Worker 804;pid=804
+[1619387755] wproc: Registry request: name=Core Worker 806;pid=806
+[1619387755] wproc: Registry request: name=Core Worker 809;pid=809
+[1619387755] wproc: Registry request: name=Core Worker 808;pid=808
+[1619387755] wproc: Registry request: name=Core Worker 805;pid=805
+[1619387755] wproc: Registry request: name=Core Worker 807;pid=807
+[1619387755] mod_gearman: initialized version 3.3.3 (libgearman 0.33)
+[1619387755] Event broker module '/usr/lib64/mod_gearman/mod_gearman_nagios4.o' initialized successfully.
+[1619387755] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619387755] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619387755] livestatus: Please visit us at http://mathias-kettner.de/
+[1619387755] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619387755] livestatus: Please visit OMD at http://omdistro.org
+[1619387755] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619387755] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619387755] livestatus: your event_broker_options are sufficient for livestatus..
+[1619387755] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619387755] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619387761] Successfully launched command file worker with pid 810
+[1619387761] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619387761] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619387761] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619387761] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619387761] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619387761] livestatus: starting main thread and 10 client threads
+[1619387761] livestatus: default stack size is 8388608
+[1619387761] livestatus: setting thread stack size to 1048576
+[1619389888] Nagios 4.4.6 starting... (PID=912)
+[1619389888] Local time is Sun Apr 25 22:31:28 UTC 2021
+[1619389888] LOG VERSION: 2.0
+[1619389888] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619389888] qh: core query handler registered
+[1619389888] qh: echo service query handler registered
+[1619389888] qh: help for the query handler registered
+[1619389888] wproc: Successfully registered manager as @wproc with query handler
+[1619389888] wproc: Registry request: name=Core Worker 913;pid=913
+[1619389888] wproc: Registry request: name=Core Worker 914;pid=914
+[1619389888] wproc: Registry request: name=Core Worker 916;pid=916
+[1619389888] wproc: Registry request: name=Core Worker 915;pid=915
+[1619389888] wproc: Registry request: name=Core Worker 917;pid=917
+[1619389888] wproc: Registry request: name=Core Worker 924;pid=924
+[1619389888] wproc: Registry request: name=Core Worker 918;pid=918
+[1619389888] wproc: Registry request: name=Core Worker 923;pid=923
+[1619389888] wproc: Registry request: name=Core Worker 921;pid=921
+[1619389888] wproc: Registry request: name=Core Worker 920;pid=920
+[1619389888] wproc: Registry request: name=Core Worker 922;pid=922
+[1619389888] wproc: Registry request: name=Core Worker 919;pid=919
+[1619389888] mod_gearman: initialized version 3.3.3 (libgearman 0.33)
+[1619389888] Event broker module '/usr/lib64/mod_gearman/mod_gearman_nagios4.o' initialized successfully.
+[1619389888] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619389888] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619389888] livestatus: Please visit us at http://mathias-kettner.de/
+[1619389888] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619389888] livestatus: Please visit OMD at http://omdistro.org
+[1619389888] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619389888] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619389888] livestatus: your event_broker_options are sufficient for livestatus..
+[1619389888] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619389888] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619389899] Successfully launched command file worker with pid 926
+[1619389899] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619389899] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619389899] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619389899] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619389899] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619389899] livestatus: starting main thread and 10 client threads
+[1619389899] livestatus: default stack size is 8388608
+[1619389899] livestatus: setting thread stack size to 1048576
+[1619389941] Nagios 4.4.6 starting... (PID=942)
+[1619389941] Local time is Sun Apr 25 22:32:21 UTC 2021
+[1619389941] LOG VERSION: 2.0
+[1619389941] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619389941] qh: core query handler registered
+[1619389941] qh: echo service query handler registered
+[1619389941] qh: help for the query handler registered
+[1619389941] wproc: Successfully registered manager as @wproc with query handler
+[1619389941] wproc: Registry request: name=Core Worker 943;pid=943
+[1619389941] wproc: Registry request: name=Core Worker 944;pid=944
+[1619389941] wproc: Registry request: name=Core Worker 945;pid=945
+[1619389941] wproc: Registry request: name=Core Worker 946;pid=946
+[1619389941] wproc: Registry request: name=Core Worker 947;pid=947
+[1619389941] wproc: Registry request: name=Core Worker 948;pid=948
+[1619389941] wproc: Registry request: name=Core Worker 950;pid=950
+[1619389941] wproc: Registry request: name=Core Worker 949;pid=949
+[1619389941] wproc: Registry request: name=Core Worker 951;pid=951
+[1619389941] wproc: Registry request: name=Core Worker 952;pid=952
+[1619389941] wproc: Registry request: name=Core Worker 953;pid=953
+[1619389941] wproc: Registry request: name=Core Worker 954;pid=954
+[1619389941] mod_gearman: initialized version 3.3.3 (libgearman 0.33)
+[1619389941] Event broker module '/usr/lib64/mod_gearman/mod_gearman_nagios4.o' initialized successfully.
+[1619389941] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619389941] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619389941] livestatus: Please visit us at http://mathias-kettner.de/
+[1619389941] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619389941] livestatus: Please visit OMD at http://omdistro.org
+[1619389941] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619389941] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619389941] livestatus: your event_broker_options are sufficient for livestatus..
+[1619389941] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619389941] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619389944] Successfully launched command file worker with pid 955
+[1619389944] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619389944] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619389944] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619389944] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619389944] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619389944] livestatus: starting main thread and 10 client threads
+[1619389944] livestatus: default stack size is 8388608
+[1619389944] livestatus: setting thread stack size to 1048576
+[1619392916] Nagios 4.4.6 starting... (PID=64)
+[1619392916] Local time is Sun Apr 25 23:21:56 UTC 2021
+[1619392916] LOG VERSION: 2.0
+[1619392916] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619392916] qh: core query handler registered
+[1619392916] qh: echo service query handler registered
+[1619392916] qh: help for the query handler registered
+[1619392916] wproc: Successfully registered manager as @wproc with query handler
+[1619392916] wproc: Registry request: name=Core Worker 65;pid=65
+[1619392916] wproc: Registry request: name=Core Worker 66;pid=66
+[1619392916] wproc: Registry request: name=Core Worker 67;pid=67
+[1619392916] wproc: Registry request: name=Core Worker 68;pid=68
+[1619392916] wproc: Registry request: name=Core Worker 71;pid=71
+[1619392916] wproc: Registry request: name=Core Worker 75;pid=75
+[1619392916] wproc: Registry request: name=Core Worker 76;pid=76
+[1619392916] wproc: Registry request: name=Core Worker 70;pid=70
+[1619392916] wproc: Registry request: name=Core Worker 74;pid=74
+[1619392916] wproc: Registry request: name=Core Worker 72;pid=72
+[1619392916] wproc: Registry request: name=Core Worker 69;pid=69
+[1619392916] wproc: Registry request: name=Core Worker 73;pid=73
+[1619392916] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619392916] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619392916] livestatus: Please visit us at http://mathias-kettner.de/
+[1619392916] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619392916] livestatus: Please visit OMD at http://omdistro.org
+[1619392916] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619392916] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619392916] livestatus: your event_broker_options are sufficient for livestatus..
+[1619392916] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619392916] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619392916] mod_gearman: initialized version 3.3.3 (libgearman 0.33)
+[1619392916] Event broker module '/usr/lib64/mod_gearman/mod_gearman_nagios4.o' initialized successfully.
+[1619392916] Successfully launched command file worker with pid 77
+[1619392916] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619392916] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619392916] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619392916] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619392916] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619392916] livestatus: starting main thread and 10 client threads
+[1619392916] livestatus: default stack size is 8388608
+[1619392916] livestatus: setting thread stack size to 1048576
+[1619393074] Nagios 4.4.6 starting... (PID=112)
+[1619393074] Local time is Sun Apr 25 23:24:34 UTC 2021
+[1619393074] LOG VERSION: 2.0
+[1619393074] qh: Socket '/var/spool/nagios/cmd/nagios.qh' successfully initialized
+[1619393074] qh: core query handler registered
+[1619393074] qh: echo service query handler registered
+[1619393074] qh: help for the query handler registered
+[1619393074] wproc: Successfully registered manager as @wproc with query handler
+[1619393074] wproc: Registry request: name=Core Worker 113;pid=113
+[1619393074] wproc: Registry request: name=Core Worker 114;pid=114
+[1619393074] wproc: Registry request: name=Core Worker 115;pid=115
+[1619393074] wproc: Registry request: name=Core Worker 116;pid=116
+[1619393074] wproc: Registry request: name=Core Worker 117;pid=117
+[1619393074] wproc: Registry request: name=Core Worker 118;pid=118
+[1619393074] wproc: Registry request: name=Core Worker 119;pid=119
+[1619393074] wproc: Registry request: name=Core Worker 124;pid=124
+[1619393074] wproc: Registry request: name=Core Worker 122;pid=122
+[1619393074] wproc: Registry request: name=Core Worker 120;pid=120
+[1619393074] wproc: Registry request: name=Core Worker 121;pid=121
+[1619393074] wproc: Registry request: name=Core Worker 123;pid=123
+[1619393074] livestatus: fl_socket_path=[/usr/lib64/nagios/rw/live], fl_mkeventd_socket_path=[/usr/lib64/nagios/rw/mkeventd/status]
+[1619393074] livestatus: Livestatus 1.4.0p31 by Mathias Kettner. Socket: '/usr/lib64/nagios/rw/live'
+[1619393074] livestatus: Please visit us at http://mathias-kettner.de/
+[1619393074] livestatus: Hint: Please try out OMD - the Open Monitoring Distribution
+[1619393074] livestatus: Please visit OMD at http://omdistro.org
+[1619393074] livestatus: removed old socket file /usr/lib64/nagios/rw/live
+[1619393074] livestatus: opened UNIX socket at /usr/lib64/nagios/rw/live
+[1619393074] livestatus: your event_broker_options are sufficient for livestatus..
+[1619393074] livestatus: finished initialization, further log messages go to /var/log/nagios/livestatus.log
+[1619393074] Event broker module '/usr/lib64/check_mk/livestatus.o' initialized successfully.
+[1619393074] mod_gearman: initialized version 3.3.3 (libgearman 0.33)
+[1619393074] Event broker module '/usr/lib64/mod_gearman/mod_gearman_nagios4.o' initialized successfully.
+[1619393074] Successfully launched command file worker with pid 125
+[1619393074] livestatus: TIMEPERIOD TRANSITION: 24x7;-1;1
+[1619393074] livestatus: TIMEPERIOD TRANSITION: 24x7_sans_holidays;-1;1
+[1619393074] livestatus: TIMEPERIOD TRANSITION: none;-1;0
+[1619393074] livestatus: TIMEPERIOD TRANSITION: us-holidays;-1;0
+[1619393074] livestatus: TIMEPERIOD TRANSITION: workhours;-1;0
+[1619393074] livestatus: starting main thread and 10 client threads
+[1619393074] livestatus: default stack size is 8388608
+[1619393074] livestatus: setting thread stack size to 1048576
