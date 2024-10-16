@@ -1,5 +1,5 @@
 #author: chris murray
-#version: 0.1.8 (test)
+#version: 0.1.9 (test 2)
 #date 20241115
 
 FROM oraclelinux:9
@@ -22,8 +22,12 @@ RUN /usr/local/bin/naemon.sh
 
 # post-add files
 COPY etc/naemon/conf.d/commands/test.cfg /etc/naemon/conf.d/commands/
+COPY etc/naemon/conf.d/commands/test2.cfg /etc/naemon/conf.d/commands/
 COPY etc/naemon/conf.d/servers/test.cfg /etc/naemon/conf.d/servers/
+COPY etc/naemon/conf.d/servers/test2.cfg /etc/naemon/conf.d/servers/
 COPY usr/lib64/nagios/plugins/test.sh /usr/lib64/nagios/plugins/
+RUN chmod +x /usr/lib64/naemon/plugins/test.sh
+RUN chmod +x /usr/lib64/naemon/plugins/test2.sh
 
 # post install configurations
 COPY etc/naemon/naemon.cfg /etc/naemon/naemon.cfg
