@@ -26,6 +26,7 @@ COPY etc/naemon/conf.d/commands/test2.cfg /etc/naemon/conf.d/commands/
 COPY etc/naemon/conf.d/servers/test.cfg /etc/naemon/conf.d/servers/
 COPY etc/naemon/conf.d/servers/test2.cfg /etc/naemon/conf.d/servers/
 COPY usr/lib64/nagios/plugins/test.sh /usr/lib64/nagios/plugins/
+COPY usr/lib64/nagios/plugins/test2.sh /usr/lib64/nagios/plugins/
 RUN chmod +x /usr/lib64/naemon/plugins/test.sh
 RUN chmod +x /usr/lib64/naemon/plugins/test2.sh
 
