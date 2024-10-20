@@ -175,7 +175,7 @@
             "name"                    : "oci-data"
           },
           {
-            "enable"                  : true,
+            "enable"                  : false,
             "name"                    : "test"
           }
         ],

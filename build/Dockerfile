@@ -1,6 +1,6 @@
 #author: chris murray
-#version: 0.1.14
-#date 20241117
+#version: 0.1.15
+#date 20241120
 
 FROM oraclelinux:9
 LABEL maintainer="cmurray@927.technology"
@@ -17,6 +17,7 @@ COPY usr/local/bin/gearmand.sh /usr/local/bin/
 COPY usr/local/bin/naemon.sh /usr/local/bin/
 COPY usr/local/bin/post.sh /usr/local/bin/
 COPY usr/local/bin/oci-cli.sh /usr/local/bin/
+COPY usr/local/bin/ops.sh /usr/local/bin/
 
 # installers
 RUN /usr/local/bin/gearmand.sh
