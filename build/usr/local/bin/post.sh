@@ -3,6 +3,9 @@
 # jq
 yum install -y jq
 
+# osquery
+yum install -y /root/osquery-5.13.1-1.linux.x86_64.rpm
+
 # set naemon permissions
 chown -R naemon:naemon /etc/naemon
 chmod -R 755 /etc/naemon
