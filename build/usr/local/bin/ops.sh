@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# bools
-false=0
-true=1
-
 # config
 . /usr/etc/927/ops.cfg
 
 # source
-. /usr/lib/927/ops.f
-. /usr/lib/cmd_el.v
-. /usr/local/lib/${_lib_version}/ops.f
-
+. /usr/local/lib/bash/${lib_version}/927/cmd_el.v
+. /usr/local/lib/bash/${lib_version}/927/bools.v
+. /usr/local/lib/bash/${lib_version}/927/nagios.v
+. /usr/local/lib/bash/${lib_version}/927/ops.f
 
 # variables
 _address=
@@ -32,6 +28,7 @@ _json_candidate_hash=$( ${cmd_echo} ${_json_candidate} | ${cmd_sha256sum} | ${cm
 _json_naemon_processes="{}"
 _naemon_processes_count=0
 _naemon_pid=
+_nameon_confd=/etc/naemon/conf.d
 
 
 # source
@@ -82,93 +79,15 @@ EOF.hostgroup
 
 
 
+  ## commands
+  927.ops.commands.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.commands' ) -p ${_nameon_confd}/commands
 
   ## hosts/clouds
-  ${cmd_rm} -rf ${_confd_path}/hosts/clouds/*
-  for cloud in $( ${cmd_echo} ${_json}  | ${cmd_jq} -c '.hosts.clouds[] | select(.enable == true)' ); do 
-    _address=$( ${cmd_echo} ${cloud}    | ${cmd_jq} -r '.address' )
-    _alias=$( ${cmd_echo} ${cloud}      | ${cmd_jq} -r '.alias' )
-    _host_name=$( ${cmd_echo} ${cloud}  | ${cmd_jq} -r '.host_name' )
-    _hostgroups=
-    _hostgroups_count=0
-
-    for hostgroup in $( ${cmd_echo} ${cloud} | ${cmd_jq} -r '.hostgroups[] | select(.enable == true) | .name' ); do 
-
-      if [[ ${_hostgroups_count} > 0 ]]; then
-        _hostgroups+=,
-      fi
-
-      (( _hostgroups_count++ ))
-      _hostgroups+=${hostgroup}
-    done
-
-    ${cmd_echo} Writing Host/Cloud: ${_confd_path}/hosts/clouds/${_alias}.cfg
-    ${cmd_cat} << EOF.cloud > ${_confd_path}/hosts/clouds/${_alias}.cfg
-define host                         {
-  address                           ${_address}
-  alias                             ${_alias}
-  host_name                         ${_host_name}
-  hostgroups                        ${_hostgroups}
-  use                               cloud-infrastructure
-}
-EOF.cloud
-  done
-
-
-  # call commands function here
-  
-  ## commands
-  ${cmd_rm} -rf ${_confd_path}/commands/*
-  for command in $( ${cmd_echo} ${_json}   | ${cmd_jq} -c '.commands[] | select(.enable == true)' ); do 
-    _command_line=$( ${cmd_echo} ${command}| ${cmd_jq} -r '.line' )
-    _command_name=$( ${cmd_echo} ${command}| ${cmd_jq} -r '.name' )
-
-    ${cmd_echo} Writing Command: ${_confd_path}/commands/${_command_name}.cfg
-    ${cmd_cat} << EOF.command > ${_confd_path}/commands/${_command_name}.cfg
-define command                      {
-  command_line                      ${_command_line}
-  command_name                      ${_command_name}
-}
-EOF.command
-  done
-
-
-
+  927.ops.hosts.cloud.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.hosts.clouds' ) -p ${_nameon_confd}/hosts/clouds 
 
   ## hosts/servers
-  ${cmd_rm} -rf ${_confd_path}/hosts/servers/*
-  for server in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.hosts.servers[] | select(.enable == true)' ); do 
-    _address=$( ${cmd_echo} ${server}   | ${cmd_jq} -r '.address' )
-    _alias=$( ${cmd_echo} ${server}     | ${cmd_jq} -r '.alias' )
-    _host_name=$( ${cmd_echo} ${server} | ${cmd_jq} -r '.host_name' )
-    _hostgroups=
-    _hostgroups_count=0
+  927.ops.hosts.servers.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.hosts.servers' ) -p ${_nameon_confd}/hosts/servers
 
-    for hostgroup in $( ${cmd_echo} ${server} | ${cmd_jq} -r '.hostgroups[] | select(.enable == true) | .name' ); do 
-
-      if [[ ${_hostgroups_count} > 0 ]]; then
-        _hostgroups+=,
-      fi
-
-      (( _hostgroups_count++ ))
-      _hostgroups+=${hostgroup}
-    done
-
-    ${cmd_echo} Writing Host/Server: ${_confd_path}/hosts/servers/${_alias}.cfg
-    ${cmd_cat} << EOF.server > ${_confd_path}/hosts/servers/${_alias}.cfg
-define host                         {
-  address                           ${_address}
-  alias                             ${_alias}
-  host_name                         ${_host_name}
-  hostgroups                        ${_hostgroups}
-  use                               cloud-infrastructure
-
-  _cpus
-  _storage
-}
-EOF.server
-  done
-fi
 
 
 
