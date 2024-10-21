@@ -193,7 +193,13 @@
         "alias"                     : "mediaserver",
         "enable"                    : true,
         "host_name"                 : "Media Server",
-        "hostgroups"                : [],
+        "hostgroups"                : [
+        {
+          "enable"                  : true,
+          "name"                    : "linux-servers"
+        }
+
+        ],
         "settings"                  : {
           "cpus"                    : 1,
           "storage"                 : [],

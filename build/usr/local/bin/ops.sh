@@ -4,45 +4,37 @@
 false=0
 true=1
 
-# naemon exits
-exit_crit=2
-exit_ok=0
-exit_unkn=3
-exit_warn=1
+# config
+. /usr/etc/927/ops.cfg
 
-# commands
-cmd_awk=/bin/awk
-cmd_cat=/bin/cat
-cmd_chown=/bin/chown
-cmd_chmod=/bin/chmod
-cmd_curl=/bin/curl
-cmd_echo=/bin/echo
-cmd_jq=/bin/jq
-cmd_mkdir=/bin/mkdir
-cmd_rm=/bin/rm
-cmd_sha256sum=/bin/sha256sum
+# source
+. /usr/lib/927/ops.f
+. /usr/lib/cmd_el.v
+. /usr/local/lib/${_lib_version}/ops.f
+
 
 # variables
-_927conf_path=/etc/927
 _address=
 _alias=
 _command_line=
 _command_name=
-_confd_path=/etc/naemon/conf.d
 _exit_code=${exit_unkn}
 _exit_string=
-_file=../etc/naemon/naemon.json
 _host_name=
 _hostgroups=
 _hostgroup_alias=
 _hostgroup_name=
-_url=https://raw.githubusercontent.com/927technology/ops/refs/heads/0.1.0/build/etc/927/ops.json
-
 _json=
 _json_running=/etc/927/running.json
 _json_running_hash=
 _json_candidate=$( ${cmd_curl} -s ${_url} | ${cmd_jq} -c 2> /dev/null)
 _json_candidate_hash=$( ${cmd_echo} ${_json_candidate} | ${cmd_sha256sum} | ${cmd_awk} '{print $1}' 2> /dev/null)
+_json_naemon_processes="{}"
+_naemon_processes_count=0
+_naemon_pid=
+
+
+# source
 
 # main
 IFS=$'\n'
@@ -123,7 +115,8 @@ EOF.cloud
   done
 
 
-
+  # call commands function here
+  
   ## commands
   ${cmd_rm} -rf ${_confd_path}/commands/*
   for command in $( ${cmd_echo} ${_json}   | ${cmd_jq} -c '.commands[] | select(.enable == true)' ); do 
@@ -179,9 +172,25 @@ fi
 
 
 
+_json_naemon_processes=$( ${cmd_osqueryi} "select name, cmdline, pid, parent from processes where name='naemon'" --json )
+_naemon_processes_count=$( ${cmd_echo} ${_json_naemon} | ${cmd_jq} '.[] | select(.cmdline | contains("daemon"))' | ${cmd_jq} -s | ${_cmd_jq} '. | length' )
 
+
+
+if [[ ${_naemon_processes_count} > 0 ]] && [[ ${_exit_code} != ${exit_ok} ]]; then
+  ${cmd_naemon} --verify-config /etc/naemon/naemon.cfg 2>&1 > /dev/null
+  if [[ ${?} ]]
+    _naemon_pid=$( ${cmd_echo} ${_json_naemon} | ${cmd_jq} -r '.[0].pid' )
+    ${cmd_kill} -HUP naemon
+  fi
+else
+  /usr/bin/naemon --daemon /etc/naemon/naemon.cfg
+fi
 
 # exit
 
 ${cmd_echo} ${_exit_string}
 exit ${_exit_code}
+
+
+## to do - write output messages and codes for restart or failed
