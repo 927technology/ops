@@ -1,0 +1,85 @@
+{
+  "configuration"                   : {
+    "paths"                         : {
+      "927"                         : "/etc/927",
+      "confd"                       : "/etc/naemon/conf.d",
+      "naemon"                      : "/etc/naemon"
+    },
+    "schema"                        : 1,
+    "version"                       : "0.1.0"
+  },
+  "paths"                           : [
+    {
+      "enable"                      : true,
+      "name"                        : "commands"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "contacts"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "contactgroups"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/clouds"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/clouds/compartments"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/clouds/instances"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/firewalls"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/loadbalancers"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/proxies"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/routers"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/switches"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "hosts/networks/wireless"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "services"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "servicegroups"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "templates"
+    },
+    {
+      "enable"                      : true,
+      "name"                        : "timeperiods"
+    }
+  ]
+}

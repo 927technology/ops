@@ -8,16 +8,17 @@ LABEL maintainer="cmurray@927.technology"
 #update os
 RUN yum update -y
 
+# environmental variables
+ENV LIB_VERSION=0.4.0
+ENV URL=https://raw.githubusercontent.com/927technology/ops/refs/heads/0.1.0/build/etc/927
+
 # pre-add files
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
 COPY ol/libmemcached-awesome-1.1.0-12.el9.x86_64.rpm /root/
 COPY ol/osquery-5.13.1-1.linux.x86_64.rpm /root/
-COPY usr/local/bin/entrypoint.sh /usr/local/bin/
-COPY usr/local/bin/gearmand.sh /usr/local/bin/
-COPY usr/local/bin/naemon.sh /usr/local/bin/
-COPY usr/local/bin/post.sh /usr/local/bin/
-COPY usr/local/bin/oci-cli.sh /usr/local/bin/
-COPY usr/local/bin/ops.sh /usr/local/bin/
+COPY usr/local/bin/* /usr/local/bin/
+COPY usr/local/etc/* /usr/local/etc/
+COPY usr/local/lib/* /usr/local/lib/
 
 # installers
 RUN /usr/local/bin/gearmand.sh
