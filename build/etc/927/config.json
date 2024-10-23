@@ -15,12 +15,25 @@
         "notification"              : {
           "host"                    : {
             "commands"              : "notification-host-by-email",
-            "options"               : "d,u,r,f,s",
+            "options"               : {
+              "down"                : true,
+              "flapping"            : true,
+              "recovery"            : true,
+              "scheduled_down"      : true,
+              "up"                  : true
+            },
             "period"                : "24x7"
           },
           "service"                 : {
             "commands"              : "notify-service-by-email",
-            "options"               : "w,u,c,r,f,s",
+            "options"               : {
+              "critical"            : true,
+              "flapping"            : true,
+              "recovery"            : true,
+              "scheduled_down"      : true,
+              "up"                  : true,
+              "warning"             : true
+            },
             "period"                : "24x7"
           }
         }
