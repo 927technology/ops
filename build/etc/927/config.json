@@ -124,9 +124,9 @@
           "interval"                : 120,
           "options"                 : {
             "critical"              : false,
-            "downtime"              : true,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : true,
             "unknown"               : true,
             "warning"               : false
           },
@@ -235,9 +235,9 @@
           "interval"                : 120,
           "options"                 : {
             "critical"              : false,
-            "downtime"              : true,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : true,
             "unknown"               : true,
             "warning"               : false
           },
@@ -346,9 +346,9 @@
           "interval"                : 30,
           "options"                 : {
             "critical"              : false,
-            "downtime"              : true,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : true,
             "unknown"               : true,
             "warning"               : false
           },
@@ -457,9 +457,9 @@
           "interval"                : 30,
           "options"                 : {
             "critical"              : false,
-            "downtime"              : true,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : true,
             "unknown"               : false,
             "warning"               : false
           },
@@ -568,9 +568,9 @@
           "interval"                : 30,
           "options"                 : {
             "critical"              : false,
-            "downtime"              : true,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : true,
             "unknown"               : false,
             "warning"               : false
           },
@@ -669,9 +669,9 @@
           "interval"                : 60,
           "options"                 : {
             "critical"              : true,
-            "downtime"              : false,
             "flapping"              : false,
             "recovery"              : true,
+            "scheduled_down"        : false,
             "unknown"               : true,
             "warning"               : true
           },
@@ -768,9 +768,9 @@
           "interval"                : null,
           "options"                 : {
             "critical"              : null,
-            "downtime"              : null,
             "flapping"              : null,
             "recovery"              : null,
+            "scheduled_down"        : null,
             "unknown"               : null,
             "warning"               : null
           },
