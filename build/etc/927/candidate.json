@@ -140,6 +140,28 @@
       "line"                        : "$USER1$/test2.sh"
     }
   ],
+  "contactgroups"                   : [
+    {
+      "alias"                       : "Naemon Administrators",
+      "enable"                      : true,
+      "members"                     : [
+        {
+          "enable"                  : true,
+          "name"                    : "naemonadmin"
+        }
+      ],
+      "name"                        : "admins"
+    }
+  ],
+  "contacts"                        : [
+    {
+      "alias"                       : "Naemon Admin",
+      "email"                       : "naemon@localhost",
+      "enable"                      : true,
+      "name"                        : "naemonadmin",
+      "use"                         : "generic-contact"
+    }
+  ],
   "hostgroups"                      : [
     {
       "alias"                       : "Servers - Linux",

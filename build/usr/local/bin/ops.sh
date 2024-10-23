@@ -12,9 +12,11 @@ IFS=$'\n'
 
 
 # configuration variables
-_json_candidate=$( ${cmd_curl} -s ${URL}/candidate.json )
-_json_configuration=$( ${cmd_curl} -s ${URL}/config.json )
+_json_candidate=$( ${cmd_curl} -s ${URL}/candidate.json | ${cmd_jq} -c )
+_json_configuration=$( ${cmd_curl} -s ${URL}/config.json | ${cmd_jq} -c )
 _json_running=$( 927.ops.config.running.get )
+
+
 
 # validate json
 _json_candidate_validate=$( json.validate -j ${_json_candidate} || exit -1)
@@ -24,14 +26,44 @@ _json_running_validate=$( json.validate -j ${_json_running} || exit -1)
 
 
 # variables
+_error_count=0
 _exit_code=${exit_unkn}
 _exit_string=
-_path_927=$( ${cmd_echo} ${_json_configuration}     | ${cmd_jq} -r '.configuration.paths.927' )
+_json=
+_path_927=$( ${cmd_echo} ${_json_configuration}     | ${cmd_jq} -r '.configuration.paths."927"' )
 _path_confd=$( ${cmd_echo} ${_json_configuration}   | ${cmd_jq} -r '.configuration.paths.confd' )
 _path_naemon=$( ${cmd_echo} ${_json_configuration}  | ${cmd_jq} -r '.configuration.paths.naemon' )
 
 
 # main
+if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; then
+  ${cmd_echo} New Configuration Detected
+  
+  # commands
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.commands' )
+  927.ops.create.commands -j "${_json}" -p ${_path_confd}/commands
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+  # hosts/clouds
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.clouds' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/clouds
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+  # hosts/servers
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.servers' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/servers
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+  # hostgroups
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hostgroups' )
+  927.ops.create.hostgroups -j "${_json}" -p ${_path_confd}/hostgroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+fi
 
 
 
@@ -45,35 +77,6 @@ _path_naemon=$( ${cmd_echo} ${_json_configuration}  | ${cmd_jq} -r '.configurati
 
 
 
-
-
-
-#   ## hostgroups
-#   ${cmd_rm} -rf ${_confd_path}/hosts/hostgroups/*
-#   for command in $( ${cmd_echo} ${_json}   | ${cmd_jq} -c '.hostgroups[] | select(.enable == true)' ); do 
-#     _hostgroup_alias=$( ${cmd_echo} ${command}| ${cmd_jq} -r '.alias' )
-#     _hostgroup_name=$( ${cmd_echo} ${command}| ${cmd_jq} -r '.name' )
-
-#     ${cmd_echo} Writing Host Group: ${_confd_path}/hosts/hostgroups/${_hostgroup_name}.cfg
-#     ${cmd_cat} << EOF.hostgroup > ${_confd_path}/hosts/hostgroups/${_hostgroup_name}.cfg
-# define hostgroup                    {
-#   alias                             ${_hostgroup_alias}
-#   hostgroup_name                    ${_hostgroup_name}
-# }
-# EOF.hostgroup
-#   done
-
-
-
-
-#   ## commands
-#   927.ops.commands.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.commands' ) -p ${_nameon_confd}/commands
-
-#   ## hosts/clouds
-#   927.ops.hosts.cloud.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.hosts.clouds' ) -p ${_nameon_confd}/hosts/clouds 
-
-#   ## hosts/servers
-#   927.ops.hosts.servers.create -j $( ${cmd_echo} ${_json} | ${cmd_jq} '.hosts.servers' ) -p ${_nameon_confd}/hosts/servers
 
 
 
@@ -99,4 +102,3 @@ _path_naemon=$( ${cmd_echo} ${_json_configuration}  | ${cmd_jq} -r '.configurati
 # exit ${_exit_code}
 
 
-## to do - write output messages and codes for restart or failed

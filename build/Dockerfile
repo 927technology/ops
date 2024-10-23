@@ -16,9 +16,8 @@ ENV URL=https://raw.githubusercontent.com/927technology/ops/refs/heads/0.1.0/bui
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
 COPY ol/libmemcached-awesome-1.1.0-12.el9.x86_64.rpm /root/
 COPY ol/osquery-5.13.1-1.linux.x86_64.rpm /root/
-COPY usr/local/bin/* /usr/local/bin/
-COPY usr/local/etc/* /usr/local/etc/
-COPY usr/local/lib/* /usr/local/lib/
+COPY usr/local/bin /usr/local/bin
+COPY usr/local/lib /usr/local/lib
 
 # installers
 RUN /usr/local/bin/gearmand.sh

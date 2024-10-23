@@ -5,7 +5,7 @@ json.validate () {
   local _json=
 
   # parse command arguments
-  while [[ ${1} != "" ]]; then
+  while [[ ${1} != "" ]]; do
     case ${1} in
       -j | --json )
         shift
@@ -14,25 +14,21 @@ json.validate () {
     shift
   done
 
-  if [[ ! -z ${_json} ]]; then
-    ${cmd_echo} ${_json} | ${cmd_jq} 2>&1 > /dev/null
+  if [[ ! -z "${_json}" ]]; then
+    ${cmd_echo} "${_json}" | ${cmd_jq} 1> /dev/null 2> /dev/null
+    
     if [[ ${?} == ${exit_ok} ]]; then
       _exit_code=${exit_ok}
       _exit_string=${true}
 
-  else
+    else
       _exit_code=${exit_crit}
       _exit_string=${false}
 
+    fi
   fi
 
   # exit
   ${cmd_echo} ${_exit_string}
   return ${_exit_code}
-
-
-
-
-
-
 }
