@@ -14,4 +14,5 @@ cmd_osqueryi=/usr/bin/osqueryi
 cmd_pkill=/bin/pkill
 cmd_printf=/bin/printf
 cmd_rm=/bin/rm
+cmd_sed=/bin/sed
 cmd_sha256sum=/bin/sha256sum
