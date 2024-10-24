@@ -3,12 +3,13 @@
 # because IFS sucks
 IFS=$'\n'
 
-# source
-. /usr/local/lib/bash/${LIB_VERSION}/json/validate.f
-. /usr/local/lib/bash/${LIB_VERSION}/927/cmd_el.v
-. /usr/local/lib/bash/${LIB_VERSION}/927/bools.v
-. /usr/local/lib/bash/${LIB_VERSION}/927/nagios.v
-. /usr/local/lib/bash/${LIB_VERSION}/927/ops.f
+# library root
+_lib_root=/usr/local/lib/bash/${LIB_VERSION}
+
+# source libraries
+. ${_lib_root}/927/variables.l
+. ${_lib_root}/927/ops.l
+. ${_lib_root}/json.l
 
 
 # configuration variables
