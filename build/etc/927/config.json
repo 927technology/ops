@@ -11,10 +11,38 @@
   "templates"                       : {
     "contacts"                      : [
       {
+        "addresses"                 : [
+          {
+            "enable"                : false,
+            "string"                : null
+          }
+        ],
+        "can_submit_commands"       : false,
+        "contact_groups"            : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "email"                     : null,
         "enable"                    : true,
+        "name"                      : {
+          "alias"                   : null,
+          "string"                  : "generic-host"
+        },
         "notification"              : {
           "host"                    : {
-            "commands"              : "notification-host-by-email",
+            "commands"              : [
+              {
+                "enable"            : true,
+                "name"              : "notification-host-by-email"
+              },
+              {
+                "enable"            : false,
+                "name"              : "test"
+              }
+            ],
+            "enable"                : false,
             "options"               : {
               "down"                : true,
               "flapping"            : true,
@@ -24,8 +52,10 @@
             },
             "period"                : "24x7"
           },
+          "pager"                   : null,
           "service"                 : {
             "commands"              : "notify-service-by-email",
+            "enable"                : false,
             "options"               : {
               "critical"            : true,
               "flapping"            : true,
@@ -36,6 +66,10 @@
             },
             "period"                : "24x7"
           }
+        },
+        "retain"                    : {
+          "nonstatus"               : null,
+          "status"                  : null
         }
       }
     ],
