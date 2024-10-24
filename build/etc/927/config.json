@@ -60,6 +60,7 @@
                 "name"              : "notify-service-by-email"
               }
             ],
+            "enable"                : true,
             "options"               : {
               "critical"            : true,
               "flapping"            : true,
