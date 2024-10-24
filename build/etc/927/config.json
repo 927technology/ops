@@ -54,8 +54,12 @@
           },
           "pager"                   : null,
           "service"                 : {
-            "commands"              : "notify-service-by-email",
-            "enable"                : false,
+            "commands"              : [
+              {
+                "enable"            : true,
+                "name"              : "notify-service-by-email"
+              }
+            ],
             "options"               : {
               "critical"            : true,
               "flapping"            : true,
