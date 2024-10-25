@@ -227,8 +227,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : true,
-            "unreachable"           : true,
-            "up"                    : true
+            "operational"           : true,
+            "unreachable"           : true
           },
           "threshold"               : {
             "high"                  : null,
@@ -344,8 +344,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : true,
-            "unreachable"           : true,
-            "up"                    : true
+            "operational"           : true,
+            "unreachable"           : true
           },
           "threshold"               : {
             "high"                  : null,

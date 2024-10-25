@@ -112,7 +112,17 @@
       _low_flap_threshold=$(            ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.low | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _freshness_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness.threshold | if( . == null ) then "" else . end' )
       _host_name=$(                     ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
-      _hostgroups=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .hostgroups[] | select( .enable == true ) ] | if( . | length < 1 ) then "" else join(", ") end' )
+      
+      
+      
+      
+      _hostgroups=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .hostgroups[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+
+      
+      
+      
+      
+      
       _icon_image=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.image | if( . == null ) then "" else . end' )
       _icon_image_alt=$(                ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.alternate | if( . == null ) then "" else . end' )
       _initial_state=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.initial_state | if( . == null ) then "" else . end' )

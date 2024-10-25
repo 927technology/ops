@@ -120,8 +120,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : false,
-            "unreachable"           : false,
-            "up"                    : false
+            "operational"           : false,
+            "unreachable"           : false
           },
           "threshold"               : {
             "high"                  : null,
@@ -236,8 +236,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : false,
-            "unreachable"           : false,
-            "up"                    : false
+            "operational"           : false,
+            "unreachable"           : false
           },
           "threshold"               : {
             "high"                  : null,
@@ -352,8 +352,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : false,
-            "unreachable"           : false,
-            "up"                    : false
+            "operational"           : false,
+            "unreachable"           : false
           },
           "threshold"               : {
             "high"                  : null,
@@ -468,8 +468,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : false,
-            "unreachable"           : false,
-            "up"                    : false
+            "operational"           : false,
+            "unreachable"           : false
           },
           "threshold"               : {
             "high"                  : null,
@@ -584,8 +584,8 @@
           "enable"                  : true,
           "options"                 : {
             "down"                  : false,
-            "unreachable"           : false,
-            "up"                    : false
+            "operational"           : false,
+            "unreachable"           : false
           },
           "threshold"               : {
             "high"                  : null,
