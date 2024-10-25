@@ -81,6 +81,7 @@ define hostgroup                    {
 EOF.hostgroup
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
+      ${cmd_sed} -i '/^  $/d' ${_path}/${_alias}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
