@@ -145,6 +145,7 @@
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
+            "statusmap"             : null,
             "vrml"                  : null
           }
         },
@@ -256,6 +257,7 @@
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
+            "statusmap"             : null,
             "vrml"                  : null
           }
         },
@@ -367,6 +369,7 @@
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
+            "statusmap"             : null,
             "vrml"                  : null
           }
         },
@@ -478,6 +481,7 @@
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
+            "statusmap"             : null,
             "vrml"                  : null
           }
         },
@@ -589,6 +593,7 @@
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
+            "statusmap"             : null,
             "vrml"                  : null
           }
         },
