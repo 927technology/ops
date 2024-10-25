@@ -53,17 +53,22 @@
   if [[ ! -z ${_json} ]]; then
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
     
-    for hostgroup in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
-      _alias=$( ${cmd_echo} ${hostgroup} | ${cmd_jq} -r '.alias' )
-      _name=$( ${cmd_echo} ${hostgroup} | ${cmd_jq} -r '.name' )
-
-
 
       ${cmd_echo} Writing Host Group: ${_path}/${_name}.cfg
       ${cmd_cat} << EOF.hostgroup > ${_path}/${_name}.cfg
 define hostgroup                    {
-  hostgroup_name	                  ${_name}
-  alias	                            ${_alias}
+  $( [[ ! -z ${_action_url} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
+
+
+  $( [[ ! -z ${_alias} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
+
+  $( [[ ! -z ${_hostgroup_name} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
+
+
+  $( [[ ! -z ${_notes} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
+
+  $( [[ ! -z ${_notes_url} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
+
 }
 EOF.hostgroup
 
