@@ -98,17 +98,17 @@
       _address=$(                       ${cmd_echo} ${host}  | ${cmd_jq} -r  '.address | if( . == null ) then "" else . end' )
       _alias=$(                         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
       _check_command=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.command | if( . == null ) then "" else . end' )
-      _check_freshness=$(               ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness | if( . == null ) then "" else . end' )
+      _check_freshness=$(               ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness.enable | if( . == null ) then "" else . end' )
       _check_period=$(                  ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.period | if( . == null ) then "" else . end' )
       _check_interval=$(                ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.interval.value | if( . == null ) then "" else . end' )
       _contact_groups=$(                ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .contact_groups[] | select( .enable == true ) ] | if( . | length < 1 ) then "" else join(", ") end' )
       _contacts=$(                      ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .contacts[] | select( .enable == true ) ] | if( . | length < 1 ) then "" else join(", ") end' )
       _display_name=$(                  ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _event_handler_enabled=$(         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
-      _event_handler=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.name | if( '${_event_handler_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
-      _flap_detection_enabled=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
-      _flap_detection_options=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .flap_detection.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
-      _high_flap_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.high | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
+      # _event_handler=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.name | if( '${_event_handler_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
+      # _flap_detection_enabled=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
+      # _flap_detection_options=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .flap_detection.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
+      # _high_flap_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.high | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _low_flap_threshold=$(            ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.low | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _freshness_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness.threshold | if( . == null ) then "" else . end' )
       _host_name=$(                     ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
@@ -187,7 +187,7 @@ define host                         {
 EOF.host
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_name}.cfg
+      ${cmd_sed} -i '/^  $/d' ${_path}/${_alias}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
