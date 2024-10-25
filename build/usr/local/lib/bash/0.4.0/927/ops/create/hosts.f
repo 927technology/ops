@@ -107,22 +107,12 @@
       _event_handler_enabled=$(         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
       _event_handler=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.name | if( '${_event_handler_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _flap_detection_enabled=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
-      # _flap_detection_options=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .flap_detection.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
+      _flap_detection_options=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .flap_detection.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       _high_flap_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.high | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _low_flap_threshold=$(            ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.low | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       _freshness_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness.threshold | if( . == null ) then "" else . end' )
       _host_name=$(                     ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
-      
-      
-      
-      
       _hostgroups=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .hostgroups[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
-
-      
-      
-      
-      
-      
       _icon_image=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.image | if( . == null ) then "" else . end' )
       _icon_image_alt=$(                ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.alternate | if( . == null ) then "" else . end' )
       _initial_state=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.initial_state | if( . == null ) then "" else . end' )
@@ -165,11 +155,11 @@ define host                         {
   $( [[ ! -z ${_event_handler} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" event_handler "${_event_handler}" )
   $( [[ ! -z ${_event_handler_enabled} ]]         && ${cmd_printf} '%-1s %-32s %-50s' "" event_handler_enabled "${_event_handler_enabled}" )
   $( [[ ! -z ${_first_notification_delay} ]]      && ${cmd_printf} '%-1s %-32s %-50s' "" first_notification_delay "${_first_notification_delay}" )
-  $( [[ ! -z ${_flap_detection_enabled} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" flap_detection_enabled} "${_flap_detection_enabled}}" )
-  $( [[ ! -z ${_flap_detection_options} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" flap_detection_options"[${_flap_detection_options}]" )
+  $( [[ ! -z ${_flap_detection_enabled} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" flap_detection_enabled} "${_flap_detection_enabled}" )
+  $( [[ ! -z ${_flap_detection_options} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" flap_detection_options "[${_flap_detection_options}]" )
   $( [[ ! -z ${_freshness_threshold} ]]           && ${cmd_printf} '%-1s %-32s %-50s' "" freshness_threshold "${_freshness_threshold}" )
   $( [[ ! -z ${_high_flap_threshold} ]]           && ${cmd_printf} '%-1s %-32s %-50s' "" high_flap_threshold "${_high_flap_threshold}" )
-  $( [[ ! -z ${_host_name} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" host_name"${_}" )
+  $( [[ ! -z ${_host_name} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" host_name "${_host_name}" )
   $( [[ ! -z ${_hostgroups} ]]                    && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroups "${_hostgroups}" )
   $( [[ ! -z ${_icon_image} ]]                    && ${cmd_printf} '%-1s %-32s %-50s' "" icon_image"${_icon_image}" )
   $( [[ ! -z ${_icon_image_alt} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" icon_image_alt"${_icon_image_alt}" )

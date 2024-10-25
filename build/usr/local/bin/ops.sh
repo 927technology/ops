@@ -64,13 +64,18 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
 
-
-
   # templates/contacts
   _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.contacts' )
   927.ops.create.contacts -j "${_json}" -p ${_path_confd}/templates/contacts -t
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
+
+  # templates/hosts
+  _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.hosts' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/templates/hosts -t
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
 fi
 
 
