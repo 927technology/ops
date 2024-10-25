@@ -187,45 +187,232 @@
   "hosts"                           : {
     "clouds"                        : [
       {
+        "action_url"                : null,
         "address"                   : null,
-        "alias"                     : "oci-cloud",
-        "enable"                    : true,
-        "host_name"                 : "Oracle Cloud Infrastructure",
-        "hostgroups"                : [
-          {
-            "enable"                  : true,
-            "name"                    : "oci-data"
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : null,
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
           },
+          "initial"                 : null,
+          "interval"                : {
+            "check"                 : null,
+            "retry"                 : 1
+          },
+          "max_attempts"            : null,
+          "passive"                 : null,
+          "perfdata"                : true,
+          "period"                  : null
+        },
+        "contacts"                  : [
           {
-            "enable"                  : false,
-            "name"                    : "test"
+            "enable"                : false,
+            "name"                  : null
           }
         ],
-        "settings"                  : {
-            "cpus"                  : 1,
-            "storage"               : [],
-            "memory"                : 2048
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : null,
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "oci-data"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : null
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "alias"                   : "oci-cloud",
+          "display"                 : null,
+          "string"                  : "Oracle Cloud Infrastructure"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "critical"              : false,
+            "flapping"              : false,
+            "recovery"              : true,
+            "scheduled_down"        : true,
+            "unknown"               : true,
+            "warning"               : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "critical"                : true,
+          "ok"                      : true,
+          "unknown"                 : true,
+          "warning"                 : true
         },
         "use"                       : "cloud-infrastructure"
       }
     ],
     "servers"                       : [
       {
+        "action_url"                : null,
         "address"                   : "192.168.1.250",
-        "alias"                     : "mediaserver",
-        "enable"                    : true,
-        "host_name"                 : "Media Server",
-        "hostgroups"                : [
-        {
-          "enable"                  : true,
-          "name"                    : "linux-servers"
-        }
-
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : null,
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
+          },
+          "initial"                 : null,
+          "interval"                : {
+            "value"                 : null,
+            "retry"                 : 1
+          },
+          "max_attempts"            : null,
+          "passive"                 : null,
+          "perfdata"                : null,
+          "period"                  : null
+        },
+        "contacts"                  : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
         ],
-        "settings"                  : {
-          "cpus"                    : 1,
-          "storage"                 : [],
-          "memory"                  : 2048
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : {
+            "down"                  : true,
+            "unreachable"           : true,
+            "up"                    : true
+          },
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "linux-servers"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : 2
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "initial_state"           : "up",
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "statusmap"             : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "alias"                   : "mediaserver",
+          "display"                 : null,
+          "string"                  : "Media Server"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "critical"              : false,
+            "flapping"              : false,
+            "recovery"              : true,
+            "scheduled_down"        : true,
+            "unknown"               : true,
+            "warning"               : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "critical"                : true,
+          "ok"                      : true,
+          "unknown"                 : true,
+          "warning"                 : true
         },
         "use"                       : "linux-server"
       }

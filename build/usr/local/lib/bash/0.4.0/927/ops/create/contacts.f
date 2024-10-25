@@ -18,7 +18,13 @@
   local _template=${false}
 
 
-  # local variables
+  # control variables
+  local _error_count=0
+  local _exit_code=${exit_unkn}
+  local _exit_string=
+
+
+  # contact variables
   local _addresses=
   local _alias=
   local _can_submit_commands=
@@ -103,8 +109,8 @@ define contact                       {
 }
 EOF.contact
 
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_name}.cfg
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
+      ${cmd_sed} -i '/^  $/d' ${_path}/${_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
