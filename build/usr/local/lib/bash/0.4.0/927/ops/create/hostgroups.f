@@ -62,8 +62,12 @@ define hostgroup                    {
 
   $( [[ ! -z ${_alias} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
 
+  $( [[ ! -z ${_hostgroup_members} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_mem_hostgroup_members}" )
+
   $( [[ ! -z ${_hostgroup_name} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
 
+
+  $( [[ ! -z ${_members} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
 
   $( [[ ! -z ${_notes} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
 
