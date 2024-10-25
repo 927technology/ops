@@ -11,14 +11,27 @@
   # 927/nagios.v
   # json/validate.f
 
-  # local variables
-  local _alias=
+  # control variables
   local _error_count=0
   local _exit_code=${exit_unkn}
   local _exit_string=
+
+  # hostgroup variables
+  local _alias=
+  
+  
   local _json=
   local _name=
   local _path=
+
+
+hostgroup_name	hostgroup_name
+	alias	alias
+	members	hosts
+	hostgroup_members  	hostgroups
+	notes	note_string
+	notes_url	url
+	action_url
 
   # parse command arguments
   while [[ ${1} != "" ]]; do
