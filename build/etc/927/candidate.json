@@ -225,7 +225,11 @@
         },
         "flap_detection"            : {
           "enable"                  : true,
-          "options"                 : null,
+          "options"                 : {
+            "down"                  : true,
+            "unreachable"           : true,
+            "up"                    : true
+          },
           "threshold"               : {
             "high"                  : null,
             "low"                   : null
