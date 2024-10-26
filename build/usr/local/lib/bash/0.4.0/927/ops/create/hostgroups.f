@@ -4,6 +4,7 @@
   # accepts 2 arguments -
   ## -j/--json json snippit at the root of the commands list
   ## -p/--path which is the full path to the associated conf.d write path
+  ## -t/--template if this will be a template or a configuraton.  sets the register option.
 
   # dependancies
   # 927.bools.v
@@ -17,19 +18,22 @@
   local _path=
   local _temtemplate=${false}
 
+
   # control variables
   local _error_count=0
   local _exit_code=${exit_unkn}
   local _exit_string=
 
+
   # hostgroup variables
+	local _action_url=
+	local _alias=
+	local _hostgroup_members=
   local _hostgroup_name=
-	 local _alias=
-	 local _members=
-	 local _hostgroup_members=
-	 local _notes=
-	 local _notes_url=
-	 local _action_url=
+	local _members=
+	local _notes=
+	local _notes_url=
+
 
   # parse command arguments
   while [[ ${1} != "" ]]; do
@@ -55,25 +59,25 @@
     for hostgroup in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
 
       _alias=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
-      _hostgroup_name=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
-      _hostgroup_members=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .hostgroup_members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
-      _members=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _hostgroup_name=$(                ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _hostgroup_members=$(             ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .hostgroup_members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _members=$(                       ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
       _notes=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes.string | if( . == null ) then "" else . end' )
-      _notes_url=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes_url | if( . == null ) then "" else . end' )
+      _notes_url=$(                     ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes_url | if( . == null ) then "" else . end' )
 
 
 
       ${cmd_echo} Writing Host Group: ${_path}/${_name}.cfg
       ${cmd_cat} << EOF.hostgroup > ${_path}/${_name}.cfg
 define hostgroup                    {
-      $( [[ ! -z ${_action_url} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
-      $( [[ ! -z ${_alias} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
-      $( [[ ! -z ${_hostgroup_members} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_mem_hostgroup_members}" )
-      $( [[ ! -z ${_hostgroup_name} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
-      $( [[ ! -z ${_members} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
-      $( [[ ! -z ${_notes} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
-      $( [[ ! -z ${_notes_url} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
-
+  $( [[ ! -z ${_action_url} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
+  $( [[ ! -z ${_alias} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
+  $( [[ ! -z ${_hostgroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_members}" )
+  $( [[ ! -z ${_hostgroup_name} ]]    && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
+  $( [[ ! -z ${_members} ]]           && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
+  $( [[ ! -z ${_notes} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
+  $( [[ ! -z ${_notes_url} ]]         && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
+  $( [[ ${_template} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
 }
 EOF.hostgroup
 

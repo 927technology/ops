@@ -162,28 +162,6 @@
       "use"                         : "generic-contact"
     }
   ],
-  "hostgroups"                      : [
-    {
-      "alias"                       : "Servers - Linux",
-      "enable"                      : true,
-      "name"                        : "linux-servers"
-    },
-    {
-      "alias"                       : "Network - Printers",
-      "enable"                      : true,
-      "name"                        : "network-printers"
-    },
-    {
-      "alias"                       : "Network - Routers",
-      "enable"                      : true,
-      "name"                        : "network-routers"
-    },
-    {
-      "alias"                       : "OCI - Data",
-      "enable"                      : true,
-      "name"                        : "oci-data"
-    }
-  ],
   "hosts"                           : {
     "clouds"                        : [
       {
@@ -302,6 +280,8 @@
         "use"                       : "cloud-infrastructure"
       }
     ],
+    "printers"                      : [],
+    "routers"                       : [],
     "servers"                       : [
       {
         "action_url"                : null,
@@ -420,6 +400,497 @@
         },
         "use"                       : "linux-server"
       }
-    ]
-  }
+    ],
+    "switches"                      : [],
+    "wireless"                      : []
+  },
+  "hostgroups"                      : [
+    {
+      "action_url"                : null,
+      "enable"                    : false,
+      "hostgroups"                : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "members"                   : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "name"                      : {
+        "alias"                   : "servers-linux",
+        "string"                  : "Servers - Linux"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      }     
+    },
+    {
+      "action_url"                : null,
+      "enable"                    : false,
+      "hostgroups"                : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "members"                   : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "name"                      : {
+        "alias"                   : "network-printers",
+        "string"                  : "Network - Printers"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      }     
+    },
+    {
+      "action_url"                : null,
+      "enable"                    : false,
+      "hostgroups"                : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "members"                   : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "name"                      : {
+        "alias"                   : "network-routers",
+        "string"                  : "Network - Routers"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      }     
+    },
+    {
+      "action_url"                : null,
+      "enable"                    : false,
+      "hostgroups"                : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "members"                   : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "name"                      : {
+        "alias"                   : "oci-data",
+        "string"                  : "OCI - Data"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      }     
+    }
+  ],
+  "services"                        : [
+    {
+      "action_url"                : null,
+      "check"                     : {
+        "active"                  : null,
+        "command"                 : null,
+        "freshness"               : {
+          "enable"                : false,
+          "threshold"             : null
+        },
+        "initial"                 : null,
+        "interval"                : {
+          "check"                 : null,
+          "retry"                 : 1
+        },
+        "max_attempts"            : null,
+        "passive"                 : null,
+        "perfdata"                : true,
+        "period"                  : null
+      },
+      "contacts"                  : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "contact_groups"            : [
+        {
+          "enable"                : null,
+          "name"                  : null
+        }
+      ],
+      "enable"                    : true,
+      "event_handler"             : {
+        "enable"                  : true,
+        "name"                    : null
+      },
+      "flap_detection"            : {
+        "enable"                  : true,
+        "options"                 : {
+          "down"                  : true,
+          "operational"           : true,
+          "unreachable"           : true
+        },
+        "threshold"               : {
+          "high"                  : null,
+          "low"                   : null
+        }
+      },
+      "hosts"                     : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "hostgroups"                : [
+        {
+          "enable"                : true,
+          "name"                  : "oci-data"
+        }
+      ],
+      "icon"                      : {
+        "file"                    : {
+          "alternate"             : null,
+          "image"                 : null
+        }
+      },
+      "is_volatile"               : false,
+      "name"                      : {
+        "display"                   : "oci-cloud",
+        "string"                  : "Oracle Cloud Infrastructure"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      },
+      "notification"              : {
+        "enable"                  : true,
+        "first_delay"             : null,
+        "interval"                : 120,
+        "options"                 : {
+          "critical"              : false,
+          "flapping"              : false,
+          "recovery"              : true,
+          "scheduled_down"        : true,
+          "unknown"               : true,
+          "warning"               : false
+        },
+        "period"                  : "24x7"
+      },
+      "obsess"                    : null,
+      "retain"                    : {
+        "nonstatus"               : true,
+        "status"                  : true
+      },
+      "servicegroups"             : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "stalking"                  : {
+        "critical"                : true,
+        "ok"                      : true,
+        "unknown"                 : true,
+        "warning"                 : true
+      },
+      "use"                       : null
+    }
+  ],
+  "timeperiods"                     : [
+    {
+      "enable"                      : true,
+      "exclude"                     : [
+        {
+          "enable"                  : false,
+          "name"                    : null
+        }
+      ],
+      "name"                        : {
+        "alias"                     : "24 Hours A Day, 7 Days A Week",
+        "string"                    : "24x7"
+      },
+      "ranges"                      : [
+        {
+          "enable"                  : true,
+          "day"                     : "monday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "tuesday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "wednesday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "thursday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "friday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "saturday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "sunday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        }
+      ],
+      "use"                         : null
+    },
+    {
+      "enable"                      : true,
+      "exclude"                     : [
+        {
+          "enable"                  : false,
+          "name"                    : null
+        }
+      ],
+      "name"                        : {
+        "alias"                     : "Normal Work Hours",
+        "string"                    : "workhours"
+      },
+      "ranges"                      : [
+        {
+          "enable"                  : true,
+          "day"                     : "monday",
+          "time"                    : {
+            "end"                   : "17:00",
+            "start"                 : "09:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "tuesday",
+          "time"                    : {
+            "end"                   : "17:00",
+            "start"                 : "09:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "wednesday",
+          "time"                    : {
+            "end"                   : "17:00",
+            "start"                 : "09:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "thursday",
+          "time"                    : {
+            "end"                   : "17:00",
+            "start"                 : "09:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "friday",
+          "time"                    : {
+            "end"                   : "17:00",
+            "start"                 : "09:00"
+          }
+        }
+      ],
+      "use"                         : null
+    },
+    {
+      "enable"                      : true,
+      "exclude"                     : [
+        {
+          "enable"                  : false,
+          "name"                    : null
+        }
+      ],
+      "name"                        : {
+        "alias"                     : "No Time Is A Good Time",
+        "string"                    : "none"
+      },
+      "ranges"                      : [],
+      "use"                         : null
+    },
+    {
+      "enable"                      : true,
+      "exclude"                     : [
+        {
+          "enable"                  : false,
+          "name"                    : null
+        }
+      ],
+      "name"                        : {
+        "alias"                     : "U.S. Holidays",
+        "string"                    : "us-holidays"
+      },
+      "ranges"                      : [
+        {
+          "enable"                  : true,
+          "day"                     : "december 25",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "january 1",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "july 4",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "monday -1 may",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "monday 1 september",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "thursday 4 november",
+          "time"                    : {
+            "end"                   : "00:00",
+            "start"                 : "00:00"
+          }
+        } 
+      ],
+      "use"                         : null
+    },
+    {
+      "enable"                      : true,
+      "exclude"                     : [
+        {
+          "enable"                  : false,
+          "name"                    : null
+        }
+      ],
+      "name"                        : {
+        "alias"                     : "24x7 Sans Holidays",
+        "string"                    : "24x7_sans_holidays"
+      },
+      "ranges"                      : [
+        {
+          "enable"                  : true,
+          "day"                     : "monday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "tuesday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "wednesday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "thursday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "friday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "saturday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        },
+        {
+          "enable"                  : true,
+          "day"                     : "sunday",
+          "time"                    : {
+            "end"                   : "24:00",
+            "start"                 : "00:00"
+          }
+        }
+      ],
+      "use"                         : "us-holidays"
+    }
+  ]
 }

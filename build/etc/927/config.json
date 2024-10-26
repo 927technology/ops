@@ -91,12 +91,12 @@
           },
           "initial"                 : null,
           "interval"                : {
-            "check"                 : null,
+            "value"                 : null,
             "retry"                 : 1
           },
           "max_attempts"            : null,
           "passive"                 : null,
-          "perfdata"                : true,
+          "perfdata"                : null,
           "period"                  : null
         },
         "contacts"                  : [
@@ -119,9 +119,9 @@
         "flap_detection"            : {
           "enable"                  : true,
           "options"                 : {
-            "down"                  : false,
-            "operational"           : false,
-            "unreachable"           : false
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
           },
           "threshold"               : {
             "high"                  : null,
@@ -130,15 +130,15 @@
         },
         "hostgroups"                : [
           {
-            "enable"                : false,
-            "name"                  : null
+            "enable"                : true,
+            "name"                  : "linux-servers"
           }
         ],
         "icon"                      : {
           "coordinates"             : {
             "2d"                    : {
               "x"                   : null,
-              "y"                   : null
+              "y"                   : 2
             },
             "3d"                    : {
               "x"                   : null,
@@ -146,6 +146,7 @@
               "z"                   : null
             }
           },
+          "initial_state"           : "up",
           "file"                    : {
             "alternate"             : null,
             "image"                 : null,
@@ -193,27 +194,54 @@
           "unknown"                 : true,
           "warning"                 : true
         },
-        "use"                       : null
-      },
+        "use"                       : "linux-server"
+      }
+    ],
+    "hostgroups"                    : [
       {
         "action_url"                : null,
-        "address"                   : null,
+        "enable"                    : false,
+        "hostgroups"                : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "members"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "name"                      : {
+          "alias"                   : null,
+          "string"                  : "generic-hostgroup"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        }     
+      }
+    ],
+    "services"                      : [
+      {
+        "action_url"                : null,
         "check"                     : {
           "active"                  : null,
-          "command"                 : "cheeck-host-alive",
+          "command"                 : null,
           "freshness"               : {
             "enable"                : false,
             "threshold"             : null
           },
           "initial"                 : null,
           "interval"                : {
-            "check"                 : 5,
+            "check"                 : null,
             "retry"                 : 1
           },
-          "max_attempts"            : 10,
+          "max_attempts"            : null,
           "passive"                 : null,
-          "perfdata"                : null,
-          "period"                  : "24x7"
+          "perfdata"                : true,
+          "period"                  : null
         },
         "contacts"                  : [
           {
@@ -223,8 +251,8 @@
         ],
         "contact_groups"            : [
           {
-            "enable"                : true,
-            "name"                  : "admins"
+            "enable"                : null,
+            "name"                  : null
           }
         ],
         "enable"                    : true,
@@ -235,44 +263,37 @@
         "flap_detection"            : {
           "enable"                  : true,
           "options"                 : {
-            "down"                  : false,
-            "operational"           : false,
-            "unreachable"           : false
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
           },
           "threshold"               : {
             "high"                  : null,
             "low"                   : null
           }
         },
-        "hostgroups"                : [
+        "hosts"                     : [
           {
             "enable"                : false,
             "name"                  : null
           }
         ],
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "oci-data"
+          }
+        ],
         "icon"                      : {
-          "coordinates"             : {
-            "2d"                    : {
-              "x"                   : null,
-              "y"                   : null
-            },
-            "3d"                    : {
-              "x"                   : null,
-              "y"                   : null,
-              "z"                   : null
-            }
-          },
           "file"                    : {
             "alternate"             : null,
-            "image"                 : null,
-            "statusmap"             : null,
-            "vrml"                  : null
+            "image"                 : null
           }
         },
+        "is_volatile"               : false,
         "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "linux-server"
+          "display"                   : "oci-cloud",
+          "string"                  : "Oracle Cloud Infrastructure"
         },
         "notes"                     : {
           "string"                  : null,
@@ -290,455 +311,6 @@
             "unknown"               : true,
             "warning"               : false
           },
-          "period"                  : "workhours"
-        },
-        "obsess"                    : null,
-        "parents"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "retain"                    : {
-          "nonstatus"               : true,
-          "status"                  : true
-        },
-        "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
-        },
-        "use"                       : "generic-host"
-      },
-      {
-        "action_url"                : null,
-        "address"                   : null,
-        "check"                     : {
-          "active"                  : null,
-          "command"                 : "cheeck-host-alive",
-          "freshness"               : {
-            "enable"                : false,
-            "threshold"             : null
-          },
-          "initial"                 : null,
-          "interval"                : {
-            "check"                 : 5,
-            "retry"                 : 1
-          },
-          "max_attempts"            : 10,
-          "passive"                 : null,
-          "perfdata"                : null,
-          "period"                  : "24x7"
-        },
-        "contacts"                  : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "contact_groups"            : [
-          {
-            "enable"                : true,
-            "name"                  : "admins"
-          }
-        ],
-        "enable"                    : true,
-        "event_handler"             : {
-          "enable"                  : true,
-          "name"                    : null
-        },
-        "flap_detection"            : {
-          "enable"                  : true,
-          "options"                 : {
-            "down"                  : false,
-            "operational"           : false,
-            "unreachable"           : false
-          },
-          "threshold"               : {
-            "high"                  : null,
-            "low"                   : null
-          }
-        },
-        "hostgroups"                : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "icon"                      : {
-          "coordinates"             : {
-            "2d"                    : {
-              "x"                   : null,
-              "y"                   : null
-            },
-            "3d"                    : {
-              "x"                   : null,
-              "y"                   : null,
-              "z"                   : null
-            }
-          },
-          "file"                    : {
-            "alternate"             : null,
-            "image"                 : null,
-            "statusmap"             : null,
-            "vrml"                  : null
-          }
-        },
-        "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "windows-server"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "notification"              : {
-          "enable"                  : true,
-          "first_delay"             : null,
-          "interval"                : 30,
-          "options"                 : {
-            "critical"              : false,
-            "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : true,
-            "warning"               : false
-          },
-          "period"                  : "24x7"
-        },
-        "obsess"                    : null,
-        "parents"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "retain"                    : {
-          "nonstatus"               : true,
-          "status"                  : true
-        },
-        "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
-        },
-        "use"                       : "generic-host"
-      },
-      {
-        "action_url"                : null,
-        "address"                   : null,
-        "check"                     : {
-          "active"                  : null,
-          "command"                 : "cheeck-host-alive",
-          "freshness"               : {
-            "enable"                : false,
-            "threshold"             : null
-          },
-          "initial"                 : null,
-          "interval"                : {
-            "check"                 : 5,
-            "retry"                 : 1
-          },
-          "max_attempts"            : 10,
-          "passive"                 : null,
-          "perfdata"                : null,
-          "period"                  : "24x7"
-        },
-        "contacts"                  : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "contact_groups"            : [
-          {
-            "enable"                : true,
-            "name"                  : "admins"
-          }
-        ],
-        "enable"                    : true,
-        "event_handler"             : {
-          "enable"                  : true,
-          "name"                    : null
-        },
-        "flap_detection"            : {
-          "enable"                  : true,
-          "options"                 : {
-            "down"                  : false,
-            "operational"           : false,
-            "unreachable"           : false
-          },
-          "threshold"               : {
-            "high"                  : null,
-            "low"                   : null
-          }
-        },
-        "hostgroups"                : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "icon"                      : {
-          "coordinates"             : {
-            "2d"                    : {
-              "x"                   : null,
-              "y"                   : null
-            },
-            "3d"                    : {
-              "x"                   : null,
-              "y"                   : null,
-              "z"                   : null
-            }
-          },
-          "file"                    : {
-            "alternate"             : null,
-            "image"                 : null,
-            "statusmap"             : null,
-            "vrml"                  : null
-          }
-        },
-        "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "generic-printer"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "notification"              : {
-          "enable"                  : true,
-          "first_delay"             : null,
-          "interval"                : 30,
-          "options"                 : {
-            "critical"              : false,
-            "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : false,
-            "warning"               : false
-          },
-          "period"                  : "workhours"
-        },
-        "obsess"                    : null,
-        "parents"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "retain"                    : {
-          "nonstatus"               : true,
-          "status"                  : true
-        },
-        "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
-        },
-        "use"                       : "generic-host"
-      },
-      {
-        "action_url"                : null,
-        "address"                   : null,
-        "check"                     : {
-          "active"                  : null,
-          "command"                 : "cheeck-host-alive",
-          "freshness"               : {
-            "enable"                : false,
-            "threshold"             : null
-          },
-          "initial"                 : null,
-          "interval"                : {
-            "check"                 : 1,
-            "retry"                 : 1
-          },
-          "max_attempts"            : 10,
-          "passive"                 : null,
-          "perfdata"                : null,
-          "period"                  : "24x7"
-        },
-        "contacts"                  : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "contact_groups"            : [
-          {
-            "enable"                : true,
-            "name"                  : "admins"
-          }
-        ],
-        "enable"                    : true,
-        "event_handler"             : {
-          "enable"                  : true,
-          "name"                    : null
-        },
-        "flap_detection"            : {
-          "enable"                  : true,
-          "options"                 : {
-            "down"                  : false,
-            "operational"           : false,
-            "unreachable"           : false
-          },
-          "threshold"               : {
-            "high"                  : null,
-            "low"                   : null
-          }
-        },
-        "hostgroups"                : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "icon"                      : {
-          "coordinates"             : {
-            "2d"                    : {
-              "x"                   : null,
-              "y"                   : null
-            },
-            "3d"                    : {
-              "x"                   : null,
-              "y"                   : null,
-              "z"                   : null
-            }
-          },
-          "file"                    : {
-            "alternate"             : null,
-            "image"                 : null,
-            "statusmap"             : null,
-            "vrml"                  : null
-          }
-        },
-        "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "generic-switch"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "notification"              : {
-          "enable"                  : true,
-          "first_delay"             : null,
-          "interval"                : 30,
-          "options"                 : {
-            "critical"              : false,
-            "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : false,
-            "warning"               : false
-          },
-          "period"                  : "24x7"
-        },
-        "obsess"                    : null,
-        "parents"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "retain"                    : {
-          "nonstatus"               : true,
-          "status"                  : true
-        },
-        "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
-        },
-        "use"                       : "generic-host"
-      }
-    ],
-    "services"                      : [
-      {
-        "action_url"                : null,
-        "check"                     : {
-          "active"                  : true,
-          "command"                 : null,
-          "freshness"               : {
-            "enable"                : false,
-            "threshold"             : null
-          },
-          "interval"                : {
-            "check"                 : 10,
-            "retry"                 : 1
-          },
-          "max_attempts"            : 3,
-          "perfdata"                : null,
-          "period"                  : "24x7",
-          "passive"                 : null
-        },
-        "contacts"                  : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "contact_groups"            : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "description"               : null,
-        "display_name"              : null,
-        "event_handler"             : {
-          "enable"                  : true,
-          "name"                    : null
-        },
-        "flap_detection"            : {
-          "enable"                  : true,
-          "options"                 : null,
-          "threshold"               : {
-            "high"                  : null,
-            "low"                   : null
-          }
-        },
-        "hostgroups"                : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "icon"                      : {
-          "file"                    : {
-            "alternate"             : null,
-            "image"                 : null
-          }
-        },
-        "is_volatile"               : false,
-        "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "generic-service"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "notification"              : {
-          "enable"                  : false,
-          "first_delay"             : null,
-          "interval"                : 60,
-          "options"                 : {
-            "critical"              : true,
-            "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : false,
-            "unknown"               : true,
-            "warning"               : true
-          },
           "period"                  : "24x7"
         },
         "obsess"                    : null,
@@ -759,386 +331,6 @@
           "warning"                 : true
         },
         "use"                       : null
-      },
-      {
-        "action_url"                : null,
-        "check"                     : {
-          "active"                  : null,
-          "command"                 : null,
-          "freshness"               : {
-            "enable"                : null,
-            "threshold"             : null
-          },
-          "interval"                : {
-            "check"                 : 5,
-            "retry"                 : 1
-          },
-          "max_attempts"            : 4,
-          "perfdata"                : null,
-          "period"                  : null,
-          "passive"                 : null
-        },
-        "contacts"                  : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "contact_groups"            : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "description"               : null,
-        "display_name"              : null,
-        "event_handler"             : {
-          "enable"                  : null,
-          "name"                    : null
-        },
-        "flap_detection"            : {
-          "enable"                  : null,
-          "options"                 : null,
-          "threshold"               : {
-            "high"                  : null,
-            "low"                   : null
-          }
-        },
-        "hostgroups"                : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "icon"                      : {
-          "file"                    : {
-            "alternate"             : null,
-            "image"                 : null
-          }
-        },
-        "is_volatile"               : null,
-        "name"                      : {
-          "alias"                   : null,
-          "display"                 : null,
-          "string"                  : "local-service"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "notification"              : {
-          "enable"                  : null,
-          "first_delay"             : null,
-          "interval"                : null,
-          "options"                 : {
-            "critical"              : null,
-            "flapping"              : null,
-            "recovery"              : null,
-            "scheduled_down"        : null,
-            "unknown"               : null,
-            "warning"               : null
-          },
-          "period"                  : null
-        },
-        "obsess"                    : null,
-        "retain"                    : {
-          "nonstatus"               : null,
-          "status"                  : null
-        },
-        "servicegroups"             : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "stalking"                  : {
-          "critical"                : null,
-          "ok"                      : null,
-          "unknown"                 : null,
-          "warning"                 : null
-        },
-        "use"                       : "generic-service"
-      }
-    ],
-    "timeperiods"                   : [
-      {
-        "enable"                    : true,
-        "exclude"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "alias"                   : "24 Hours A Day, 7 Days A Week",
-          "string"                  : "24x7"
-        },
-        "ranges"                    : [
-          {
-            "enable"                : true,
-            "day"                   : "monday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "tuesday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "wednesday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "thursday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "friday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "saturday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "sunday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          }
-        ],
-        "use"                       : null
-      },
-      {
-        "enable"                    : true,
-        "exclude"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "alias"                   : "Normal Work Hours",
-          "string"                  : "workhours"
-        },
-        "ranges"                    : [
-          {
-            "enable"                : true,
-            "day"                   : "monday",
-            "time"                  : {
-              "end"                 : "17:00",
-              "start"               : "09:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "tuesday",
-            "time"                  : {
-              "end"                 : "17:00",
-              "start"               : "09:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "wednesday",
-            "time"                  : {
-              "end"                 : "17:00",
-              "start"               : "09:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "thursday",
-            "time"                  : {
-              "end"                 : "17:00",
-              "start"               : "09:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "friday",
-            "time"                  : {
-              "end"                 : "17:00",
-              "start"               : "09:00"
-            }
-          }
-        ],
-        "use"                       : null
-      },
-      {
-        "enable"                    : true,
-        "exclude"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "alias"                   : "No Time Is A Good Time",
-          "string"                  : "none"
-        },
-        "ranges"                    : [],
-        "use"                       : null
-      },
-      {
-        "enable"                    : true,
-        "exclude"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "alias"                   : "U.S. Holidays",
-          "string"                  : "us-holidays"
-        },
-        "ranges"                    : [
-          {
-            "enable"                : true,
-            "day"                   : "december 25",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "january 1",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "july 4",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "monday -1 may",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "monday 1 september",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "thursday 4 november",
-            "time"                  : {
-              "end"                 : "00:00",
-              "start"               : "00:00"
-            }
-          }
-        ],
-        "use"                       : null
-      },
-      {
-        "enable"                    : true,
-        "exclude"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "alias"                   : "24x7 Sans Holidays",
-          "string"                  : "24x7_sans_holidays"
-        },
-        "ranges"                    : [
-          {
-            "enable"                : true,
-            "day"                   : "monday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "tuesday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "wednesday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "thursday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "friday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "saturday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          },
-          {
-            "enable"                : true,
-            "day"                   : "sunday",
-            "time"                  : {
-              "end"                 : "24:00",
-              "start"               : "00:00"
-            }
-          }
-        ],
-        "use"                       : "us-holidays"
       }
     ]
   }

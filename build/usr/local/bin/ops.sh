@@ -38,13 +38,29 @@ _path_naemon=$( ${cmd_echo} ${_json_configuration}  | ${cmd_jq} -r '.configurati
 
 # main
 if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; then
-  ${cmd_echo} New Configuration Detected
+  ${cmd_echo} New Candidate Configuration Detected
   
+
+  # contacts
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contacts' )
+  927.ops.create.contacts -j "${_json}" -p ${_path_confd}/contacts
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+  # contactgroups
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contactgroups' )
+  927.ops.create.contactgroups -j "${_json}" -p ${_path_confd}/contactgroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
   # commands
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.commands' )
   927.ops.create.commands -j "${_json}" -p ${_path_confd}/commands
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
+
 
   # hosts/clouds
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.clouds' )
@@ -52,17 +68,58 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
 
+
+  # hosts/printers
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.printers' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/printers
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+  # hosts/routers
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.routers' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/routers
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
   # hosts/servers
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.servers' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/servers
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
 
-  # hostgroups
-  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hostgroups' )
-  927.ops.create.hostgroups -j "${_json}" -p ${_path_confd}/hostgroups
+
+  # hosts/switches
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.switches' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/switches
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
+
+
+  # hosts/wireless
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.wiereless' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/wireless
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+  # hostgroups
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hostgroups' )
+  927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hostgroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+  # timeperiods
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.timeperiods' )
+  927.ops.create.timeperiods -j "${_json}" -p ${_path_confd}/timeperiods
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+
+
+
 
   # templates/contacts
   _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.contacts' )
@@ -70,9 +127,24 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
 
+
   # templates/hosts
   _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.hosts' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/templates/hosts -t
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+  # templates/hostgroups
+  _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.hostgroups' )
+  927.ops.create.hostgroups -j "${_json}" -p ${_path_confd}/templates/hostgroups -t
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+
+
+    # templates/servers
+  _json=$( ${cmd_echo} "${_json_configuration}" | ${cmd_jq} -c '.templates.servers' )
+  927.ops.create.servers -j "${_json}" -p ${_path_confd}/templates/servers -t
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
 
