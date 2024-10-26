@@ -1,4 +1,4 @@
-927.ops.create.timeperiods () {
+927.ops.create.contactgroups () {
   # description
   # creates ops contact group stanzas based on json configuration provided
   # accepts 2 arguments -
@@ -53,14 +53,14 @@
   if [[ ! -z ${_json} ]] && [[ $( ${cmd_echo} ${_json} | ${cmd_jq} '. | length' ) > 0 ]]; then
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
     for contactgroup in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
-      _alias=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
-      _contactgroup_members=$(          ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
-      _contactgroup_name=$(             ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
-      _members=$(                       ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _alias=$(                         ${cmd_echo} ${contactgroup}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
+      _file_name=$(                     ${cmd_echo} ${contactgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _contactgroup_members=$(          ${cmd_echo} ${contactgroup}  | ${cmd_jq} -r  '[ .members[] | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _contactgroup_name=$(             ${cmd_echo} ${contactgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _members=$(                       ${cmd_echo} ${contactgroup}  | ${cmd_jq} -r  '[ .members[] | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
 
-
-      ${cmd_echo} Writing Contact Group: ${_path}/${_name}.cfg
-      ${cmd_cat} << EOF.contactgroup > ${_path}/${_name}.cfg
+      ${cmd_echo} Writing Contact Group: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.contactgroup > ${_path}/${_file_name}.cfg
       
 define contactgroup                    {
 $( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
@@ -72,7 +72,7 @@ $( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" reg
 EOF.contactgroup
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_alias}.cfg
+      ${cmd_sed} -i '/^  $/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

@@ -48,11 +48,13 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   # _json=
 
 
-  # # contactgroups
-  # _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contactgroups' )
-  # 927.ops.create.contactgroups -j "${_json}" -p ${_path_confd}/contactgroups
-  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  # _json=
+  # contactgroups
+  ${cmd_echo} contact groups
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contactgroups' )
+  927.ops.create.contactgroups -j "${_json}" -p ${_path_confd}/contactgroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
 
   # commands
   ${cmd_echo} commands
