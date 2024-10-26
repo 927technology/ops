@@ -4,6 +4,7 @@
   # accepts 2 arguments -
   ## -j/--json json snippit at the root of the commands list
   ## -p/--path which is the full path to the associated conf.d write path
+  ## -t/--template if this will be a template or a configuraton.  sets the register option.
 
   # dependancies
   # 927.bools.v
@@ -30,6 +31,10 @@
       -p | --path )
         shift
         _path=${1}
+      ;;
+      -t | --template )
+        _template=${true}
+      ;;
     esac
     shift
   done
@@ -39,19 +44,21 @@
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
 
     for command in $( ${cmd_echo} "${_json}" | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
+      _file_name=$( ${cmd_echo} "${command}"| ${cmd_jq} -r '.name.string' )
       _line=$( ${cmd_echo} "${command}"| ${cmd_jq} -r '.line' )
-      _name=$( ${cmd_echo} "${command}"| ${cmd_jq} -r '.name' )
+      _name=$( ${cmd_echo} "${command}"| ${cmd_jq} -r '.name.string' )
 
-      ${cmd_echo} Writing Command: ${_path}/${_name}.cfg
-      ${cmd_cat} << EOF.command > ${_path}/${_name}.cfg
+      ${cmd_echo} Writing Command: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.command > ${_path}/${_file_name}.cfg
 
 define command                      {
-  command_line                      ${_line}
-  command_name                      ${_name}
+$( [[ ! -z ${_line} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" command_line "${_line}" )
+$( [[ ! -z ${_name} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" command_name "${_name}" )
 }
 EOF.command
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
+      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

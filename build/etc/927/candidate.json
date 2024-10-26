@@ -174,7 +174,9 @@
     },
     {
       "enable"                      : true,
-      "name"                        : "process-service-perfdata",
+      "name"                        : {
+        "string"                    : "process-service-perfdata"
+      },
       "line"                        : "/usr/bin/printf \"%b\" \"$LASTSERVICECHECK$\\t$HOSTNAME$\\t$SERVICEDESC$\\t$SERVICESTATE$\\t$SERVICEATTEMPT$\\t$SERVICESTATETYPE$\\t$SERVICEEXECUTIONTIME$\\t$SERVICELATENCY$\\t$SERVICEOUTPUT$\\t$SERVICEPERFDATA$\\n\" >> /var/lib/naemon/service-perfdata.out"
     },
     {
