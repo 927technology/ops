@@ -155,9 +155,8 @@
           }
         },
         "name"                      : {
-          "alias"                   : "generic-host",
           "display"                 : null,
-          "string"                  : null
+          "string"                  : "generic-host"
         },
         "notes"                     : {
           "string"                  : null,

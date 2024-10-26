@@ -62,12 +62,12 @@
       ${cmd_echo} Writing Contact Group: ${_path}/${_file_name}.cfg
       ${cmd_cat} << EOF.contactgroup > ${_path}/${_file_name}.cfg
       
-define contactgroup                {
+define contactgroup               {
 $( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s\n' "" alias "${_alias}" )
 $( [[ ! -z ${_contactroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroup_members "${_contactgroup_members}" )
 $( [[ ! -z ${_contactgroup_name} ]]   && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroup_name "${_contactgroup_name}" )
 $( [[ ! -z ${_members} ]]             && ${cmd_printf} '%-1s %-32s %-50s\n' "" members "${_members}" )
-$( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
+$( [[ ${_template} == ${true} ]]      && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
 }
 EOF.contactgroup
 

@@ -297,9 +297,8 @@
           }
         },
         "name"                      : {
-          "alias"                   : "oci-cloud",
-          "display"                 : null,
-          "string"                  : "Oracle Cloud Infrastructure"
+          "display"                 : "Oracle Cloud Infrastructure",
+          "string"                  : "oci-cloud"
         },
         "notes"                     : {
           "string"                  : null,
@@ -418,9 +417,8 @@
           }
         },
         "name"                      : {
-          "alias"                   : "mediaserver",
-          "display"                 : null,
-          "string"                  : "Media Server"
+          "string"                   : "mediaserver",
+          "display"                  : "Media Server"
         },
         "notes"                     : {
           "string"                  : null,
