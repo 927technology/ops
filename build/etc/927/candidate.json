@@ -421,8 +421,8 @@
         }
       ],
       "name"                      : {
-        "alias"                   : "servers-linux",
-        "string"                  : "Servers - Linux"
+        "display"                  : "Servers - Linux",
+        "string"                   : "servers-linux"
       },
       "notes"                     : {
         "string"                  : null,
@@ -445,8 +445,8 @@
         }
       ],
       "name"                      : {
-        "alias"                   : "network-printers",
-        "string"                  : "Network - Printers"
+        "display"                 : "Network - Printers",
+        "string"                  : "network-printers"
       },
       "notes"                     : {
         "string"                  : null,
@@ -469,8 +469,8 @@
         }
       ],
       "name"                      : {
-        "alias"                   : "network-routers",
-        "string"                  : "Network - Routers"
+        "display"                 : "Network - Routers",
+        "string"                  : "network-routers"
       },
       "notes"                     : {
         "string"                  : null,
@@ -493,8 +493,8 @@
         }
       ],
       "name"                      : {
-        "alias"                   : "oci-data",
-        "string"                  : "OCI - Data"
+        "display"                 : "OCI - Data",
+        "string"                  : "oci-data"
       },
       "notes"                     : {
         "string"                  : null,
