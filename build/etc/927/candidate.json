@@ -622,7 +622,7 @@
         }
       ],
       "name"                        : {
-        "alias"                     : "24 Hours A Day, 7 Days A Week",
+        "display"                   : "24 Hours A Day, 7 Days A Week",
         "string"                    : "24x7"
       },
       "ranges"                      : [
@@ -694,7 +694,7 @@
         }
       ],
       "name"                        : {
-        "alias"                     : "Normal Work Hours",
+        "display"                     : "Normal Work Hours",
         "string"                    : "workhours"
       },
       "ranges"                      : [
@@ -750,7 +750,7 @@
         }
       ],
       "name"                        : {
-        "alias"                     : "No Time Is A Good Time",
+        "display"                     : "No Time Is A Good Time",
         "string"                    : "none"
       },
       "ranges"                      : [],
@@ -765,7 +765,7 @@
         }
       ],
       "name"                        : {
-        "alias"                     : "U.S. Holidays",
+        "display"                     : "U.S. Holidays",
         "string"                    : "us-holidays"
       },
       "ranges"                      : [
@@ -829,7 +829,7 @@
         }
       ],
       "name"                        : {
-        "alias"                     : "24x7 Sans Holidays",
+        "display"                     : "24x7 Sans Holidays",
         "string"                    : "24x7_sans_holidays"
       },
       "ranges"                      : [

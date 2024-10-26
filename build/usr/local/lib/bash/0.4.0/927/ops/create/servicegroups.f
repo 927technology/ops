@@ -70,14 +70,14 @@
       ${cmd_echo} Writing Host Group: ${_path}/${_name}.cfg
       ${cmd_cat} << EOF.servicegroup > ${_path}/${_name}.cfg
 define servicegroup                    {
-  $( [[ ! -z ${_action_url} ]]            && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
-  $( [[ ! -z ${_alias} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
-  $( [[ ! -z ${_members} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
-  $( [[ ! -z ${_notes} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
-  $( [[ ! -z ${_notes_url} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
-  $( [[ ${_template} ]]                   && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
-  $( [[ ! -z ${_servicegroup_members} ]]  && ${cmd_printf} '%-1s %-32s %-50s' "" servicegroup_members "${_servicegroup_members}" )
-  $( [[ ! -z ${_servicegroup_name} ]]     && ${cmd_printf} '%-1s %-32s %-50s' "" servicegroup_name "${_servicegroup_name}" )
+$( [[ ! -z ${_action_url} ]]            && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
+$( [[ ! -z ${_alias} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
+$( [[ ! -z ${_members} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
+$( [[ ! -z ${_notes} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
+$( [[ ! -z ${_notes_url} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
+$( [[ ${_template} ]]                   && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
+$( [[ ! -z ${_servicegroup_members} ]]  && ${cmd_printf} '%-1s %-32s %-50s' "" servicegroup_members "${_servicegroup_members}" )
+$( [[ ! -z ${_servicegroup_name} ]]     && ${cmd_printf} '%-1s %-32s %-50s' "" servicegroup_name "${_servicegroup_name}" )
 }
 EOF.servicegroup
 

@@ -28,10 +28,10 @@
 	local _timeperiod_name=
   local _alias=
   local _excludes=
+  local _range_day=
+  local _range_end=
+  local _range_start=
   local _ranges=
-  local _template_day=
-  local _template_end=
-  local _template_start=
 
 
   # parse command arguments
@@ -57,35 +57,36 @@
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
 
     for timeperiod in $(                ${cmd_echo} ${_json}      | ${cmd_jq} -c  '.[] | select( .enable == true )' ); do 
-      _alias=$(                         ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
+      _alias=$(                         ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       #_excludes=
-      _ranges=$(                        ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '.ranges | select( .enable == true )' )
+      _file_name=$(                     ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _ranges=$(                        ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '[ .ranges[] | select( .enable == true ) ]' )
       _timeperiod_name=$(               ${cmd_echo} ${timeperiod} | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
 
 
       # write file
-      ${cmd_echo} Writing Timeperiods: ${_path}/${_name}.cfg
-      ${cmd_cat} << EOF.timeperiod > ${_path}/${_name}.cfg
+      ${cmd_echo} Writing Timeperiods: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.timeperiod > ${_path}/${_file_name}.cfg
 define timeperiod                       {
-  $( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s' "" "alias" "${_alias}" )
-  $( [[ ${_template} ]]                           && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
-  $(  if [[ $( ${cmd_echo} ${_ranges} | ${cmd_jq} '.[] | select( .enable == true ) | length )' ) > 0 ]]; then
-        for template in $(    ${cmd_echo} ${_ranges}  | ${cmd_jq} '.[] | select( .enable == true' ); do
-          _template_day=$(    ${cmd_echo} ${template} | ${cmd_jq} '.day' )
-          _template_end=$(    ${cmd_echo} ${template} | ${cmd_jq} '.time.end' )
-          _template_start=$(  ${cmd_echo} ${template} | ${cmd_jq} '.time.start' )
+$( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" "alias" "${_alias}" )
+$( [[ ${_template} ]]                           && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${true}" )
+$( [[ ! -z ${_timeperiod_name} ]]               && ${cmd_printf} '%-1s %-32s %-50s\n' "" timeperiod_name "${_timeperiod_name}" )
+# ------RANGES------
+$(  if [[ $( ${cmd_echo} ${_ranges} | ${cmd_jq} '.[] | length' ) > 0 ]]; then
+      for range in $(    ${cmd_echo} ${_ranges}  | ${cmd_jq} -c '.[]' ); do
+        _range_day=$(    ${cmd_echo} ${range} | ${cmd_jq} -r '.day' )
+        _range_end=$(    ${cmd_echo} ${range} | ${cmd_jq} -r '.time.end' )
+        _range_start=$(  ${cmd_echo} ${range} | ${cmd_jq} -r '.time.start' )
 
-          ${cmd_printf} '%-1s %-32s %-50s' "" "${template_day}" "${_template_start}"-"${_template_end}" )
-        done
-      fi
-  )
-
-  $( [[ ! -z ${_timeperiod_name} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" timeperiod_name "${_timeperiod_name}" )
+        ${cmd_printf} '%-1s %-32s %-50s\n' "" "${_range_day}" "${_range_start}"-"${_range_end}"
+      done
+    fi
+)
 }
 EOF.timeperiod
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_name}.cfg
+      ${cmd_sed} -i '/^  $/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

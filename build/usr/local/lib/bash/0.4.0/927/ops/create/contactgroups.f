@@ -63,11 +63,11 @@
       ${cmd_cat} << EOF.contactgroup > ${_path}/${_name}.cfg
       
 define contactgroup                    {
-      $( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
-      $( [[ ! -z ${_contactroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_mem_hostgroup_members}" )
-      $( [[ ! -z ${_contactgroup_name} ]]   && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
-      $( [[ ! -z ${_members} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
-      $( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
+$( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
+$( [[ ! -z ${_contactroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_mem_hostgroup_members}" )
+$( [[ ! -z ${_contactgroup_name} ]]   && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
+$( [[ ! -z ${_members} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
+$( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
 }
 EOF.contactgroup
 

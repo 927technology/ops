@@ -54,77 +54,77 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   # _json=
 
-  ${cmd_echo} commands
   # commands
+  ${cmd_echo} commands
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.commands' )
   927.ops.create.commands -j "${_json}" -p ${_path_confd}/commands
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/clouds
   # hosts/clouds
+  ${cmd_echo} hosts/clouds
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.clouds' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/clouds
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/printers
   # hosts/printers
+  ${cmd_echo} hosts/printers
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.printers' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/printers
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/routers
   # hosts/routers
+  ${cmd_echo} hosts/routers
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.routers' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/routers
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/servers
   # hosts/servers
+  ${cmd_echo} hosts/servers
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.servers' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/servers
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/switches
   # hosts/switches
+  ${cmd_echo} hosts/switches
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.switches' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/switches
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hosts/wireless
   # hosts/wireless
+  ${cmd_echo} hosts/wireless
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hosts.wiereless' )
   927.ops.create.hosts -j "${_json}" -p ${_path_confd}/hosts/wireless
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  ${cmd_echo} hostgroups
   # hostgroups
+  ${cmd_echo} hostgroups
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hostgroups' )
   927.ops.create.hostgroups -j "${_json}" -p ${_path_confd}/hostgroups
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
 
-  # # timeperiods
-  # _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.timeperiods' )
-  # 927.ops.create.timeperiods -j "${_json}" -p ${_path_confd}/timeperiods
-  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  # _json=
-
-
+  # timeperiods
+  ${cmd_echo} timeperiods
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.timeperiods' )
+  927.ops.create.timeperiods -j "${_json}" -p ${_path_confd}/timeperiods
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo}
 
 
 
