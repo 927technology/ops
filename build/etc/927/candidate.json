@@ -150,7 +150,10 @@
           "name"                    : "naemonadmin"
         }
       ],
-      "name"                        : "admins"
+      "name"                        : {
+        "display"                   : "Admins",
+        "string"                    : "admins"
+      }
     }
   ],
   "contacts"                        : [
