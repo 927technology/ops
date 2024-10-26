@@ -69,9 +69,9 @@
       ${cmd_cat} << EOF.timeperiod > ${_path}/${_file_name}.cfg
 define timeperiod                       {
 $( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" "alias" "${_alias}" )
-$( [[ ${_template} ]]                           && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${true}" )
+$( [[ ${_template} == ${true} ]]                && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${true}" )
 $( [[ ! -z ${_timeperiod_name} ]]               && ${cmd_printf} '%-1s %-32s %-50s\n' "" timeperiod_name "${_timeperiod_name}" )
-# ------RANGES------
+  #-----------------  RANGES  -----------------#
 $(  if [[ $( ${cmd_echo} ${_ranges} | ${cmd_jq} '.[] | length' ) > 0 ]]; then
       for range in $(    ${cmd_echo} ${_ranges}  | ${cmd_jq} -c '.[]' ); do
         _range_day=$(    ${cmd_echo} ${range} | ${cmd_jq} -r '.day' )
