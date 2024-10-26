@@ -200,7 +200,7 @@
     "hostgroups"                    : [
       {
         "action_url"                : null,
-        "enable"                    : false,
+        "enable"                    : true,
         "hostgroups"                : [
           {
             "enable"                : false,
@@ -214,8 +214,8 @@
           }
         ],
         "name"                      : {
-          "alias"                   : null,
-          "string"                  : "generic-hostgroup"
+          "display"                 : "All Hosts",
+          "string"                  : "hostgroup-all"
         },
         "notes"                     : {
           "string"                  : null,

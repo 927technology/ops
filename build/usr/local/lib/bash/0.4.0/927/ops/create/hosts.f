@@ -86,8 +86,6 @@
     shift
   done
 
-  echo $_path
-  ${cmd_echo} ${_json} | ${cmd_jq} '. | length' 
 
   ## main
   if [[ ! -z ${_json} ]] && [[ $( ${cmd_echo} ${_json} | ${cmd_jq} '. | length' ) > 0 ]]; then

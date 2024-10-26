@@ -58,8 +58,9 @@
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/
     for hostgroup in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
 
-      _alias=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
-      _hostgroup_name=$(                ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _alias=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _file_name=$(                     ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _hostgroup_name=$(                ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _hostgroup_members=$(             ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .hostgroup_members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
       _members=$(                       ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
       _notes=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes.string | if( . == null ) then "" else . end' )
@@ -67,8 +68,8 @@
 
 
 
-      ${cmd_echo} Writing Host Group: ${_path}/${_name}.cfg
-      ${cmd_cat} << EOF.hostgroup > ${_path}/${_name}.cfg
+      ${cmd_echo} Writing Host Group: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.hostgroup > ${_path}/${_file_name}.cfg
 define hostgroup                    {
   $( [[ ! -z ${_action_url} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" action_url "${_action_url}" )
   $( [[ ! -z ${_alias} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
