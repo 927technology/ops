@@ -50,7 +50,6 @@
 
       ${cmd_echo} Writing Command: ${_path}/${_file_name}.cfg
       ${cmd_cat} << EOF.command > ${_path}/${_file_name}.cfg
-
 define command                      {
 $( [[ ! -z ${_line} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" command_line "${_line}" )
 $( [[ ! -z ${_name} ]]        && ${cmd_printf} '%-1s %-32s %-50s' "" command_name "${_name}" )

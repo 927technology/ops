@@ -212,10 +212,12 @@
   ],
   "contacts"                        : [
     {
-      "alias"                       : "Naemon Admin",
       "email"                       : "naemon@localhost",
       "enable"                      : true,
-      "name"                        : "naemonadmin",
+      "name"                        : {
+        "display"                   : "Naemon Admin",
+        "string"                    : "naemonadmin"
+      },
       "use"                         : "generic-contact"
     }
   ],

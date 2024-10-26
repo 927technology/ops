@@ -67,10 +67,11 @@
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
 
     for contact in $(                   ${cmd_echo} ${_json}    | ${cmd_jq} -c  '.[] | select( .enable == true )' ); do 
-      _alias=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
+      _alias=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _can_submit_commands=$(           ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.can_submit_commands | if( . == null ) then "" else . end' )
       _contact_groups=$(                ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .contact_groups[] | select( .enable == true ) ] | if( . | length < 1 ) then "" else join(", ") end' )
       _email=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.email | if( . == null ) then "" else . end' )
+      _file_name=$(                     ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
       _host_notifications_enabled=$(    ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.notification.host.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
       _host_notification_commands=$(    ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.host.commands[] | select(.enable == true).name ] | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       _host_notification_options=$(     ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.host.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
@@ -86,31 +87,31 @@
       
 
       # write file
-      ${cmd_echo} Writing Template/Contact: ${_path}/${_name}.cfg
-      ${cmd_cat} << EOF.contact > ${_path}/${_name}.cfg
+      ${cmd_echo} Writing Template/Contact: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.contact > ${_path}/${_file_name}.cfg
 define contact                       {
-  $( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s' "" "alias" "${_alias}" )
-  $( [[ ! -z ${_can_submit_commands} ]]           && ${cmd_printf} '%-1s %-32s %-50s' "" can_submit_commands "${_can_submit_commands}" )
-  $( [[ ! -z ${_contact_groups} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" contactgroups "${_contact_groups}" )
-  $( [[ ! -z ${_email} ]]                         && ${cmd_printf} '%-1s %-32s %-50s' "" email "${_email}" )
-  $( [[ ! -z ${_host_notification_commands} ]]    && ${cmd_printf} '%-1s %-32s %-50s' "" host_notification_commands "${_host_notification_commands}" )
-  $( [[ ! -z ${_host_notification_options} ]]     && ${cmd_printf} '%-1s %-32s %-50s' "" host_notification_options "[${_host_notification_options}]" )
-  $( [[ ! -z ${_host_notification_period} ]]      && ${cmd_printf} '%-1s %-32s %-50s' "" host_notificaiton_period "${_host_notification_period}" )
-  $( [[ ! -z ${_host_notification_enabled} ]]     && ${cmd_printf} '%-1s %-32s %-50s' "" host_notifications_enabled "${_host_notification_enabled}" )
-  $( [[ ! -z ${_name} ]]                          && ${cmd_printf} '%-1s %-32s %-50s' "" name "${_name}" )
-  $( [[ ! -z ${_pager} ]]                         && ${cmd_printf} '%-1s %-32s %-50s' "" pager "${_pager}" )
-  $( [[ ${_template} ]]                           && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
-  $( [[ ! -z ${_retain_status_information} ]]     && ${cmd_printf} '%-1s %-32s %-50s' "" retain_status_information "${_retain_status_information}" )
-  $( [[ ! -z ${_retain_nonstatus_information} ]]  && ${cmd_printf} '%-1s %-32s %-50s' "" retain_nonstatus_informaiton "${_retain_nonstatus_information}" )
-  $( [[ ! -z ${_service_notification_commands} ]] && ${cmd_printf} '%-1s %-32s %-50s' "" service_notification_commands "${_service_notification_commands}" )
-  $( [[ ! -z ${_service_notification_options} ]]  && ${cmd_printf} '%-1s %-32s %-50s' "" service_notificaiton_options "[${_service_notification_options}]" )
-  $( [[ ! -z ${_service_notification_period} ]]   && ${cmd_printf} '%-1s %-32s %-50s' "" service_notification_period "${_service_notification_period}" )
-  $( [[ ! -z ${_service_notification_enabled} ]]  && ${cmd_printf} '%-1s %-32s %-50s' "" service_notification_enabled "${_service_notification_enabled}" )
+$( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" "alias" "${_alias}" )
+$( [[ ! -z ${_can_submit_commands} ]]           && ${cmd_printf} '%-1s %-32s %-50s\n' "" can_submit_commands "${_can_submit_commands}" )
+$( [[ ! -z ${_contact_groups} ]]                && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroups "${_contact_groups}" )
+$( [[ ! -z ${_email} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" email "${_email}" )
+$( [[ ! -z ${_host_notification_commands} ]]    && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notification_commands "${_host_notification_commands}" )
+$( [[ ! -z ${_host_notification_options} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notification_options "[${_host_notification_options}]" )
+$( [[ ! -z ${_host_notification_period} ]]      && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notificaiton_period "${_host_notification_period}" )
+$( [[ ! -z ${_host_notification_enabled} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notifications_enabled "${_host_notification_enabled}" )
+$( [[ ! -z ${_name} ]]                          && ${cmd_printf} '%-1s %-32s %-50s\n' "" name "${_name}" )
+$( [[ ! -z ${_pager} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" pager "${_pager}" )
+$( [[ ${_template} == ${true} ]]                && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${true}" )
+$( [[ ! -z ${_retain_status_information} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" retain_status_information "${_retain_status_information}" )
+$( [[ ! -z ${_retain_nonstatus_information} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" retain_nonstatus_informaiton "${_retain_nonstatus_information}" )
+$( [[ ! -z ${_service_notification_commands} ]] && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_commands "${_service_notification_commands}" )
+$( [[ ! -z ${_service_notification_options} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notificaiton_options "[${_service_notification_options}]" )
+$( [[ ! -z ${_service_notification_period} ]]   && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_period "${_service_notification_period}" )
+$( [[ ! -z ${_service_notification_enabled} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_enabled "${_service_notification_enabled}" )
 }
 EOF.contact
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_name}.cfg
+      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
