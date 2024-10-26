@@ -62,17 +62,17 @@
       ${cmd_echo} Writing Contact Group: ${_path}/${_file_name}.cfg
       ${cmd_cat} << EOF.contactgroup > ${_path}/${_file_name}.cfg
       
-define contactgroup                    {
-$( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" alias "${_alias}" )
-$( [[ ! -z ${_contactroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_members "${_hostgroup_mem_hostgroup_members}" )
-$( [[ ! -z ${_contactgroup_name} ]]   && ${cmd_printf} '%-1s %-32s %-50s' "" hostgroup_name "${_hostgroup_name}" )
-$( [[ ! -z ${_members} ]]             && ${cmd_printf} '%-1s %-32s %-50s' "" members "${_members}" )
-$( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
+define contactgroup                {
+$( [[ ! -z ${_alias} ]]               && ${cmd_printf} '%-1s %-32s %-50s\n' "" alias "${_alias}" )
+$( [[ ! -z ${_contactroup_members} ]] && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroup_members "${_contactgroup_members}" )
+$( [[ ! -z ${_contactgroup_name} ]]   && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroup_name "${_contactgroup_name}" )
+$( [[ ! -z ${_members} ]]             && ${cmd_printf} '%-1s %-32s %-50s\n' "" members "${_members}" )
+$( [[ ${_template} ]]                 && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s' "" register "${true}" )
 }
 EOF.contactgroup
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_file_name}.cfg
+      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
