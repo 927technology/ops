@@ -86,8 +86,11 @@
     shift
   done
 
+  echo $_path
+  ${cmd_echo} ${_json} | ${cmd_jq} '. | length' 
+
   ## main
-  if [[ ! -z ${_json} ]]; then
+  if [[ ! -z ${_json} ]] && [[ $( ${cmd_echo} ${_json} | ${cmd_jq} '. | length' ) > 0 ]]; then
     [[ ! -d ${_path} ]] && ${cmd_mkdir} -p ${_path} || ${cmd_rm} -rf ${_path}/*
     
     for host in $( ${cmd_echo} ${_json} | ${cmd_jq} -c '.[] | select(.enable == true)' ); do 
