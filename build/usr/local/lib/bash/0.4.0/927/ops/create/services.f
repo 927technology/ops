@@ -129,7 +129,7 @@
       _retain_nonstatus_information=$(  ${cmd_echo} ${service}  | ${cmd_jq} -r  '.retain.nonstatus | if( . == null ) then "" else . end' )
       _retain_status_information=$(     ${cmd_echo} ${service}  | ${cmd_jq} -r  '.retain.status | if( . == null ) then "" else . end' )
       _servicegroups=$(                 ${cmd_echo} ${service}  | ${cmd_jq} -r  '[ .servicegroups[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
-      _stalking_options=$(              ${cmd_echo} ${service}  | ${cmd_jq} -r  '[ .notification.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _stalking_options=$(              ${cmd_echo} ${service}  | ${cmd_jq} -r  '[ .stalking | to_entries[] | select(.value == true) | .key[0:1] ] | if( . | length < 1 ) then "" else join(", ") end' )
       _use=$(                           ${cmd_echo} ${service}  | ${cmd_jq} -r  '.use | if( . == null ) then "" else . end' )
 
 

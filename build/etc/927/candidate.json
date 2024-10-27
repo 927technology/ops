@@ -462,7 +462,7 @@
   "hostgroups"                      : [
     {
       "action_url"                : null,
-      "enable"                    : false,
+      "enable"                    : true,
       "hostgroups"                : [
         {
           "enable"                : false,
@@ -486,7 +486,7 @@
     },
     {
       "action_url"                : null,
-      "enable"                    : false,
+      "enable"                    : true,
       "hostgroups"                : [
         {
           "enable"                : false,
@@ -510,7 +510,7 @@
     },
     {
       "action_url"                : null,
-      "enable"                    : false,
+      "enable"                    : true,
       "hostgroups"                : [
         {
           "enable"                : false,
@@ -534,7 +534,7 @@
     },
     {
       "action_url"                : null,
-      "enable"                    : false,
+      "enable"                    : true,
       "hostgroups"                : [
         {
           "enable"                : false,
