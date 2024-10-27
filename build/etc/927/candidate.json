@@ -698,7 +698,7 @@
           "name"                  : null
         }
       ],
-      "enable"                    : false,
+      "enable"                    : true,
       "event_handler"             : {
         "enable"                  : true,
         "name"                    : null
@@ -807,7 +807,7 @@
           "name"                  : null
         }
       ],
-      "enable"                    : false,
+      "enable"                    : true,
       "event_handler"             : {
         "enable"                  : true,
         "name"                    : null
