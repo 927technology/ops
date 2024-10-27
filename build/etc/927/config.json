@@ -331,31 +331,6 @@
         },
         "use"                       : null
       }
-    ],
-    "servicegroups"                 : [
-      {
-        "enable"                    : true,
-        "members"                   : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ],
-        "name"                      : {
-          "display"                 : "All Hosts",
-          "string"                  : "hostgroup-all"
-        },
-        "notes"                     : {
-          "string"                  : null,
-          "url"                     : null
-        },
-        "servicegroups"             : [
-          {
-            "enable"                : false,
-            "name"                  : null
-          }
-        ]  
-      }
     ]
   }
 }
