@@ -112,6 +112,7 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   _json=
   ${cmd_echo} 
 
+
   # hostgroups
   ${cmd_echo} hostgroups
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.hostgroups' )
@@ -137,7 +138,7 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
-  
+
 
   # timeperiods
   ${cmd_echo} timeperiods
