@@ -352,7 +352,7 @@
           },
           "initial"                 : null,
           "interval"                : {
-            "value"                 : null,
+            "value"                 : 5,
             "retry"                 : 1
           },
           "max_attempts"            : null,
