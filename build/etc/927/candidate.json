@@ -355,7 +355,7 @@
             "value"                 : 5,
             "retry"                 : 1
           },
-          "max_attempts"            : null,
+          "max_attempts"            : 3,
           "passive"                 : null,
           "perfdata"                : null,
           "period"                  : null
