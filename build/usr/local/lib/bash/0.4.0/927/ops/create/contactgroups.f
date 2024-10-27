@@ -72,7 +72,7 @@ $( [[ ${_template} == ${true} ]]      && ${cmd_printf} '%-1s %-32s %-50s\n' "" r
 EOF.contactgroup
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
+      ${cmd_sed} -i '/^[[:space:]]*$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

@@ -133,7 +133,7 @@
       _retain_nonstatus_information=$(  ${cmd_echo} ${host}  | ${cmd_jq} -r  '.retain.nonstatus | if( . == null ) then "" else . end' )
       _retain_status_information=$(     ${cmd_echo} ${host}  | ${cmd_jq} -r  '.retain.status | if( . == null ) then "" else . end' )
       _retry_interval=$(                ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.interval.retry | if( . == null ) then "" else . end' )
-      _stalking_options=$(              ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .notification.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _stalking_options=$(              ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .stalking | to_entries[] | select(.value == true) | .key[0:1] ] | if( . | length < 1 ) then "" else join(", ") end' )
       _statusmap_image=$(               ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.statusmap | if( . == null ) then "" else . end' )
       _vrml_image=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.image.vrml | if( . == null ) then "" else . end' )
 
@@ -189,7 +189,7 @@ $( [[ ! -z ${_vrml_image} ]]                    && ${cmd_printf} '%-1s %-32s %-5
 EOF.host
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
+      ${cmd_sed} -i '/^[[:space:]]*$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

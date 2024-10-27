@@ -104,14 +104,14 @@ $( [[ ${_template} == ${true} ]]                && ${cmd_printf} '%-1s %-32s %-5
 $( [[ ! -z ${_retain_status_information} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" retain_status_information "${_retain_status_information}" )
 $( [[ ! -z ${_retain_nonstatus_information} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" retain_nonstatus_informaiton "${_retain_nonstatus_information}" )
 $( [[ ! -z ${_service_notification_commands} ]] && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_commands "${_service_notification_commands}" )
-$( [[ ! -z ${_service_notification_options} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notificaiton_options "[${_service_notification_options}]" )
+$( [[ ! -z ${_service_notification_options} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_options "${_service_notification_options}" )
 $( [[ ! -z ${_service_notification_period} ]]   && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_period "${_service_notification_period}" )
 $( [[ ! -z ${_service_notification_enabled} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_enabled "${_service_notification_enabled}" )
 }
 EOF.contact
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
+      ${cmd_sed} -i '/^[[:space:]]*$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

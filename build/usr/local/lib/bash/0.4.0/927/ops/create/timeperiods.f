@@ -86,7 +86,7 @@ $(  if [[ $( ${cmd_echo} ${_ranges} | ${cmd_jq} '.[] | length' ) > 0 ]]; then
 EOF.timeperiod
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
+      ${cmd_sed} -i '/^[[:space:]]*$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then

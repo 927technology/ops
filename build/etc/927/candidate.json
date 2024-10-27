@@ -597,9 +597,10 @@
       "flap_detection"            : {
         "enable"                  : true,
         "options"                 : {
-          "down"                  : true,
-          "operational"           : true,
-          "unreachable"           : true
+          "ok"                    : true,
+          "critical"              : true,
+          "unknown"               : true,
+          "warning"               : true
         },
         "threshold"               : {
           "high"                  : null,
