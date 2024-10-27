@@ -188,10 +188,9 @@
           "status"                  : true
         },
         "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
+          "down"                    : false,
+          "operational"             : false,
+          "up"                      : false
         },
         "use"                       : "linux-server"
       }

@@ -63,9 +63,8 @@
       _members=$(                       ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
       _notes=$(                         ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes.string | if( . == null ) then "" else . end' )
       _notes_url=$(                     ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.notes_url | if( . == null ) then "" else . end' )
-      _servicegroup_members=$(          ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .hostgroup_members[]     | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
+      _servicegroup_members=$(          ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '[ .servicegroups[] | select( .enable == true ).name ] | if( . | length < 1 ) then "" else join(", ") end' )
       _servicegroup_name=$(             ${cmd_echo} ${hostgroup}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
-
 
 
       ${cmd_echo} Writing Host Group: ${_path}/${_file_name}.cfg

@@ -330,10 +330,9 @@
           "status"                  : true
         },
         "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
+          "down"                    : true,
+          "operational"             : true,
+          "up"                      : true
         },
         "use"                       : "cloud-infrastructure"
       }
@@ -450,10 +449,9 @@
           "status"                  : true
         },
         "stalking"                  : {
-          "critical"                : true,
-          "ok"                      : true,
-          "unknown"                 : true,
-          "warning"                 : true
+          "down"                    : true,
+          "operational"             : true,
+          "up"                      : true
         },
         "use"                       : "linux-server"
       }
