@@ -557,6 +557,70 @@
       }     
     }
   ],
+  "servicedependancies"             : [
+    {
+      "criteria"                    : {
+        "critical"                  : true,
+        "ok"                        : true,
+        "pending"                   : true,
+        "warning"                   : true,
+        "unknown"                   : true
+      },
+      "dependant"                   : {
+        "host"                      : [
+          {
+            "enable"                : false,
+            "string"                : null
+          }
+        ],
+        "hostgroup"                 : [
+          {
+            "enable"                : false,
+            "string"                : null
+          }
+        ],
+        "servicegroup"              : [
+          {
+            "enable"                : false,
+            "string"                : null
+          }
+        ],
+        "timeperiod"                : {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      },
+      "hosts"                       : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
+      "hostgroups"                  : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
+      "inherits_parent"             : true,
+      "notification_failure_criteria": {
+        "critical"                  : true,
+        "ok"                        : true,
+        "pending"                   : true,
+        "warning"                   : true,
+        "unknown"                   : true
+      },
+      "service"                     : {
+        "string"                    : null
+      },
+      "servicegroups"               : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ]
+    }
+  ],
   "services"                        : [
     {
       "action_url"                : null,

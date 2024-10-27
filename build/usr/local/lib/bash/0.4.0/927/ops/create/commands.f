@@ -12,14 +12,21 @@
   # 927/nagios.v
   # json/validate.f
 
-  # local variables
+  # argument variables
+  local _json=
+  local _path=
+  local _template=${false}
+
+
+  # control variables
   local _error_count=0
   local _exit_code=${exit_unkn}
   local _exit_string=
-  local _json=
+
+
+  # commands variables
   local _name=
   local _line=
-  local _path=
 
   # parse command arguments
   while [[ ${1} != "" ]]; do
