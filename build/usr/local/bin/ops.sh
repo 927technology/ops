@@ -140,6 +140,15 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   ${cmd_echo} 
 
 
+  # servicedependencies
+  ${cmd_echo} servicedependencies
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.servicedependancies' )
+  927.ops.create.servicedependancies -j "${_json}" -p ${_path_confd}/servicedependancies
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+
+
   # timeperiods
   ${cmd_echo} timeperiods
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.timeperiods' )
