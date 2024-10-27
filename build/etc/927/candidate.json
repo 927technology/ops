@@ -628,8 +628,8 @@
       },
       "is_volatile"               : false,
       "name"                      : {
-        "display"                   : "oci-cloud",
-        "string"                  : "Oracle Cloud Infrastructure"
+        "display"                 : "Oracle Cloud Infrastructure",
+        "string"                  : "oci-cloud"
       },
       "notes"                     : {
         "string"                  : null,

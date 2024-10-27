@@ -120,6 +120,25 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   _json=
   ${cmd_echo} 
 
+
+  # services
+  ${cmd_echo} services
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.services' )
+  927.ops.create.services -j "${_json}" -p ${_path_confd}/services
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+
+
+  # servicegroups
+  ${cmd_echo} servicegroups
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.servicegroups' )
+  927.ops.create.servicegroups -j "${_json}" -p ${_path_confd}/servicegroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+  
+
   # timeperiods
   ${cmd_echo} timeperiods
   _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.timeperiods' )
