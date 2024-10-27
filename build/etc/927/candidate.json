@@ -235,10 +235,10 @@
           },
           "initial"                 : null,
           "interval"                : {
-            "check"                 : null,
+            "check"                 : 5,
             "retry"                 : 1
           },
-          "max_attempts"            : null,
+          "max_attempts"            : 3,
           "passive"                 : null,
           "perfdata"                : true,
           "period"                  : null
