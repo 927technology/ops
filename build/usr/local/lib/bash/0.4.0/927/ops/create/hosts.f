@@ -97,7 +97,7 @@
       _active_checks_enabled=$(         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.active | if( . == null ) then "" else . end' )
       _action_url=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.action_url | if( . == null ) then "" else . end' )
       _address=$(                       ${cmd_echo} ${host}  | ${cmd_jq} -r  '.address | if( . == null ) then "" else . end' )
-      _alias=$(                         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.alias | if( . == null ) then "" else . end' )
+      _alias=$(                         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _check_command=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.command | if( . == null ) then "" else . end' )
       _check_freshness=$(               ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.freshness.enable | if( . == null ) then "" else . end' )
       _check_period=$(                  ${cmd_echo} ${host}  | ${cmd_jq} -r  '.check.period | if( . == null ) then "" else . end' )
@@ -107,6 +107,7 @@
       _display_name=$(                  ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _event_handler_enabled=$(         ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
       _event_handler=$(                 ${cmd_echo} ${host}  | ${cmd_jq} -r  '.event_handler.name | if( '${_event_handler_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
+      _file_name=$(                     ${cmd_echo} ${host}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
       _flap_detection_enabled=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
       _flap_detection_options=$(        ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .flap_detection.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       _high_flap_threshold=$(           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.flap_detection.threshold.high | if( '${_flap_detection_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
@@ -137,8 +138,8 @@
       _vrml_image=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.image.vrml | if( . == null ) then "" else . end' )
 
 
-      ${cmd_echo} Writing Host: ${_path}/${_alias}.cfg
-      ${cmd_cat} << EOF.host > ${_path}/${_alias}.cfg
+      ${cmd_echo} Writing Host: ${_path}/${_file_name}.cfg
+      ${cmd_cat} << EOF.host > ${_path}/${_file_name}.cfg
 define host                         {
 $( [[ ! -z ${_2d_coords} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" 2d_coords "${_2d_coords}" )
 $( [[ ! -z ${_3d_coords} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" 3d_coords "${_3d_coords}" )
@@ -188,7 +189,7 @@ $( [[ ! -z ${_vrml_image} ]]                    && ${cmd_printf} '%-1s %-32s %-5
 EOF.host
 
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ ))
-      ${cmd_sed} -i '/^  $/d' ${_path}/${_alias}.cfg
+      ${cmd_sed} -i '/^$/d' ${_path}/${_file_name}.cfg
     done 
 
     if [[ ${_error_count} > 0 ]]; then
