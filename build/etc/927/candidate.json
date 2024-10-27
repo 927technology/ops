@@ -562,7 +562,7 @@
       "action_url"                : null,
       "check"                     : {
         "active"                  : null,
-        "command"                 : null,
+        "command"                 : "927-oci_list",
         "freshness"               : {
           "enable"                : false,
           "threshold"             : null
@@ -589,7 +589,7 @@
           "name"                  : null
         }
       ],
-      "enable"                    : true,
+      "enable"                    : false,
       "event_handler"             : {
         "enable"                  : true,
         "name"                    : null
@@ -627,15 +627,15 @@
       },
       "is_volatile"               : false,
       "name"                      : {
-        "display"                 : "Oracle Cloud Infrastructure",
-        "string"                  : "oci-cloud"
+        "display"                 : "OCI - Compartments",
+        "string"                  : "oci-compartments"
       },
       "notes"                     : {
         "string"                  : null,
         "url"                     : null
       },
       "notification"              : {
-        "enable"                  : true,
+        "enable"                  : false,
         "first_delay"             : null,
         "interval"                : 120,
         "options"                 : {
@@ -666,6 +666,224 @@
         "warning"                 : true
       },
       "use"                       : null
+    },
+    {
+      "action_url"                : null,
+      "check"                     : {
+        "active"                  : null,
+        "command"                 : "test",
+        "freshness"               : {
+          "enable"                : false,
+          "threshold"             : null
+        },
+        "initial"                 : null,
+        "interval"                : {
+          "check"                 : null,
+          "retry"                 : 1
+        },
+        "max_attempts"            : null,
+        "passive"                 : null,
+        "perfdata"                : true,
+        "period"                  : null
+      },
+      "contacts"                  : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "contact_groups"            : [
+        {
+          "enable"                : null,
+          "name"                  : null
+        }
+      ],
+      "enable"                    : false,
+      "event_handler"             : {
+        "enable"                  : true,
+        "name"                    : null
+      },
+      "flap_detection"            : {
+        "enable"                  : true,
+        "options"                 : {
+          "ok"                    : true,
+          "critical"              : true,
+          "unknown"               : true,
+          "warning"               : true
+        },
+        "threshold"               : {
+          "high"                  : null,
+          "low"                   : null
+        }
+      },
+      "hosts"                     : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "hostgroups"                : [
+        {
+          "enable"                : true,
+          "name"                  : "network-routers"
+        }
+      ],
+      "icon"                      : {
+        "file"                    : {
+          "alternate"             : null,
+          "image"                 : null
+        }
+      },
+      "is_volatile"               : false,
+      "name"                      : {
+        "display"                 : "Test - 1",
+        "string"                  : "test1"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      },
+      "notification"              : {
+        "enable"                  : false,
+        "first_delay"             : null,
+        "interval"                : 120,
+        "options"                 : {
+          "critical"              : false,
+          "flapping"              : false,
+          "recovery"              : true,
+          "scheduled_down"        : true,
+          "unknown"               : true,
+          "warning"               : false
+        },
+        "period"                  : "24x7"
+      },
+      "obsess"                    : null,
+      "retain"                    : {
+        "nonstatus"               : true,
+        "status"                  : true
+      },
+      "servicegroups"             : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "stalking"                  : {
+        "critical"                : true,
+        "ok"                      : true,
+        "unknown"                 : true,
+        "warning"                 : true
+      },
+      "use"                       : "local-service"
+    },
+    {
+      "action_url"                : null,
+      "check"                     : {
+        "active"                  : null,
+        "command"                 : "test2",
+        "freshness"               : {
+          "enable"                : false,
+          "threshold"             : null
+        },
+        "initial"                 : null,
+        "interval"                : {
+          "check"                 : null,
+          "retry"                 : 1
+        },
+        "max_attempts"            : null,
+        "passive"                 : null,
+        "perfdata"                : true,
+        "period"                  : null
+      },
+      "contacts"                  : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "contact_groups"            : [
+        {
+          "enable"                : null,
+          "name"                  : null
+        }
+      ],
+      "enable"                    : false,
+      "event_handler"             : {
+        "enable"                  : true,
+        "name"                    : null
+      },
+      "flap_detection"            : {
+        "enable"                  : true,
+        "options"                 : {
+          "ok"                    : true,
+          "critical"              : true,
+          "unknown"               : true,
+          "warning"               : true
+        },
+        "threshold"               : {
+          "high"                  : null,
+          "low"                   : null
+        }
+      },
+      "hosts"                     : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "hostgroups"                : [
+        {
+          "enable"                : true,
+          "name"                  : "network-routers"
+        }
+      ],
+      "icon"                      : {
+        "file"                    : {
+          "alternate"             : null,
+          "image"                 : null
+        }
+      },
+      "is_volatile"               : false,
+      "name"                      : {
+        "display"                 : "Test - 2",
+        "string"                  : "test-2"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      },
+      "notification"              : {
+        "enable"                  : false,
+        "first_delay"             : null,
+        "interval"                : 120,
+        "options"                 : {
+          "critical"              : false,
+          "flapping"              : false,
+          "recovery"              : true,
+          "scheduled_down"        : true,
+          "unknown"               : true,
+          "warning"               : false
+        },
+        "period"                  : "24x7"
+      },
+      "obsess"                    : null,
+      "retain"                    : {
+        "nonstatus"               : true,
+        "status"                  : true
+      },
+      "servicegroups"             : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "stalking"                  : {
+        "critical"                : true,
+        "ok"                      : true,
+        "unknown"                 : true,
+        "warning"                 : true
+      },
+      "use"                       : "local-service"
     }
   ],
   "servicegroups"                 : [
