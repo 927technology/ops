@@ -17,7 +17,6 @@ _sleep=60
 if [[ "${MANAGEMENT}" == "true" ]]; then
   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops}"
 
-  # ${cmd_su} naemon --login --shell=/bin/sh "--command=/usr/bin/naemon --verify-config /etc/naemon/naemon.cfg"                     && \
   ${cmd_su} naemon --login --shell=/bin/sh "--command=/usr/sbin/gearmand -d --log-file none --syslog $OPTIONS"                    && \
   ${cmd_httpd} $OPTIONS -DBACKGROUND                                                                                              && \
   ${cmd_su} naemon --login --shell=/bin/sh "--command=/usr/bin/naemon --daemon /etc/naemon/naemon.cfg"  

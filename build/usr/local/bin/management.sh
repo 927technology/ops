@@ -23,6 +23,7 @@ _error_count=0
 _exit_code=${exit_unkn}
 _exit_string=
 _json=
+_configuration_changes=0
 
 
 # configuration variables
@@ -88,6 +89,9 @@ if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_config
 
   # output json to file
   ${cmd_echo} "${_json_configuration_candidate}" > ${path_927}/configuration.json
+
+  # increment changes
+  (( _configuration_changes++ ))
 
 else
   ${cmd_echo} New Candidate Configuration Not Detected
@@ -237,6 +241,9 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   # output json to file
   ${cmd_echo} "${_json_configuration_candidate}" > ${path_927}/infrastructure.json
 
+  # increment changes
+  (( _configuration_changes++ ))
+
 else
   ${cmd_echo} New Candidate Infrastructure Configuration Not Detected
   ${cmd_echo} ----------------------------------------------------------
@@ -246,3 +253,13 @@ fi
 ${cmd_echo} ==========================================================
 ${cmd_echo}
 ${cmd_echo}
+
+
+
+if [[ ${_configuration_changes} > 0 ]] || \
+   [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} '. | length' ) == 0 ]]; then
+ 927.ops.validate
+
+ if [[ ${?} == ${exit_ok} ]]; then
+  927.ops.restart
+fi
