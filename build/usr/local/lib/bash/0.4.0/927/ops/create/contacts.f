@@ -70,10 +70,10 @@
       _alias=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.display | if( . == null ) then "" else . end' )
       _can_submit_commands=$(           ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.can_submit_commands | if( . == null ) then "" else . end' )
       _contact_groups=$(                ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .contact_groups[] | select( .enable == true ) ] | if( . | length < 1 ) then "" else join(", ") end' )
-      _email=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.email | if( . == null ) then "" else . end' )
-      # _file_name=$(                     ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
+      _email=$(                         ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.email | if( . == null ) then "" else . end' )
+      _file_name=$(                     ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
       # _host_notifications_enabled=$(    ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.notification.host.enable | if( . == null ) then "" else ( if( . == true ) then '${true}' else '${false}' end ) end' )
-      # _host_notification_commands=$(    ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.host.commands[] | select(.enable == true).name ] | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
+      # _host_notification_commands=$(    ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.host.commands[] | select(.enable == true).string ] | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       # _host_notification_options=$(     ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.host.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       # _host_notification_period=$(      ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.notification.host.period | if( '${_host_notifications_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
       # _name=$(                          ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.name.string | if( . == null ) then "" else . end' )
@@ -89,7 +89,7 @@
       # write file
       ${cmd_echo} Writing Template/Contact: ${_path}/${_file_name}.cfg
       ${cmd_cat} << EOF.contact > ${_path}/${_file_name}.cfg
-define contact                       {
+define contact                     {
 $( [[ ! -z ${_alias} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" "alias" "${_alias}" )
 $( [[ ! -z ${_can_submit_commands} ]]           && ${cmd_printf} '%-1s %-32s %-50s\n' "" can_submit_commands "${_can_submit_commands}" )
 $( [[ ! -z ${_contact_groups} ]]                && ${cmd_printf} '%-1s %-32s %-50s\n' "" contactgroups "${_contact_groups}" )

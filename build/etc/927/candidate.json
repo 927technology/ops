@@ -223,7 +223,31 @@
       "name"                        : {
         "display"                   : "Naemon Admin",
         "email"                     : "naemon@localhost",
-        "string"                    : "naemonadmin"
+        "string"                    : "naemonadmin",
+        "pager"                     : null
+      },
+      "notification"                : {
+        "host"                      : {
+          "commands"                : [
+            {
+              "enable"                : false,
+              "string"                : null
+            }
+          ],
+          "enable"                  : null,
+          "options"                 : {
+            "down"                  : true,
+            "up"                    : true,
+            "flapping"              : true,
+            "none"                  : false,
+            "recovery"              : true,
+            "scheduled_down"        : true
+          }
+        },
+        "timeperiod"                : {
+          "enable"                  : false,
+          "string"                  : null
+        }
       },
       "use"                         : "generic-contact"
     }
