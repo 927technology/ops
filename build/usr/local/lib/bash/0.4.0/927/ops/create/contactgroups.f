@@ -15,7 +15,7 @@
   # argument variables
   local _json=
   local _path=
-  local _temtemplate=${false}
+  local _template=${false}
 
 
   # control variables

@@ -30,10 +30,10 @@
   else
     _pid=$( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} -r '.pid' )
     ${cmd_kill} -HUP ${_pid}
-    _exit_code=${exit_warn}
+    _exit_code=${exit_ok}
     _exit_string=${true}
 
-  else
+  fi
 
 
   # exit

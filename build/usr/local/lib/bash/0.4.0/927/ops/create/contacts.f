@@ -42,6 +42,7 @@
   local _service_notification_options=
   local _service_notification_period=
   local _service_notifications_enabled=
+  local _use=
 
 
   # parse command arguments
@@ -84,6 +85,7 @@
       _service_notification_commands=$( ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.service.commands[] | select(.enable == true).name ] | if( '${_service_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       _service_notification_options=$(  ${cmd_echo} ${contact}  | ${cmd_jq} -r  '[ .notification.service.options | to_entries[] | select(.value == true) | .key[0:1] ] | if( '${_service_notifications_enabled}' == '${false}' ) then "" else ( if( . | length < 1 ) then "" else join(", ") end ) end' )
       _service_notification_period=$(   ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.notification.service.period | if( '${_service_notifications_enabled}' == '${false}' ) then "" else ( if( . == null ) then "" else . end ) end' )
+      _use=$(                           ${cmd_echo} ${contact}  | ${cmd_jq} -r  '.use | if( . == null ) then "" else . end' )
       
 
       # write file
@@ -107,6 +109,7 @@ $( [[ ! -z ${_service_notification_commands} ]] && ${cmd_printf} '%-1s %-32s %-5
 $( [[ ! -z ${_service_notification_options} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_options "${_service_notification_options}" )
 $( [[ ! -z ${_service_notification_period} ]]   && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_period "${_service_notification_period}" )
 $( [[ ! -z ${_service_notification_enabled} ]]  && ${cmd_printf} '%-1s %-32s %-50s\n' "" service_notification_enabled "${_service_notification_enabled}" )
+$( [[ ! -z ${_use} ]]                           && ${cmd_printf} '%-1s %-32s %-50s\n' "" use "${_use}" )
 }
 EOF.contact
 
