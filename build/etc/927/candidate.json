@@ -230,11 +230,11 @@
         "host"                      : {
           "commands"                : [
             {
-              "enable"                : false,
-              "string"                : null
+              "enable"              : false,
+              "string"              : null
             }
           ],
-          "enable"                  : null,
+          "enable"                  : false,
           "options"                 : {
             "down"                  : true,
             "up"                    : true,
@@ -242,11 +242,36 @@
             "none"                  : false,
             "recovery"              : true,
             "scheduled_down"        : true
+          },
+          "timeperiod"                : {
+            "enable"                  : false,
+            "string"                  : null
           }
         },
-        "timeperiod"                : {
+        "retain"                    : {
+          "nonstatus"               : null,
+          "status"                  : null
+        },
+        "service"                      : {
+          "commands"                : [
+            {
+              "enable"              : false,
+              "string"              : null
+            }
+          ],
           "enable"                  : false,
-          "string"                  : null
+          "options"                 : {
+            "down"                  : true,
+            "up"                    : true,
+            "flapping"              : true,
+            "none"                  : false,
+            "recovery"              : true,
+            "scheduled_down"        : true
+          },
+          "timeperiod"                : {
+            "enable"                  : false,
+            "string"                  : null
+          }
         }
       },
       "use"                         : "generic-contact"
