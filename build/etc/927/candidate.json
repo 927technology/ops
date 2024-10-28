@@ -212,10 +212,17 @@
   ],
   "contacts"                        : [
     {
-      "email"                       : "naemon@localhost",
+      "can_submit_commands"         : null,
+      "contact_groups"              : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
       "enable"                      : true,
       "name"                        : {
         "display"                   : "Naemon Admin",
+        "email"                     : "naemon@localhost",
         "string"                    : "naemonadmin"
       },
       "use"                         : "generic-contact"
@@ -567,13 +574,13 @@
         "unknown"                   : true
       },
       "dependant"                   : {
-        "host"                      : [
+        "hosts"                     : [
           {
             "enable"                : false,
             "string"                : null
           }
         ],
-        "hostgroup"                 : [
+        "hostgroups"                : [
           {
             "enable"                : false,
             "string"                : null
@@ -603,6 +610,9 @@
         }
       ],
       "inherits_parent"             : true,
+      "name"                        : {
+        "string"                    : null
+      },
       "notification_failure_criteria": {
         "critical"                  : true,
         "ok"                        : true,
@@ -619,6 +629,47 @@
           "string"                  : null
         }
       ]
+    }
+  ],
+  "serviceescalations"              : [
+    {
+      "contact_groups"              : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
+      "contacts"                    : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
+      "escalation"                : {
+        "options"                   : {
+          "critical"                : true,
+          "recovery"                : true,
+          "unknown"                 : true,
+          "warning"                 : true
+        },
+        "timeperiod"                : {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      },
+      "first_notification"          : null,
+      "host"                        : {
+        "string"                    : null
+      },
+      "hostgroups"                  : [
+        {
+          "enable"                  : false,
+          "string"                  : null
+        }
+      ],
+      "last_notification"           : null,
+      "notification_interval"       : null,
+      "service_description"         : null
     }
   ],
   "services"                        : [

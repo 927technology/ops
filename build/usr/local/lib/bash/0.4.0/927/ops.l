@@ -10,6 +10,7 @@
 . ${_lib_root}/927/ops/create/servicegroups.f
 . ${_lib_root}/927/ops/create/services.f
 . ${_lib_root}/927/ops/create/servicedependencies.f
+. ${_lib_root}/927/ops/create/serviceescalations.f
 . ${_lib_root}/927/ops/create/timeperiods.f
 
 . ${_lib_root}/927/ops/running/get.f

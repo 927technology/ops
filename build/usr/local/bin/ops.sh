@@ -41,11 +41,13 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
   ${cmd_echo} New Candidate Configuration Detected
   
 
-  # # contacts
-  # _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contacts' )
-  # 927.ops.create.contacts -j "${_json}" -p ${_path_confd}/contacts
-  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  # _json=
+  # contacts
+  ${cmd_echo} contacts
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.contacts' )
+  927.ops.create.contacts -j "${_json}" -p ${_path_confd}/contacts
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
 
 
   # contactgroups
@@ -142,8 +144,17 @@ if [[ $( 927.ops.config.new -j ${_json_running} -jc ${_json_candidate} ) ]]; the
 
   # servicedependencies
   ${cmd_echo} servicedependencies
-  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.servicedependancies' )
-  927.ops.create.servicedependancies -j "${_json}" -p ${_path_confd}/servicedependancies
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.servicedependencies' )
+  927.ops.create.servicedependencies -j "${_json}" -p ${_path_confd}/servicedependencies
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+
+
+  # serviceescalations
+  ${cmd_echo} serviceescalations
+  _json=$( ${cmd_echo} "${_json_candidate}" | ${cmd_jq} -c '.serviceescalations' )
+  927.ops.create.servicedependencies -j "${_json}" -p ${_path_confd}/serviceescalations
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
