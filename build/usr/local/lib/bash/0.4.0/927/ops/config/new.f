@@ -3,7 +3,7 @@
   # validates ops configuraton
   # accepts 2 arguments -
   ## -j/--json json snippit at the root of the commands list
-  ## -p/--path which is the full path to the associated conf.d write path
+  ## -jc/--json-candidate json snippit of candidate change
 
   # dependancies
   # 927.bools.v
@@ -11,15 +11,16 @@
   # 927/nagios.v
   # json/validate.f
 
-  # local variables
+  # arguments variables
   local _json_candidate=
-  local _json_candidate_hash=
-  
   local _json_running=
-  local _json_running_hash=
 
+
+  # control variables
+  local _error_count=0
   local _exit_code=${exit_unkn}
   local _exit_string=
+  
 
   # parse command arguments
   while [[ ${1} != "" ]]; do

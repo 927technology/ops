@@ -28,29 +28,18 @@
   done
 
   # main
-  if [[ ! -z ${_path} ]] && [[ $( json.validate -j ${_json} ) == ${true} ]]; then
-
-    ## make path if not present
-    if [[ ! -d ${_path} ]]; then
-      ${cmd_mkdir} -p ${_path} 1> /dev/null 2> /dev/null
-    fi
-
-    # set group/owner and mode
-    ${cmd_chown} naemon:naemon ${_path}
-    ${cmd_chmod} 660 ${_path}
-
-
-    if [[ ! -f ${_path}/running.json ]]; then
-      _exit_code=${exit_crit}
-      _json="{}"
-    
+  if [[ -f ${_path} ]] && [[ $( json.validate -j "$( ${cmd_cat} ${_path} )" ) == ${true} ]]; then
+    _json=$( ${cmd_cat} ${_path}/running.json | ${cmd_jq} -c )
+    if [[ ${?} == ${exit_ok} ]]; then
+      _exit_code=${exit_ok}
+      _exit_string="${_json}"
     else
-      _json=$( ${cmd_cat} ${_path}/running.json | ${cmd_jq} -c )
-
+      _exit_code=${exit_crit}
+      _exit_string="{}"
     fi
 
   else
-    _exit_code=${exit_crit}
+    _exit_code=${exit_warn}
     _exit_string="{}"
 
   fi

@@ -1,13 +1,4 @@
 {
-  "configuration"                   : {
-    "paths"                         : {
-      "927"                         : "/etc/927",
-      "confd"                       : "/etc/naemon/conf.d",
-      "naemon"                      : "/etc/naemon"
-    },
-    "schema"                        : 1,
-    "version"                       : "0.1.0"
-  },
   "templates"                       : {
     "contacts"                      : [
       {
