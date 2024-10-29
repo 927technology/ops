@@ -267,7 +267,7 @@ if [[ ${_configuration_changes} > 0 ]] || \
    [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} '. | length' ) == 0 ]]; then
   ${cmd_echo} Validating Configuration
 
-  927.ops.validate
+  927.ops.validate -p ${path_naemon} 1> /dev/null 2> /dev/null
 
   if [[ ${?} == ${exit_ok} ]]; then
     ${cmd_echo} Validation Successfull

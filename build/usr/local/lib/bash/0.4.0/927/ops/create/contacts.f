@@ -100,7 +100,7 @@ $( [[ ! -z ${_host_notification_commands} ]]    && ${cmd_printf} '%-1s %-32s %-5
 $( [[ ! -z ${_host_notification_options} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notification_options "[${_host_notification_options}]" )
 $( [[ ! -z ${_host_notification_period} ]]      && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notificaiton_period "${_host_notification_period}" )
 $( [[ ! -z ${_host_notification_enabled} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" host_notifications_enabled "${_host_notification_enabled}" )
-$( [[ ! -z ${_name} ]]                          && ${cmd_printf} '%-1s %-32s %-50s\n' "" name "${_name}" )
+$( [[ ! -z ${_name} ]]                          && ${cmd_printf} '%-1s %-32s %-50s\n' "" contact_name "${_name}" )
 $( [[ ! -z ${_pager} ]]                         && ${cmd_printf} '%-1s %-32s %-50s\n' "" pager "${_pager}" )
 $( [[ ${_template} == ${true} ]]                && ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${false}" || ${cmd_printf} '%-1s %-32s %-50s\n' "" register "${true}" )
 $( [[ ! -z ${_retain_status_information} ]]     && ${cmd_printf} '%-1s %-32s %-50s\n' "" retain_status_information "${_retain_status_information}" )
