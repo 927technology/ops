@@ -22,13 +22,13 @@
 
 
   # main
-  if [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} -c '.[]' | wc -l ) == 0 ]]; then
+  if [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" --json | ${cmd_jq} -c '.[]' | wc -l ) == 0 ]]; then
     ${cmd_naemon} --daemon ${path_naemon}/naemon.cfg
     _exit_code=${exit_ok}
     _exit_string="Starting Ops"
 
   else
-    _pid=$( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} -r '.pid' )
+    _pid=$( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" --json | ${cmd_jq} -r '.[0].pid' )
     ${cmd_kill} -HUP ${_pid}
     _exit_code=${exit_ok}
     _exit_string="Restarting Ops"

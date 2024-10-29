@@ -32,6 +32,7 @@
       -jc | --json-candidate )
         shift
         _json_candidate="${1}"
+      ;;
     esac
     shift
   done  
@@ -40,6 +41,10 @@
   if [[ ! -z ${_json_running} ]] && [[ ! -z ${_json_candidate} ]]; then
     _json_running_hash=$( ${cmd_echo}  "${_json_running}" | ${cmd_sha256sum} | ${cmd_awk} '{print $1}' 2> /dev/null )
     _json_candidate_hash=$( ${cmd_echo}  "${_json_candidate}" | ${cmd_sha256sum} | ${cmd_awk} '{print $1}' 2> /dev/null )
+
+
+echo $_json_running_hash
+echo $_json_candidate_hash
 
 
     if [[ ${_json_running_hash} == ${_json_candidate_hash} ]]; then

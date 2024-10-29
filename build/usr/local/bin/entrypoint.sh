@@ -15,8 +15,8 @@ _sleep=60
 
 
 if [[ "${MANAGEMENT}" == "true" ]]; then
-  ${cmd_su} naemon --login --shell=/bin/sh "--command=/usr/sbin/gearmand -d --log-file none --syslog $OPTIONS"                    && \
-  ${cmd_httpd} $OPTIONS -DBACKGROUND                                                                                              && \
+  ${cmd_su} naemon --login --shell=/bin/sh "--command=/usr/sbin/gearmand -d --log-file none --syslog $OPTIONS"
+  ${cmd_httpd} $OPTIONS -DBACKGROUND
   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops_ms}"
 fi
 
@@ -27,12 +27,8 @@ fi
 
 while [[ ${true} ]]; do
 
-echo knock knock
-echo
+  ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops_ms}"
 
-sleep ${_sleep}
-
-#   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops} "
-#   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_sleep} ${_sleep}"
+  ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_sleep} ${_sleep}"
 
 done

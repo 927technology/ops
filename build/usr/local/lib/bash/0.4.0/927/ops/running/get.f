@@ -29,7 +29,7 @@
 
   # main
   if [[ -f ${_path} ]] && [[ $( json.validate -j "$( ${cmd_cat} ${_path} )" ) == ${true} ]]; then
-    _json=$( ${cmd_cat} ${_path}/running.json | ${cmd_jq} -c )
+    _json=$( ${cmd_cat} ${_path} | ${cmd_jq} -c )
     if [[ ${?} == ${exit_ok} ]]; then
       _exit_code=${exit_ok}
       _exit_string="${_json}"

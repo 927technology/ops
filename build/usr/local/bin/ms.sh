@@ -8,12 +8,8 @@ IFS=$'\n'
 . /usr/local/etc/ops/management.cfg
 
 
-echo $LIB_VERSION
-echo $URL
-
 # library root
 export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
-echo $_lib_root
 
 # source libraries
 . ${_lib_root}/927/variables.l
@@ -38,16 +34,16 @@ _json_infrastructure_running=$( 927.ops.config.running.get -p  ${path_927}/infra
 
 # validate json
 _json_configuration_candidate_validate=$( json.validate -j ${_json_configuration_candidate} || exit -1)
-_json_configuration_running_validate=$( json.validate -j ${_json_running} || exit -1)
+_json_configuration_running_validate=$( json.validate -j ${_json_configuration_running} || exit -1)
 _json_infrastructure_candidate_validate=$( json.validate -j ${_json_infrastructure_candidate} || exit -1)
-_json_infrastructure_running_validate=$( json.validate -j ${_json_running} || exit -1)
+_json_infrastructure_running_validate=$( json.validate -j ${_json_infrastructure_running} || exit -1)
 
 
 # main
 [[ ! -d ${path_927} ]] && ${cmd_mkdir} -p ${path_927}
 
 # write configuration to file
-if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate} ) ]]   && \
+if [[ ! $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate} ) ]]   && \
    [[ ${_json_configuration_candidate_validate} == ${true} ]]; then
   ${cmd_echo} New Candidate Configuration Detected
   ${cmd_echo} ----------------------------------------------------------
@@ -189,7 +185,7 @@ ${cmd_echo}
 
 
 # write infrastructure to file
-if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infrastructure_candidate} ) ]] && \
+if [[ ! $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infrastructure_candidate} ) ]] && \
    [[ ${_json_infrastructure_candidate_validate} == ${true} ]]; then
   ${cmd_echo} New Candidate Infrastructure Configuration Detected
   ${cmd_echo} ----------------------------------------------------------
@@ -264,9 +260,7 @@ ${cmd_echo}
 ${cmd_echo}
 
 
-
-if [[ ${_configuration_changes} > 0 ]] || \
-   [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} '. | length' ) == 0 ]]; then
+if [[ ${_configuration_changes} > 0 ]]; then
   ${cmd_echo} Validating Configuration
 
   927.ops.validate -p ${path_naemon} 1> /dev/null 2> /dev/null
@@ -280,5 +274,8 @@ if [[ ${_configuration_changes} > 0 ]] || \
     ${cmd_echo} Validation Unsuccessfull
 
   fi
+
+else
+  ${cmd_echo} No New Configuration Detected
 
 fi

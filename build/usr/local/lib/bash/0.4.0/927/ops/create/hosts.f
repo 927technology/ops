@@ -67,6 +67,7 @@
   local _stalking_options=
   local _statusmap_image=
   local _vrml_image=
+  local _use=
 
   # parse command arguments
   while [[ ${1} != "" ]]; do
@@ -136,6 +137,7 @@
       _stalking_options=$(              ${cmd_echo} ${host}  | ${cmd_jq} -r  '[ .stalking | to_entries[] | select(.value == true) | .key[0:1] ] | if( . | length < 1 ) then "" else join(", ") end' )
       _statusmap_image=$(               ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.file.statusmap | if( . == null ) then "" else . end' )
       _vrml_image=$(                    ${cmd_echo} ${host}  | ${cmd_jq} -r  '.icon.image.vrml | if( . == null ) then "" else . end' )
+      _use=$(                           ${cmd_echo} ${host}  | ${cmd_jq} -r  '.use | if( . == null ) then "" else . end' )
 
 
       ${cmd_echo} Writing Host: ${_path}/${_file_name}.cfg
@@ -185,6 +187,7 @@ $( [[ ! -z ${_retry_interval} ]]                && ${cmd_printf} '%-1s %-32s %-5
 $( [[ ! -z ${_stalking_options} ]]              && ${cmd_printf} '%-1s %-32s %-50s' "" stalking_options "${_stalking_options}" )
 $( [[ ! -z ${_statusmap_image} ]]               && ${cmd_printf} '%-1s %-32s %-50s' "" statusmap_image "${_statusmap_image}" )
 $( [[ ! -z ${_vrml_image} ]]                    && ${cmd_printf} '%-1s %-32s %-50s' "" vrml_image "${_vrml_image}" )
+$( [[ ! -z ${_use} ]]                           && ${cmd_printf} '%-1s %-32s %-50s' "" use "${_use}" )
 }
 EOF.host
 
