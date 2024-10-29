@@ -23,7 +23,7 @@
 
   # main
   if [[ $( ${cmd_osqueryi} "select pid from processes where name == 'naemon' and parent == 1" | ${cmd_jq} -c '.[]' | wc -l ) == 0 ]]; then
-    ${cmd_naemon} --daemon ${path_confd}/etc/naemon/naemon.cfg
+    ${cmd_naemon} --daemon ${path_naemon}/naemon.cfg
     _exit_code=${exit_ok}
     _exit_string="Starting Ops"
 

@@ -77,6 +77,17 @@ if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_config
   ${cmd_echo} 
 
 
+
+  # hostgroups
+  ${cmd_echo} hostgroups
+  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.hostgroups' )
+  927.ops.create.hostgroups -j "${_json}" -p ${path_confd}/hostgroups
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+
+
+
   # services
   ${cmd_echo} services
   _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
@@ -230,18 +241,6 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
-
-
-  # hostgroups
-  ${cmd_echo} hostgroups
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hostgroups' )
-  927.ops.create.hostgroups -j "${_json}" -p ${path_confd}/hostgroups
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
-
-
-  
 
 
 
