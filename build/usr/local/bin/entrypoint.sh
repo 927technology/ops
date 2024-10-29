@@ -25,9 +25,14 @@ if [[ "${WORKER}" == "true" ]]; then
 fi
 
 
-# while [[ ${true} ]]; do
+while [[ ${true} ]]; do
+
+echo knock knock
+echo
+
+sleep ${_sleep}
 
 #   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops} "
 #   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_sleep} ${_sleep}"
 
-# done
+done

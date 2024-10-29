@@ -26,3 +26,7 @@ mv /root/oci/config /var/mod_gearman/.oci/
 chmod 700 /var/mod_gearman/.oci
 chmod 600 /var/mod_gearman/.oci/*
 chown -R naemon:naemon /var/mod_gearman/.oci
+
+
+# allow to read libs
+chmod -R 555 /usr/local/etc

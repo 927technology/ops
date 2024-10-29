@@ -8,9 +8,12 @@ IFS=$'\n'
 . /usr/local/etc/ops/management.cfg
 
 
+echo $LIB_VERSION
+echo $URL
+
 # library root
 export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
-
+echo $_lib_root
 
 # source libraries
 . ${_lib_root}/927/variables.l

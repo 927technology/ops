@@ -8,11 +8,8 @@ LABEL maintainer="cmurray@927.technology"
 #update os
 RUN yum update -y
 
-# environmental variables
-ENV LIB_VERSION=0.4.0
-ENV URL=https://raw.githubusercontent.com/927technology/ops/refs/heads/0.1.0/build/etc/927
-
 # pre-add files
+COPY etc/environment /etc/
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
 COPY ol/libmemcached-awesome-1.1.0-12.el9.x86_64.rpm /root/
 COPY ol/osquery-5.13.1-1.linux.x86_64.rpm /root/

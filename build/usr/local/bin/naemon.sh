@@ -10,8 +10,11 @@ rm -rf /etc/naemon/conf.d/*.cfg
 rm -rf /etc/naemon/conf.d/{commands,instances,network,servers,templates}
 
 mkdir -p /etc/927
-chown naemon:naemon /etc/927
-chmod 770 /etc/927
+chown -R naemon:naemon /etc/927
+chmod -R 770 /etc/927
+
+chown -R naemon:naemon /usr/local/etc/ops
+chmod -R 440 /usr/local/etc/ops
 
 mkdir -p /usr/lib64/nagios/plugins
 chown -R naemon:naemon /usr/lib64/nagios/plugins
