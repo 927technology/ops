@@ -3,7 +3,8 @@
 # because IFS sucks
 IFS=$'\n'
 
-
+clear
+date
 # source config
 . /usr/local/etc/ops/management.cfg
 
@@ -41,6 +42,11 @@ _json_infrastructure_running_validate=$( json.validate -j ${_json_infrastructure
 
 # main
 [[ ! -d ${path_927} ]] && ${cmd_mkdir} -p ${path_927}
+
+echo ----------------
+927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate}
+echo $?
+echo ===============
 
 # write configuration to file
 if [[ ! $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate} ) ]]   && \

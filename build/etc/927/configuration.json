@@ -915,20 +915,20 @@
         "address"                   : null,
         "check"                     : {
           "active"                  : null,
-          "command"                 : null,
+          "command"                 : "check-host-alive",
           "freshness"               : {
             "enable"                : false,
             "threshold"             : null
           },
           "initial"                 : null,
           "interval"                : {
-            "value"                 : null,
+            "value"                 : 5,
             "retry"                 : 1
           },
-          "max_attempts"            : null,
+          "max_attempts"            : 3,
           "passive"                 : null,
           "perfdata"                : null,
-          "period"                  : null
+          "period"                  : "24x7"
         },
         "contacts"                  : [
           {
@@ -1024,6 +1024,121 @@
           "up"                      : false
         },
         "use"                       : "linux-server"
+      },
+      {
+        "action_url"                : null,
+        "address"                   : null,
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : "check-host-alive",
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
+          },
+          "initial"                 : null,
+          "interval"                : {
+            "value"                 : 2,
+            "retry"                 : 1
+          },
+          "max_attempts"            : 3,
+          "passive"                 : null,
+          "perfdata"                : null,
+          "period"                  : null
+        },
+        "contacts"                  : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : {
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
+          },
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "network-routers"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : null
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "initial_state"           : "up",
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "statusmap"             : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "display"                 : null,
+          "string"                  : "network-routers"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "critical"              : false,
+            "flapping"              : false,
+            "recovery"              : true,
+            "scheduled_down"        : true,
+            "unknown"               : true,
+            "warning"               : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "down"                    : false,
+          "operational"             : false,
+          "up"                      : false
+        },
+        "use"                       : null
       }
     ],
     "hostgroups"                    : [
