@@ -345,6 +345,30 @@
         "string"                  : null,
         "url"                     : null
       }     
+    },
+    {
+      "action_url"                : null,
+      "enable"                    : true,
+      "hostgroups"                : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "members"                   : [
+        {
+          "enable"                : false,
+          "name"                  : null
+        }
+      ],
+      "name"                      : {
+        "display"                 : "OCI - Data",
+        "string"                  : "oci-data"
+      },
+      "notes"                     : {
+        "string"                  : null,
+        "url"                     : null
+      }     
     }
   ],
   "servicedependancies"             : [
