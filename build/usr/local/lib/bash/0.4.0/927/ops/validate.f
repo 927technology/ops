@@ -35,7 +35,7 @@
 
   # main
   if [[ ! -z ${_path} ]]; then
-    ${cmd_naemon} -v ${_path}/naemon.cfg 1> /dev/null 2> /dev/null
+    ${cmd_naemon} -v ${_path}/naemon.cfg 1> /etc/927/validate.txt 2> /etc/927/validate.txt
     if [[ ${?} == ${exit_ok} ]]; then
       _exit_code=${exit_ok}
       _exit_string=${true}

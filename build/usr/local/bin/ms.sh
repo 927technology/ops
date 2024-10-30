@@ -43,13 +43,9 @@ _json_infrastructure_running_validate=$( json.validate -j ${_json_infrastructure
 # main
 [[ ! -d ${path_927} ]] && ${cmd_mkdir} -p ${path_927}
 
-echo ----------------
-927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate}
-echo $?
-echo ===============
 
 # write configuration to file
-if [[ ! $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate} ) ]]   && \
+if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_configuration_candidate} ) != ${exit_ok} ]] && \
    [[ ${_json_configuration_candidate_validate} == ${true} ]]; then
   ${cmd_echo} New Candidate Configuration Detected
   ${cmd_echo} ----------------------------------------------------------
@@ -156,7 +152,16 @@ if [[ ! $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_conf
   ${cmd_echo} 
 
 
-    # templates/servers
+  # templates/routers
+  ${cmd_echo} templates/routers
+  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.templates.routers' )
+  927.ops.create.hosts -j "${_json}" -p ${path_confd}/templates/routers -t
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo}
+
+
+  # templates/servers
   ${cmd_echo} templates/servers
   _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.templates.servers' )
   927.ops.create.hosts -j "${_json}" -p ${path_confd}/templates/servers -t
@@ -190,10 +195,14 @@ ${cmd_echo}
 ${cmd_echo}
 
 
+echo ${_json_infrastructure_running} | sha256sum
+echo ${_json_infrastructure_candidate} | sha256sum
+echo ===============
+
 # write infrastructure to file
-if [[ ! $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infrastructure_candidate} ) ]] && \
+if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infrastructure_candidate} ) != ${exit_ok} ]] && \
    [[ ${_json_infrastructure_candidate_validate} == ${true} ]]; then
-  ${cmd_echo} New Candidate Infrastructure Configuration Detected
+  ${cmd_echo} New Candidate Infrastructure Detected
   ${cmd_echo} ----------------------------------------------------------
 
 
@@ -250,13 +259,13 @@ if [[ ! $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_inf
 
 
   # output json to file
-  ${cmd_echo} "${_json_configuration_candidate}" > ${path_927}/infrastructure.json
+  ${cmd_echo} "${_json_infrastructure_candidate}" > ${path_927}/infrastructure.json
 
   # increment changes
   (( _configuration_changes++ ))
 
 else
-  ${cmd_echo} New Candidate Infrastructure Configuration Not Detected
+  ${cmd_echo} New Candidate Infrastructure Not Detected
   ${cmd_echo} ----------------------------------------------------------
 
 fi

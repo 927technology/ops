@@ -42,11 +42,6 @@
     _json_running_hash=$( ${cmd_echo}  "${_json_running}" | ${cmd_sha256sum} | ${cmd_awk} '{print $1}' 2> /dev/null )
     _json_candidate_hash=$( ${cmd_echo}  "${_json_candidate}" | ${cmd_sha256sum} | ${cmd_awk} '{print $1}' 2> /dev/null )
 
-
-echo $_json_running_hash
-echo $_json_candidate_hash
-
-
     if [[ ${_json_running_hash} == ${_json_candidate_hash} ]]; then
       _exit_code=${exit_ok}
       _exit_string=${false}

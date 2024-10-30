@@ -142,7 +142,7 @@
 
       ${cmd_echo} Writing Host: ${_path}/${_file_name}.cfg
       ${cmd_cat} << EOF.host > ${_path}/${_file_name}.cfg
-define host                         {
+define host                        {
 $( [[ ! -z ${_2d_coords} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" 2d_coords "${_2d_coords}" )
 $( [[ ! -z ${_3d_coords} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" 3d_coords "${_3d_coords}" )
 $( [[ ! -z ${_active_checks_enabled} ]]         && ${cmd_printf} '%-1s %-32s %-50s' "" active_checks_enabled "${_active_checks_enabled}" )
@@ -170,6 +170,7 @@ $( [[ ! -z ${_icon_image_alt} ]]                && ${cmd_printf} '%-1s %-32s %-5
 $( [[ ! -z ${_initial_state} ]]                 && ${cmd_printf} '%-1s %-32s %-50s' "" initial_state "${_initial_state}" )
 $( [[ ! -z ${_low_flap_threshold} ]]            && ${cmd_printf} '%-1s %-32s %-50s' "" low_flap_threshold "${low_flap_threshold}" )
 $( [[ ! -z ${_max_check_attempts} ]]            && ${cmd_printf} '%-1s %-32s %-50s' "" max_check_attempts "${_max_check_attempts}" )
+$( [[ ${_template} == ${true} ]]                && ${cmd_printf} '%-1s %-32s %-50s' "" name "${_host_name}" )
 $( [[ ! -z ${_notes} ]]                         && ${cmd_printf} '%-1s %-32s %-50s' "" notes "${_notes}" )
 $( [[ ! -z ${_notes_url} ]]                     && ${cmd_printf} '%-1s %-32s %-50s' "" notes_url "${_notes_url}" )
 $( [[ ! -z ${_notification_interval} ]]         && ${cmd_printf} '%-1s %-32s %-50s' "" notification_interval "${_notification_interval}" )

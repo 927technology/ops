@@ -91,12 +91,12 @@
           "first_delay"             : null,
           "interval"                : 120,
           "options"                 : {
-            "critical"              : false,
+            "down"                  : false,
             "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : true,
-            "warning"               : false
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
           },
           "period"                  : "24x7"
         },
@@ -209,12 +209,12 @@
           "first_delay"             : null,
           "interval"                : 120,
           "options"                 : {
-            "critical"              : false,
+            "down"                  : false,
             "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : true,
-            "warning"               : false
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
           },
           "period"                  : "24x7"
         },
@@ -326,12 +326,12 @@
           "first_delay"             : null,
           "interval"                : 120,
           "options"                 : {
-            "critical"              : false,
+            "down"                  : false,
             "flapping"              : false,
-            "recovery"              : true,
-            "scheduled_down"        : true,
-            "unknown"               : true,
-            "warning"               : false
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
           },
           "period"                  : "24x7"
         },
