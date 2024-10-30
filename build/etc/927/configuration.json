@@ -1221,7 +1221,7 @@
         },
         "name"                      : {
           "display"                 : null,
-          "string"                  : "generic-host"
+          "string"                  : "linux-server"
         },
         "notes"                     : {
           "string"                  : null,
