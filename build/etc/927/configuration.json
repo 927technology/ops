@@ -603,7 +603,7 @@
           "check"                 : null,
           "retry"                 : 1
         },
-        "max_attempts"            : null,
+        "max_attempts"            : 10,
         "passive"                 : null,
         "perfdata"                : true,
         "period"                  : null
