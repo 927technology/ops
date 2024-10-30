@@ -195,10 +195,6 @@ ${cmd_echo}
 ${cmd_echo}
 
 
-echo ${_json_infrastructure_running} | sha256sum
-echo ${_json_infrastructure_candidate} | sha256sum
-echo ===============
-
 # write infrastructure to file
 if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infrastructure_candidate} ) != ${exit_ok} ]] && \
    [[ ${_json_infrastructure_candidate_validate} == ${true} ]]; then
