@@ -1143,9 +1143,8 @@
         },
         "use"                       : "generic-host"
       },
-
       {
-        "_note"                     : "linux-servers",
+        "_note"                     : "linux-server",
         "action_url"                : null,
         "address"                   : null,
         "check"                     : {
@@ -1197,7 +1196,7 @@
         "hostgroups"                : [
           {
             "enable"                : true,
-            "name"                  : "linux-servers"
+            "name"                  : "linux-server"
           }
         ],
         "icon"                      : {
