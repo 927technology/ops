@@ -1,5 +1,5 @@
 #author: chris murray
-#version: 0.1.16
+#version: 0.1.17
 #date 20241120
 
 FROM oraclelinux:9
@@ -24,8 +24,8 @@ RUN /usr/local/bin/naemon.sh
 COPY etc/naemon/ /etc/naemon
 COPY usr/lib64/nagios/plugins/ /usr/lib64/nagios/plugins
 COPY usr/share/thruk/support/thruk_templates.cfg /usr/share/thruk/support/
-COPY ssh/ops-ms.pem /root/ssh/
-COPY oci/config /root/oci/
+# COPY ssh/ops-ms.pem /root/ssh/
+# COPY oci/config /root/oci/
 
 # post installer
 RUN  /usr/local/bin/post.sh
