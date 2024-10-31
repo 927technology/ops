@@ -5,11 +5,9 @@ This solutionis aimed at automating tasks of deployment, compliace, and telemetr
 By using granular telemetry and flexable inputs, resources can be altered and migrated based on needs of the moment without intervention.
 
 ## In Progress
-|    |                          |
-|    | Task                     |
-|----|--------------------------|
-|    | Containerize Engine      |
-|    | * Management Server      |
+
+Containerize Engine
+* Management Server
 
 
 ## To Do
