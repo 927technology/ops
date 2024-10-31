@@ -66,7 +66,7 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
    * [ ] Move secrets from local to secrets provider
  
 
-## Locall Build 927 Operations Centeer
+## Locally Build 927 Operations Centeer
 ```
 cd build
 docker build -t 927technology/ops-ms:0.1.17 .
@@ -77,3 +77,5 @@ docker build -t 927technology/ops-ms:0.1.17 .
 docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:0.1.17
 ```
 
+## Access 927 Operatons Center
+http://<ip address>/thruk
