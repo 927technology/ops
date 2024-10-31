@@ -1,28 +1,17 @@
-# ops
+# 927 Operations Center
 
-Monitoring & Compliance Solution
+This solutionis aimed at automating tasks of deployment, compliace, and telemetry in complicated distributed systems.  Leveraging on the ability to dynamically determine best case location of resources base on multiple factors.   Resource deployments are capable of migrating to and from physical resources and to and from on-prem and external cloud infrastructures.
 
-To expand the limitations of monitoring and accreditaion compliance, I have found it increasingly difficult to reasonably determine if systems are within requirements.  Utilizing the livestatus pipe i can now distribute access to Nagios' status to 1M intervals and reduce vunerable configuration files to compormise/alteration to that window without adversely impacting CPU loads.  
+By using granular telemetry and flexable inputs, resources can be altered and migrated based on needs of the moment without intervention.
 
-I have created a polling engine to parse hosts from Nagios and consume their statuses utilzing various collection mechanisms such as SNMP, WMIC, API calls and NRPE.  This data is consumed and stored as json for easy consumption by Nagios.
+## In Progress
+|    |                          |
+|    | Task                     |
+|----|--------------------------|
+|    | Containerize Engine      |
+|    | * Management Server      |
 
-Current Polling Agents:  
-GNS3 - Native Json via API  
-Junos - Native Json via API  
-Linux - Native Json via osquery and NRPE
 
-Future Polling Agents:  
-Cisco - Translated JSON from SNMP  
-Windows - Native Json via WMIC
+## To Do
 
-Usage:  
-install docker-compose  
-https://docs.docker.com/compose/install/
 
-Clone repisitory:  
-Extract 927_ops.tar.gz  
-tar xzf 927_ops.tar.gz  
-
-Start Container:  
-cd ops  
-docker-compose up
