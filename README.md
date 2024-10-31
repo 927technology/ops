@@ -32,15 +32,15 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 * Job Worker
   * Build Container
     * Resouces
-    * [ ] Cloud - AWS 
-    * [ ] Cloud - Azure 
-    * [x] Cloud - OCI
-    * [x] JSoN
-    * [ ] SNMP
-    * [ ] Bare Metal Provisioning
-    * [ ] On-Prem - Nutanix 
-    * [ ] On-Prem - KVM
-    * [ ] On-Prem - VMWare 
+      * [ ] Cloud - AWS 
+      * [ ] Cloud - Azure 
+      * [x] Cloud - OCI
+      * [x] JSoN
+      * [ ] SNMP
+      * [ ] Bare Metal Provisioning
+      * [ ] On-Prem - Nutanix 
+      * [ ] On-Prem - KVM
+      * [ ] On-Prem - VMWare 
     * Pull Configuraiton
       * [ ] Worker Configuration
       * [ ] TLS
