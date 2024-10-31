@@ -50,5 +50,5 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
   * [ ] Authentication
 
 * Secrets
- * [ ] Move secrets from local to secrets provider
+   * [ ] Move secrets from local to secrets provider
 
