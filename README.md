@@ -4,12 +4,15 @@ This solutionis aimed at automating tasks of deployment, compliace, and telemetr
 
 By using granular telemetry and flexable inputs, resources can be altered and migrated based on needs of the moment without intervention.
 
+
+# Ops Engine
+
 ## In Progress
 
-Containerize Engine
 * Management Server
-
-
-## To Do
-
+  * [ ] Build Container 
+  * Pull Engine Configuration
+  * Pull Infrastructure Configuration   
+* Job Server
+  * Build Container
 
