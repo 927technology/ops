@@ -31,12 +31,25 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 
 * Job Worker
   * Build Container
+    * Ingestion
+      * Bulk Data Collection
+        * Cloud
+          * [ ] Cloud CLI/API
+        * On-Prem
+          * [ ] VM SDK
+          * [ ] VM CLI
+          * [ ] Powershell
+        * Network
+          * [ ] SNMP
+          * [ ] Trap
+      * [ ] Data Normalization 
     * Resouces
-      * [ ] Cloud - AWS 
-      * [ ] Cloud - Azure 
-      * [x] Cloud - OCI
+      * [ ] Cloud CLI - AWS 
+      * [ ] Cloud CLI - Azure 
+      * [x] Cloud CLI - OCI
       * [x] JSoN
       * [ ] SNMP
+      * [ ] PowerShell
       * [ ] Bare Metal Provisioning
       * [ ] On-Prem - Nutanix 
       * [ ] On-Prem - KVM
