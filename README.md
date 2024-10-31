@@ -15,21 +15,23 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
     * [x] Poller
     * Resources
       * [x] Engine
-      * [x] JSoN 
+      * [x] Web Server
+        * [ ] TLS 
+      * [x] JSoN
   * Pull Configuraiton  
     * [x] Global Configuration
     * [x] Infrastructure Configuration
   * Engine Configurations
     * [x] Parse Priovided Configurations
+
 * Job Server
   * [x] Build Container
   * [ ] Pull Configuration
   * [ ] Pull Secrets
+
 * Job Worker
-  * [X] Build Container
-  * [ ] Pull Configuraiton
-  * [ ] Pull Secrets
-  * Resouces
+  * Build Container
+    * Resouces
     * [ ] Cloud - AWS 
     * [ ] Cloud - Azure 
     * [x] Cloud - OCI
@@ -39,6 +41,14 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
     * [ ] On-Prem - Nutanix 
     * [ ] On-Prem - KVM
     * [ ] On-Prem - VMWare 
+    * Pull Configuraiton
+      * [ ] Worker Configuration
+      * [ ] TLS
+      * [ ] Pull Secrets
+
+* Identity Service
+  * [ ] Authentication
+
 * Secrets
  * [ ] Move secrets from local to secrets provider
 
