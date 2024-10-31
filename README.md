@@ -78,4 +78,4 @@ docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v
 ```
 
 ## Access 927 Operatons Center
-http://<ip address>/thruk
+http://\<ip address\>/thruk
