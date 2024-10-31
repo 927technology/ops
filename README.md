@@ -10,7 +10,7 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 ## In Progress
 
 * Management Server
-  * [ ] Build Container 
+  * [x] Build Container 
   * Pull Engine Configuration
   * Pull Infrastructure Configuration   
 * Job Server
