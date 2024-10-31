@@ -7,12 +7,38 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 
 # Ops Engine
 
-## In Progress
-
 * Management Server
-  * [x] Build Container 
-  * Pull Engine Configuration
-  * Pull Infrastructure Configuration   
-* Job Server
   * Build Container
+    * [ ] Health Checker
+    * [x] Engine
+    * [x] Entrypoint 
+    * [x] Poller
+    * Resources
+      * [x] Engine
+      * [x] JSoN 
+  * Pull Configuraiton  
+    * [x] Global Configuration
+    * [x] Infrastructure Configuration
+  * Engine Configurations
+    * [x] Parse Priovided Configurations
+* Job Server
+  * [x] Build Container
+  * [ ] Pull Configuration
+  * [ ] Pull Secrets
+* Job Worker
+  * [X] Build Container
+  * [ ] Pull Configuraiton
+  * [ ] Pull Secrets
+  * Resouces
+    * [ ] Cloud - AWS 
+    * [ ] Cloud - Azure 
+    * [x] Cloud - OCI
+    * [x] JSoN
+    * [ ] SNMP
+    * [ ] Bare Metal Provisioning
+    * [ ] On-Prem - Nutanix 
+    * [ ] On-Prem - KVM
+    * [ ] On-Prem - VMWare 
+* Secrets
+ * [ ] Move secrets from local to secrets provider
 
