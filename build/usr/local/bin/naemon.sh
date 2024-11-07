@@ -3,7 +3,7 @@
 # main
 # prerequisites
 yum install -y yum-utils oracle-epel-release-el9
-yum install -y naemon nagios-plugins-ping net-snmp
+yum install -y naemon nagios-plugins-ping
 
 rm -rf /etc/naemon/*.cfg
 rm -rf /etc/naemon/conf.d/*.cfg

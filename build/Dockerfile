@@ -1,12 +1,21 @@
 #author: chris murray
-#version: 0.1.17
+#version: 0.1.20
 #date 20241120
 
 FROM oraclelinux:9
 LABEL maintainer="cmurray@927.technology"
 
-#update os
-RUN yum update -y
+# add epel
+RUN yum install -y oracle-epel-release-el9
+
+# update os
+RUN yum check-update; yum update -y
+
+# repo installs
+RUN yum install -y            \
+  ansible-core                \
+  net-snmp                    \
+  net-snmp-utils 
 
 # pre-add files
 COPY etc/environment /etc/
@@ -20,6 +29,7 @@ COPY usr/local/lib /usr/local/lib
 # installers
 RUN /usr/local/bin/gearmand.sh
 RUN /usr/local/bin/naemon.sh
+RUN /usr/local/bin/powershell.sh
 
 # post-add files
 COPY etc/naemon/ /etc/naemon

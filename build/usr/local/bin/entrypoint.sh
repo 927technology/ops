@@ -5,6 +5,7 @@ true=1
 false=0
 
 # commands
+cmd_echo=/bin/echo
 cmd_httpd=/usr/sbin/httpd
 cmd_ops_ms=/usr/local/bin/ms.sh
 cmd_sleep=/usr/bin/sleep
@@ -28,7 +29,7 @@ if [[ "${WORKER}" == "true" ]]; then
 fi
 
 
-while [[ ${MANAGEMENT} == ${true} ]]; do
+while [[ ${MANAGEMENT} == "true" ]]; do
 
   ${cmd_echo} Starting Ops
   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops_ms}"

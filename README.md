@@ -38,18 +38,19 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
         * On-Prem
           * [ ] VM SDK
           * [ ] VM CLI
-          * [ ] Powershell
+          * [x] Powershell
         * Network
-          * [ ] SNMP
-          * [ ] Trap
+          * [x] SNMP
+          * [x] Trap
       * [ ] Data Normalization 
     * Resouces
       * [ ] Cloud CLI - AWS 
       * [ ] Cloud CLI - Azure 
       * [x] Cloud CLI - OCI
       * [x] JSoN
-      * [ ] SNMP
-      * [ ] PowerShell
+      * [x] SNMP
+      * [x] PowerShell
+      * [x] Ansible
       * [ ] Bare Metal Provisioning
       * [ ] On-Prem - Nutanix 
       * [ ] On-Prem - KVM
@@ -65,16 +66,18 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 * Secrets
    * [ ] Move secrets from local to secrets provider
  
+* Library
+    * [x] Migrate libraries to 927 library repo
 
 ## Locally Build 927 Operations Centeer
 ```
 cd build
-docker build -t 927technology/ops-ms:0.1.17 .
+docker build -t 927technology/ops-ms:0.1.20 .
 ```
 
 ## Start 927 Operations Center
 ```
-docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:0.1.17
+docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:0.1.20
 ```
 
 ## Access 927 Operatons Center
