@@ -1,0 +1,3 @@
+[submodule "build/usr/local/lib/bash"]
+	path = build/usr/local/lib/bash
+	url = https://github.com/927technology/bash_libs.git
