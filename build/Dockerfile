@@ -20,8 +20,8 @@ RUN yum check-update; yum update -y
 # repo installs
 RUN yum install -y            \
   net-snmp                    \
-  net-snmp-utils 
-
+  net-snmp-utils
+  
 # pre-add files
 COPY etc/environment /etc/
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
