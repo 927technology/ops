@@ -18,7 +18,6 @@ RUN yum check-update; yum update -y
 
 # repo installs
 RUN yum install -y            \
-  ansible-core                \
   net-snmp                    \
   net-snmp-utils 
 
@@ -32,6 +31,7 @@ COPY usr/local/etc /usr/local/etc
 COPY usr/local/lib /usr/local/lib
 
 # installers
+RUN /usr/local/bin/ansible.sh
 RUN /usr/local/bin/gearmand.sh
 RUN /usr/local/bin/naemon.sh
 RUN /usr/local/bin/powershell.sh
