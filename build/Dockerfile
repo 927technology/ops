@@ -5,6 +5,11 @@
 FROM oraclelinux:9
 LABEL maintainer="cmurray@927.technology"
 
+# environmental variables 
+ENV ANSIBLE_JSON_INDENT=0
+ENV ANSIBLE_CUSTOM_STATS=false
+
+
 # add epel
 RUN yum install -y oracle-epel-release-el9
 
