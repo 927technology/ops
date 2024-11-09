@@ -1,5 +1,5 @@
 #author: chris murray
-#version: 0.1.20
+#version: 0.1.21
 #date 20241120
 
 FROM oraclelinux:9
@@ -8,7 +8,8 @@ LABEL maintainer="cmurray@927.technology"
 # environmental variables 
 ENV ANSIBLE_JSON_INDENT=0
 ENV ANSIBLE_CUSTOM_STATS=false
-
+ENV 927_BUILD=0.1.21
+ENV 927_NAME=ops
 
 # add epel
 RUN yum install -y oracle-epel-release-el9
