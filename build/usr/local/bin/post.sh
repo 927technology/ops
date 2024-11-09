@@ -30,6 +30,3 @@ chown -R naemon:naemon /var/mod_gearman/.oci
 
 # allow to read libs
 chmod -R 555 /usr/local/etc
-
-# ansible plugins
-ansible-galaxy collection install ansible.posix
