@@ -212,6 +212,16 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   _json=
   ${cmd_echo} 
 
+
+
+  # hosts/compartments
+  ${cmd_echo} hosts/compartments
+  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.compartments' )
+  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/compartments
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
+
   # hosts/printers
   ${cmd_echo} hosts/printers
   _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.printers' )
