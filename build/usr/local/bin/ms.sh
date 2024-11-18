@@ -14,8 +14,10 @@ export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
 
 # source libraries
 . ${_lib_root}/927/variables.l
-. ${_lib_root}/927/ops.l
+. ${_lib_root}/date/epoch.f
+. ${_lib_root}/date/pretty.f
 . ${_lib_root}/json.l
+. ${_lib_root}/927/ops.l
 
 
 # variables
@@ -89,40 +91,40 @@ if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_config
 
 
 
-  # services
-  ${cmd_echo} services
-  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
-  927.ops.create.services -j "${_json}" -p ${path_confd}/services
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # services
+  # ${cmd_echo} services
+  # _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
+  # 927.ops.create.services -j "${_json}" -p ${path_confd}/services
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
 
-  # servicegroups
-  ${cmd_echo} servicegroups
-  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.servicegroups' )
-  927.ops.create.servicegroups -j "${_json}" -p ${path_confd}/servicegroups
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # servicegroups
+  # ${cmd_echo} servicegroups
+  # _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.servicegroups' )
+  # 927.ops.create.servicegroups -j "${_json}" -p ${path_confd}/servicegroups
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
 
-  # servicedependencies
-  ${cmd_echo} servicedependencies
-  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.servicedependencies' )
-  927.ops.create.servicedependencies -j "${_json}" -p ${path_confd}/servicedependencies
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # servicedependencies
+  # ${cmd_echo} servicedependencies
+  # _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.servicedependencies' )
+  # 927.ops.create.servicedependencies -j "${_json}" -p ${path_confd}/servicedependencies
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
 
-  # serviceescalations
-  ${cmd_echo} serviceescalations
-  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.serviceescalations' )
-  927.ops.create.servicedependencies -j "${_json}" -p ${path_confd}/serviceescalations
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # serviceescalations
+  # ${cmd_echo} serviceescalations
+  # _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.serviceescalations' )
+  # 927.ops.create.servicedependencies -j "${_json}" -p ${path_confd}/serviceescalations
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
 
   # templates/contacts
@@ -212,56 +214,74 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   _json=
   ${cmd_echo} 
 
-
-
-  # hosts/compartments
-  ${cmd_echo} hosts/compartments
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.compartments' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/compartments
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
+  # hosts/clouds/tennants
+  ${cmd_echo} hosts/clouds/tennants
+  for cloud_json in $( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.clouds[]' ); do
+    for tennant_json in $( ${cmd_echo} "${cloud_json}" | ${cmd_jq} -c '.tennants' ); do
+      927.ops.create.hosts -j "${tennant_json}" -p ${path_confd}/hosts/clouds/tennants
+      [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+    done
+  done
   ${cmd_echo} 
 
-  # hosts/printers
-  ${cmd_echo} hosts/printers
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.printers' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/printers
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
 
-  # hosts/routers
-  ${cmd_echo} hosts/routers
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.routers' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/routers
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # hosts/compartments
+  # ${cmd_echo} hosts/compartments
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.compartments' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/compartments
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
-  # hosts/servers
-  ${cmd_echo} hosts/servers
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.servers' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/servers
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # hosts/printers
+  # ${cmd_echo} hosts/printers
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.printers' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/printers
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
-  # hosts/switches
-  ${cmd_echo} hosts/switches
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.switches' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/switches
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # hosts/routers
+  # ${cmd_echo} hosts/routers
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.routers' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/routers
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
-  # hosts/wireless
-  ${cmd_echo} hosts/wireless
-  _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.wiereless' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/wireless
-  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  _json=
-  ${cmd_echo} 
+  # # hosts/servers
+  # ${cmd_echo} hosts/servers
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.servers' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/servers
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
+  # # hosts/switches
+  # ${cmd_echo} hosts/switches
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.switches' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/switches
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
+
+  # # hosts/wireless
+  # ${cmd_echo} hosts/wireless
+  # _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.wiereless' )
+  # 927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/wireless
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
+
+
+  # services
+  ${cmd_echo} services
+  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
+  #echo $_json | jq
+  927.ops.create.services -j "${_json}" -p ${path_confd}/services
+  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  # _json=
+  # ${cmd_echo} 
 
 
   # output json to file
