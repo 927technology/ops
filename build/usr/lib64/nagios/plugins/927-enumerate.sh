@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# library root
+export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
+
+# source libraries
+. ${_lib_root}/927/variables.l
+. ${_lib_root}/date/epoch.f
+. ${_lib_root}/date/pretty.f
+. ${_lib_root}/json.l
+. ${_lib_root}/927/livestatus.l
+. ${_lib_root}/927/ops.l
+
+
+# argument variables
+_host=
+_resource=
+_service=
+
+
+# control variables
+_error_count=0
+_exit_code=${exit_unkn}
+_exit_string=
+
+
+# variables
+_json=
+
+# parse command arguments
+while [[ ${1} != "" ]]; do
+  case ${1} in
+    -h | --host )
+      shift
+      _host=${1}
+    ;;
+    -r | --resource )
+      shift
+      _resource=${1}
+    ;;
+    -s | --service )
+      shift
+      _service=${1}
+    ;;
+  esac
+  shift
+done
+
+_json=$( 927.livestatus.enumerate -h ${_host} -r ${_resource}  -s ${_service} 2>/dev/null ) 
+[[ ${?} == ${exit_ok} ]] && _exit_code=${exit_ok} || { _exit_code=${exit_crit}; _json="{}"; }
+
+${cmd_echo} ${_json}
+exit ${_exit_code}
