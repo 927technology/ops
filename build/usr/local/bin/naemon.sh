@@ -4,6 +4,8 @@
 # prerequisites
 yum install -y yum-utils oracle-epel-release-el9
 yum install -y naemon nagios-plugins-ping
+rpm -e mod_gearman
+rpm -i /root/build/ol/naemon-livestatus-1.4.3.rhel9.x86_64.rpm
 
 rm -rf /etc/naemon/*.cfg
 rm -rf /etc/naemon/conf.d/*.cfg
