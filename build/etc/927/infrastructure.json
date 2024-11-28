@@ -1,0 +1,360 @@
+{
+  "configuration"                   : {
+    "version"                       : "0.1.0",
+    "schema"                        : 1
+  },
+  "hosts"                           : {
+    "clouds"                        : [
+      {
+        "action_url"                : null,
+        "address"                   : null,
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : null,
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
+          },
+          "initial"                 : null,
+          "interval"                : {
+            "check"                 : 5,
+            "retry"                 : 1
+          },
+          "max_attempts"            : 3,
+          "passive"                 : null,
+          "perfdata"                : true,
+          "period"                  : null
+        },
+        "contacts"                  : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : {
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
+          },
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "oci-data"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : null
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "display"                 : "Oracle Cloud Infrastructure",
+          "string"                  : "oci-cloud"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "down"                  : false,
+            "flapping"              : false,
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "down"                    : true,
+          "operational"             : true,
+          "up"                      : true
+        },
+        "use"                       : "cloud-infrastructure"
+      }
+    ],
+    "printers"                      : [],
+    "routers"                       : [
+      {
+        "action_url"                : null,
+        "address"                   : "192.168.1.250",
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : null,
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
+          },
+          "initial"                 : null,
+          "interval"                : {
+            "value"                 : 5,
+            "retry"                 : 1
+          },
+          "max_attempts"            : 3,
+          "passive"                 : null,
+          "perfdata"                : null,
+          "period"                  : null
+        },
+        "contacts"                  : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : {
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
+          },
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "network-routers"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : 2
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "initial_state"           : "up",
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "statusmap"             : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "string"                   : "router-boundary",
+          "display"                  : "Router - Boundary"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "down"                  : false,
+            "flapping"              : false,
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "down"                    : true,
+          "operational"             : true,
+          "up"                      : true
+        },
+        "use"                       : "network-routers"
+      }
+    ],
+    "servers"                       : [
+      {
+        "action_url"                : null,
+        "address"                   : "192.168.1.250",
+        "check"                     : {
+          "active"                  : null,
+          "command"                 : null,
+          "freshness"               : {
+            "enable"                : false,
+            "threshold"             : null
+          },
+          "initial"                 : null,
+          "interval"                : {
+            "value"                 : 5,
+            "retry"                 : 1
+          },
+          "max_attempts"            : 3,
+          "passive"                 : null,
+          "perfdata"                : null,
+          "period"                  : null
+        },
+        "contacts"                  : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "contact_groups"            : [
+          {
+            "enable"                : null,
+            "name"                  : null
+          }
+        ],
+        "enable"                    : true,
+        "event_handler"             : {
+          "enable"                  : true,
+          "name"                    : null
+        },
+        "flap_detection"            : {
+          "enable"                  : true,
+          "options"                 : {
+            "down"                  : true,
+            "operational"           : true,
+            "unreachable"           : true
+          },
+          "threshold"               : {
+            "high"                  : null,
+            "low"                   : null
+          }
+        },
+        "hostgroups"                : [
+          {
+            "enable"                : true,
+            "name"                  : "servers-linux"
+          }
+        ],
+        "icon"                      : {
+          "coordinates"             : {
+            "2d"                    : {
+              "x"                   : null,
+              "y"                   : 2
+            },
+            "3d"                    : {
+              "x"                   : null,
+              "y"                   : null,
+              "z"                   : null
+            }
+          },
+          "initial_state"           : "up",
+          "file"                    : {
+            "alternate"             : null,
+            "image"                 : null,
+            "statusmap"             : null,
+            "vrml"                  : null
+          }
+        },
+        "name"                      : {
+          "string"                   : "mediaserver",
+          "display"                  : "Media Server"
+        },
+        "notes"                     : {
+          "string"                  : null,
+          "url"                     : null
+        },
+        "notification"              : {
+          "enable"                  : true,
+          "first_delay"             : null,
+          "interval"                : 120,
+          "options"                 : {
+            "down"                  : false,
+            "flapping"              : false,
+            "recovery"              : false,
+            "none"                  : false,
+            "scheduled_down"        : false,
+            "unreachable"           : false
+          },
+          "period"                  : "24x7"
+        },
+        "obsess"                    : null,
+        "parents"                   : [
+          {
+            "enable"                : false,
+            "name"                  : null
+          }
+        ],
+        "retain"                    : {
+          "nonstatus"               : true,
+          "status"                  : true
+        },
+        "stalking"                  : {
+          "down"                    : true,
+          "operational"             : true,
+          "up"                      : true
+        },
+        "use"                       : "linux-server"
+      }
+    ],
+    "switches"                      : [],
+    "wireless"                      : []
+  }
+}

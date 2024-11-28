@@ -1,0 +1,6 @@
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaauukgskohji3vdxwg5kjojbx5jj5utvekmwv2sehytdqntqtk2lwa
+fingerprint=ab:76:98:7d:7e:cf:17:5a:8e:6b:96:19:74:81:27:4b
+tenancy=ocid1.tenancy.oc1..aaaaaaaa4k7ux473pugxgzjasoae2ej2ya3kdvemxnuveimz4qfo3orssmeq
+region=us-ashburn-1
+key_file=~/.ssh/ops-ms

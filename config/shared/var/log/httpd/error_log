@@ -1,0 +1,43 @@
+[Sat May 01 03:38:16.760672 2021] [suexec:notice] [pid 11] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 03:38:16.841795 2021] [lbmethod_heartbeat:notice] [pid 12] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 03:38:16.859988 2021] [mpm_prefork:notice] [pid 12] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 03:38:16.860010 2021] [core:notice] [pid 12] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 03:55:07.084403 2021] [suexec:notice] [pid 29] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 03:55:07.105577 2021] [lbmethod_heartbeat:notice] [pid 30] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 03:55:07.116079 2021] [core:warn] [pid 30] AH00098: pid file /run/httpd/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat May 01 03:55:07.118873 2021] [mpm_prefork:notice] [pid 30] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 03:55:07.118891 2021] [core:notice] [pid 30] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 03:59:08.260945 2021] [suexec:notice] [pid 15] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 03:59:08.281495 2021] [lbmethod_heartbeat:notice] [pid 16] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 03:59:08.293255 2021] [core:warn] [pid 16] AH00098: pid file /run/httpd/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat May 01 03:59:08.296662 2021] [mpm_prefork:notice] [pid 16] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 03:59:08.296681 2021] [core:notice] [pid 16] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 04:04:18.305979 2021] [suexec:notice] [pid 10] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 04:04:18.326585 2021] [lbmethod_heartbeat:notice] [pid 11] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 04:04:18.344659 2021] [mpm_prefork:notice] [pid 11] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 04:04:18.344681 2021] [core:notice] [pid 11] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 16:09:11.753501 2021] [suexec:notice] [pid 10] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 16:09:11.778731 2021] [lbmethod_heartbeat:notice] [pid 11] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 16:09:11.807824 2021] [mpm_prefork:notice] [pid 11] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 16:09:11.807844 2021] [core:notice] [pid 11] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 16:16:58.801898 2021] [fcgid:warn] [pid 14] mod_fcgid: cleanup zombie process 48
+[Sat May 01 16:16:58.802044 2021] [fcgid:warn] [pid 14] mod_fcgid: cleanup zombie process 26
+[Sat May 01 16:17:10.148099 2021] [mpm_prefork:notice] [pid 11] AH00169: caught SIGTERM, shutting down
+[Sat May 01 16:17:13.062927 2021] [suexec:notice] [pid 134] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 16:17:13.089068 2021] [lbmethod_heartbeat:notice] [pid 135] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 16:17:13.102567 2021] [mpm_prefork:notice] [pid 135] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 16:17:13.102592 2021] [core:notice] [pid 135] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 16:22:48.593268 2021] [mpm_prefork:notice] [pid 135] AH00169: caught SIGTERM, shutting down
+[Sat May 01 16:23:14.310075 2021] [suexec:notice] [pid 215] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 16:23:14.329211 2021] [lbmethod_heartbeat:notice] [pid 216] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 16:23:14.342139 2021] [mpm_prefork:notice] [pid 216] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 16:23:14.342157 2021] [core:notice] [pid 216] AH00094: Command line: '/usr/sbin/httpd'
+[Sat May 01 17:12:37.156275 2021] [suexec:notice] [pid 10] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sat May 01 17:12:37.199524 2021] [lbmethod_heartbeat:notice] [pid 11] AH02282: No slotmem from mod_heartmonitor
+[Sat May 01 17:12:37.211655 2021] [core:warn] [pid 11] AH00098: pid file /run/httpd/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat May 01 17:12:37.215401 2021] [mpm_prefork:notice] [pid 11] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sat May 01 17:12:37.215425 2021] [core:notice] [pid 11] AH00094: Command line: '/usr/sbin/httpd'
+[Sun May 02 00:36:45.665179 2021] [suexec:notice] [pid 10] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sun May 02 00:36:45.687243 2021] [lbmethod_heartbeat:notice] [pid 11] AH02282: No slotmem from mod_heartmonitor
+[Sun May 02 00:36:45.704698 2021] [mpm_prefork:notice] [pid 11] AH00163: Apache/2.4.6 (CentOS) mod_fcgid/2.3.9 PHP/5.4.16 configured -- resuming normal operations
+[Sun May 02 00:36:45.704717 2021] [core:notice] [pid 11] AH00094: Command line: '/usr/sbin/httpd'

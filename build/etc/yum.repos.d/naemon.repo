@@ -1,0 +1,7 @@
+[home_naemon]
+name=Naemon (AlmaLinux_9)
+type=rpm-md
+baseurl=https://download.opensuse.org/repositories/home:/naemon/AlmaLinux_9/
+gpgcheck=1
+gpgkey=https://download.opensuse.org/repositories/home:/naemon/AlmaLinux_9/repodata/repomd.xml.key
+enabled=1
