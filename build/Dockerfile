@@ -1,5 +1,5 @@
 #author: chris murray
-#version: 0.1.28
+#version: 0.1.30
 #date 20241120
 
 FROM oraclelinux:9
@@ -8,7 +8,7 @@ LABEL maintainer="cmurray@927.technology"
 # environmental variables 
 ENV ANSIBLE_JSON_INDENT=0
 ENV ANSIBLE_CUSTOM_STATS=false
-ENV 927_BUILD=0.1.28
+ENV 927_BUILD=0.1.30
 ENV 927_NAME=ops
 
 # add epel
@@ -27,7 +27,6 @@ COPY etc/environment /etc/
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
 COPY ol/libmemcached-awesome-1.1.0-12.el9.x86_64.rpm /root/
 COPY ol/osquery-5.13.1-1.linux.x86_64.rpm /root/
-COPY ol/naemon-livestatus-1.4.3.rhel9.x86_64.rpm /root/
 COPY usr/local/opt /usr/local/opt
 COPY usr/local/bin /usr/local/bin
 COPY usr/local/etc /usr/local/etc

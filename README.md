@@ -1,6 +1,6 @@
 # 927 Operations Center
 
-This solutionis aimed at automating tasks of deployment, compliace, and telemetry in complicated distributed systems.  Leveraging on the ability to dynamically determine best case location of resources base on multiple factors.   Resource deployments are capable of migrating to and from physical resources and to and from on-prem and external cloud infrastructures.
+This solution is aimed at automating tasks of deployment, compliace, and telemetry in complicated distributed systems.  Leveraging on the ability to dynamically determine best case location of resources base on multiple factors.   Resource deployments are capable of migrating to and from physical resources and to and from on-prem and external cloud infrastructures.
 
 By using granular telemetry and flexable inputs, resources can be altered and migrated based on needs of the moment without intervention.
 
@@ -77,7 +77,7 @@ docker build -t 927technology/ops-ms:0.1.20 .
 
 ## Start 927 Operations Center
 ```
-docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:0.1.20
+docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:latest
 ```
 
 ## Access 927 Operatons Center
