@@ -69,10 +69,10 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 * Library
     * [x] Migrate libraries to 927 library repo
 
-## Locally Build 927 Operations Centeer
+## Locally Build 927 Operations Center
 ```
 cd build
-docker build -t 927technology/ops-ms:0.1.20 .
+docker build -t 927technology/ops-ms:latest .
 ```
 
 ## Start 927 Operations Center
