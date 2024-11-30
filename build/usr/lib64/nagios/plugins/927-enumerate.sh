@@ -47,7 +47,8 @@ while [[ ${1} != "" ]]; do
 done
 
 _json=$( 927.livestatus.enumerate -h ${_host} -r ${_resource}  -s ${_service} 2>/dev/null ) 
-[[ ${?} == ${exit_ok} ]] && _exit_code=${exit_ok} || { _exit_code=${exit_crit}; _json="{}"; }
+[[ ${?} == ${exit_ok} ]] && _exit_code=${exit_ok} || _exit_code=${exit_crit}
+[[ -z ${_json} ]] && _json="{}"
 
 ${cmd_echo} ${_json}
 exit ${_exit_code}
