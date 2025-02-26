@@ -1,7 +1,7 @@
 # Roles
 
 |Role|Service|Task|
-|-|-|-|
+|:-|:-|:-|
 |API|||
 ||Provides JSoN configuration||
 |||Data can be updated via any mechanisms|
