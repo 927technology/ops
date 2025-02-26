@@ -1,6 +1,7 @@
 # Roles
 
 [Configuration API]
+
   ↳ Provides JSoN configuration 
      ↳ Data can be updated via any mechanisms
 
