@@ -1,13 +1,13 @@
 # Roles
 
-|Role|Task||
+|Role|Service|Task|
 |-|-|-|
 |API|||
 ||Provides JSoN configuration||
 |||Data can be updated via any mechanisms|
 ||||
 |Management|||
-||Initalize ops engine||
+||Ops engine||
 |||Pull configuration from API|
 |||Pull infrastructure from API|
 ||Poll API||
@@ -21,13 +21,14 @@
 ||web interface||
 ||Telemetry||
 |||Alarm on insufficient values|
+|||Track values|
 ||Remediate||
-|||action on known insufficient values|
+|||Action on known insufficient values|
 ||Infrastructure||
 |||Provision new|
 |||Destroy old|
 |||Update existing|
 ||||
-|Worker Nodes|||
+|Worker|||
 ||Process jobs||
 |||Return data object|
