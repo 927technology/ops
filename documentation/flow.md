@@ -11,8 +11,8 @@
 |||Pull configuration from API|
 |||Pull infrastructure from API|
 ||Poll API||
-|||Update configuration|
-|||Update infrastructure|
+|||Update configuration from API|
+|||Update infrastructure from API|
 ||Initalize job engine||
 |||distribute jobs to workers|
 |||collect data objects from workers|
