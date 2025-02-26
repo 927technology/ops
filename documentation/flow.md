@@ -1,9 +1,9 @@
 # Roles
 
-[Configuration API]
-
-  ↳ Provides JSoN configuration 
-     ↳ Data can be updated via any mechanisms
+|-|-|-|
+|API|||
+||Provides JSoN configuration||
+     |||↳|Data can be updated via any mechanisms|
 
 [Ops Management Server]
   ↳ Initalize ops engine
