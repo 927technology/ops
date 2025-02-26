@@ -3,7 +3,7 @@
 |-|-|-|
 |API|||
 ||Provides JSoN configuration||
-     |||↳|Data can be updated via any mechanisms|
+|||↳|Data can be updated via any mechanisms|
 
 [Ops Management Server]
   ↳ Initalize ops engine
