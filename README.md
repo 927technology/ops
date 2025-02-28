@@ -82,3 +82,6 @@ docker build -t 927technology/ops-ms:latest .
 
 ## Access 927 Operatons Center
 http://\<ip address\>/thruk
+
+## [Understanding Ops Flow](./documentation/flow.md)
+
