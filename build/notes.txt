@@ -1,0 +1,4 @@
+ansible-playbook -i inventory.ini test.yaml
+
+printf "GET services\nColumns: plugin_output\nFilter: host_name = covid-19-apex\n" | unixcat /var/cache/naemon/live | jq
+
