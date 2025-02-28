@@ -77,7 +77,7 @@ docker build -t 927technology/ops-ms:latest .
 
 ## Start 927 Operations Center
 ```
-docker run -name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:latest
+docker run --name ops-ms --hostname ops-ms -v ${HOME}/secrets:/etc/927/secrets -v ${HOME}/configuraitons:/etc/927/configurations -d 927technology/ops-ms:latest
 ```
 
 ## Access 927 Operatons Center

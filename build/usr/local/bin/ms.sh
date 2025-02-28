@@ -13,9 +13,9 @@ date
 export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
 
 # source libraries
+. ${_lib_root}/927/variables/cmd_el.v
 . ${_lib_root}/927/variables.l
-. ${_lib_root}/date/epoch.f
-. ${_lib_root}/date/pretty.f
+. ${_lib_root}/927/date.l
 . ${_lib_root}/json.l
 . ${_lib_root}/927/ops.l
 
@@ -91,13 +91,13 @@ if [[ $( 927.ops.config.new -j ${_json_configuration_running} -jc ${_json_config
 
 
 
-  # # services
-  # ${cmd_echo} services
-  # _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
-  # 927.ops.create.services -j "${_json}" -p ${path_confd}/services
-  # [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
-  # _json=
-  # ${cmd_echo} 
+  # services
+  ${cmd_echo} services
+  _json=$( ${cmd_echo} "${_json_configuration_candidate}" | ${cmd_jq} -c '.services' )
+  927.ops.create.services -j "${_json}" -p ${path_confd}/services
+  [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
+  _json=
+  ${cmd_echo} 
 
 
   # # servicegroups
@@ -209,7 +209,7 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   # hosts/clouds
   ${cmd_echo} hosts/clouds
   _json=$( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.clouds' )
-  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/clouds
+  927.ops.create.hosts -j "${_json}" -p ${path_confd}/hosts/clouds -T
   [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
   _json=
   ${cmd_echo} 
@@ -217,8 +217,12 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   # hosts/clouds/tennants
   ${cmd_echo} hosts/clouds/tennants
   for cloud_json in $( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.clouds[]' ); do
+    _tenancy_label=$( ${cmd_echo} ${cloud_json} | ${cmd_jq} -r '.name')
+    
     for tennant_json in $( ${cmd_echo} "${cloud_json}" | ${cmd_jq} -c '.tennants' ); do
-      927.ops.create.hosts -j "${tennant_json}" -p ${path_confd}/hosts/clouds/tennants
+
+
+      927.ops.create.hosts -j "${tennant_json}" -p ${path_confd}/hosts/clouds/tennants --tenancy ${_tenancy_label}
       [[ ${?} != ${exit_ok} ]] && (( _error_count++ )) 
     done
   done

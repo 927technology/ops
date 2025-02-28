@@ -4,6 +4,7 @@
 export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
 
 # source libraries
+. ${_lib_root}/927/variables/cmd_el.v
 . ${_lib_root}/927/variables.l
 . ${_lib_root}/date/epoch.f
 . ${_lib_root}/date/pretty.f
