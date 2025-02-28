@@ -9,7 +9,7 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 
 * Management Server
   * Build Container
-    * [ ] Health Checker
+    * [~] Health Checker
     * [x] Engine
     * [x] Entrypoint 
     * [x] Poller
@@ -26,7 +26,7 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
 
 * Job Server
   * [x] Build Container
-  * [ ] Pull Configuration
+  * [x] Pull Configuration
   * [ ] Pull Secrets
 
 * Job Worker
