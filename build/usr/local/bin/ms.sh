@@ -217,7 +217,7 @@ if [[ $( 927.ops.config.new -j ${_json_infrastructure_running} -jc ${_json_infra
   # hosts/clouds/tennants
   ${cmd_echo} hosts/clouds/tennants
   for cloud_json in $( ${cmd_echo} "${_json_infrastructure_candidate}" | ${cmd_jq} -c '.hosts.clouds[]' ); do
-    _tenancy_label=$( ${cmd_echo} ${cloud_json} | ${cmd_jq} -r '.name')
+    _tenancy_label=$( ${cmd_echo} ${cloud_json} | ${cmd_jq} -r '.ops[0].name.string')
     
     for tennant_json in $( ${cmd_echo} "${cloud_json}" | ${cmd_jq} -c '.tennants' ); do
 

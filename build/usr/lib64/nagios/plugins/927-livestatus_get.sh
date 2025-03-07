@@ -26,7 +26,7 @@ _exit_string=
 
 
 # variables
-_json=
+_json="{}"
 
 # parse command arguments
 while [[ ${1} != "" ]]; do
