@@ -8,8 +8,8 @@
 * [VirtualBox](https://www.virtualbox.org/)
 
 ### VM Operating System
-* [~~~Oracle Linux 9~~~](https://yum.oracle.com/oracle-linux-isos.html)
-* [Rocky Linux 9](https://rockylinux.org/download)
+* [~~Oracle Linux 9~~](https://yum.oracle.com/oracle-linux-isos.html)
+* [Rocky Linux 9](https://rockylinux.org/download) - Must be Minimum or Full, not Netboot
 
 ### Server Package Dependancies
 * jq
@@ -118,11 +118,16 @@ inst.ks=https://raw.githubusercontent.com/927technology/kickstart/main/distro/el
   ```
   docker images
   ```
-
+* Enable root SSH
+  ```
+  echo PermitRootLogin yes >> /etc/ssh/sshd_confg
+  systemctl restart sshd
+  ```
 
 * Get your IP address
   ```
-  ip add --json addr show dev enp0s3 | jq -r '.[].addr_info[] | select(.family=="inet").local'
+  ip --json address show dev enp0s3 | jq -r '.[].addr_info[] | select(.family=="inet").local'
+  ```
 
 * Get the Ops Container Start Script
   ```
@@ -164,3 +169,50 @@ inst.ks=https://raw.githubusercontent.com/927technology/kickstart/main/distro/el
   * You will see failures in service checks until you obtain your certificates to access OCI at a later time.
 
 
+## Install Guest Addtions - Not Required
+* From the console window select Devices > Insert Guest Addtions CD Image
+
+
+```
+yum install -y epel-release
+yum check-update
+dnf install kernel-headers dkms gcc make kernel-devel bzip2 binutils patch libgomp glibc-headers glibc-devel -y
+
+mount /dev/cdrom /mnt
+/mnt/VBoxGuestAdditions.run
+```
+
+## Create Secrets
+
+* Login to OCI
+  * You will need to setup Oracle Mobile Authenticator on you phone
+  * Login to [OCI](https://www.oracle.com/cloud/sign-in.html)
+  * Cloud Account Name - Contact Me
+  * User Name: Your User Name
+  * Password: Your password
+  * Sign In
+* Upper Right - Profile
+* Select your username - First Option
+* Resources - Lower Left
+  * API Keys
+  * Add API Key
+  * Generate API key pair
+    * Download private key
+    * Download public key
+  * Add
+  * Configure file preview
+    * Copy the contents of "Configuration file preview"
+      * Create file in your home folder .oci/config and paste the contents
+      * Change [DEFAULT] to [ops-ms]
+      * key_file=~/secrets/\<name of your private key>.pem
+
+
+  ```
+  mkdir /root/{secrets,.oci}
+  chown 997:995 /root/{secrets,.oci}
+  chmod 550 /root/{secrets,.oci}
+  chmod 600 /root/.oci/config
+  chown 997:995 /root/.oci/config
+  chmod 600 /root/secrets/<public key>
+  chmod 997:995 /root/secrets/<public key>
+  ```
