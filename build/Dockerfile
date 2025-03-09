@@ -1,6 +1,6 @@
 #author: chris murray
-#version: 0.1.33
-#date 20241120
+#version: 0.1.35
+#date 20240309
 
 FROM oraclelinux:9
 LABEL maintainer="cmurray@927.technology"
@@ -8,7 +8,7 @@ LABEL maintainer="cmurray@927.technology"
 # environmental variables 
 ENV ANSIBLE_JSON_INDENT=0
 ENV ANSIBLE_CUSTOM_STATS=false
-ENV 927_BUILD=0.1.33
+ENV 927_BUILD=0.1.35
 ENV 927_NAME=ops
 
 # add epel
@@ -17,11 +17,6 @@ RUN yum install -y oracle-epel-release-el9
 # update os
 RUN yum check-update; yum update -y
 
-# repo installs
-RUN yum install -y            \
-  net-snmp                    \
-  net-snmp-utils
-  
 # pre-add files
 COPY etc/environment /etc/
 COPY etc/yum.repos.d/naemon.repo /etc/yum.repos.d/
@@ -41,6 +36,9 @@ RUN /usr/local/bin/terraform.sh
 
 # post-add files
 COPY etc/naemon/ /etc/naemon
+COPY etc/httpd/conf.d/927.conf /etc/httpd/conf.d
+COPY etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d
+COPY etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf
 COPY usr/lib64/nagios/plugins/ /usr/lib64/nagios/plugins
 COPY usr/share/thruk/support/thruk_templates.cfg /usr/share/thruk/support/
 COPY etc/ansible/ /etc/ansible
@@ -50,6 +48,7 @@ COPY etc/ansible/ /etc/ansible
 # post installer
 RUN  /usr/local/bin/post.sh
 
-EXPOSE 80/tcp
+EXPOSE 80/tcp 
+EXPOSE 443/tcp
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
