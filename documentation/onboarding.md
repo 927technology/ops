@@ -17,6 +17,12 @@
 * curl
 * wget
 
+### Discord
+  * [Group Chat](https://discord.gg/QkYG42UT)
+  * [Group Server](https://discord.gg/wMRevqJp)
+
+---
+
 ### I dont want to break anything, what can I mess with?
 
 Everything!

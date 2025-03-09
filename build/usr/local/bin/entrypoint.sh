@@ -31,6 +31,18 @@ fi
 
 while [[ ${MANAGEMENT} == "true" ]]; do
 
+  if [[ ! -f /var/mod_gearman/secrets/ops.927.technology.cert ]] && [[ ! -f /var/mod_gearman/secrets/ops.927.technology.key ]]; then
+    openssl req                                                               \
+      -days   3650                                                            \
+      -keyout /var/mod_gearman/secrets/ops.927.technology.key                 \
+      -newkey rsa:2048                                                        \
+      -nodes                                                                  \
+      -subj   "/C=US/ST=MS/L=Gulfport/O=927 Technology/CN=ops.927.technology" \
+      -out    /var/mod_gearman/secrets/ops.927.technology.cert                \
+      -x509
+  fi
+
+
   ${cmd_echo} Starting Ops
   ${cmd_su} naemon --login --shell=/bin/sh "--command=${cmd_ops_ms}"
 
