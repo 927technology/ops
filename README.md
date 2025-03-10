@@ -16,7 +16,7 @@ By using granular telemetry and flexable inputs, resources can be altered and mi
     * Resources
       * [x] Engine
       * [x] Web Server
-        * [ ] TLS 
+        * [x] TLS 
       * [x] JSoN
   * Pull Configuraiton  
     * [x] Global Configuration
