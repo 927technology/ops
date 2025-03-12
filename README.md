@@ -86,3 +86,7 @@ http://\<ip address\>/thruk
 ## Documentation
 * [Understanding Ops Flow](./documentation/flow.md)
 * [Onboarding](./documentation/onboarding.md)
+
+
+---
+[Change Log](./documentation/changelog.md)
