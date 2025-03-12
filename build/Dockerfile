@@ -1,5 +1,5 @@
 #author: chris murray
-#version: 0.1.36
+#version: 0.1.39
 #date 20240309
 
 FROM oraclelinux:9
@@ -8,7 +8,7 @@ LABEL maintainer="cmurray@927.technology"
 # environmental variables 
 ENV ANSIBLE_JSON_INDENT=0
 ENV ANSIBLE_CUSTOM_STATS=false
-ENV 927_BUILD=0.1.36
+ENV 927_BUILD=0.1.39
 ENV 927_NAME=ops
 
 # add epel

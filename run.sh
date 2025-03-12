@@ -13,6 +13,5 @@ docker                                                    \
   -it                                                     \
   -p 80:80                                                \
   -v ${HOME}/configurations:/etc/927/configurations       \
-  -v ${HOME}/secrets:/var/mod_gearman/secrets/            \
-  -v ${HOME}/.oci:/var/mod_gearman/.oci                   \
   927technology/ops:latest
+
