@@ -3,8 +3,7 @@
 # because IFS sucks
 IFS=$'\n'
 
-clear
-date
+
 # source config
 . /usr/local/etc/ops/management.cfg
 
@@ -18,7 +17,6 @@ export _lib_root=/usr/local/lib/bash/${LIB_VERSION}
 . ${_lib_root}/927/date.l
 . ${_lib_root}/json.l
 . ${_lib_root}/927/ops.l
-
 
 # variables
 _error_count=0
@@ -43,6 +41,8 @@ _json_infrastructure_running_validate=$( json.validate -j ${_json_infrastructure
 
 
 # main
+${cmd_date}
+
 [[ ! -d ${path_927} ]] && ${cmd_mkdir} -p ${path_927}
 
 

@@ -189,36 +189,5 @@ mount /dev/cdrom /mnt
 ```
 
 ## Create Secrets
-
-* Login to OCI
-  * You will need to setup Oracle Mobile Authenticator on you phone
-  * Login to [OCI](https://www.oracle.com/cloud/sign-in.html)
-  * Cloud Account Name - Contact Me
-  * User Name: Your User Name
-  * Password: Your password
-  * Sign In
-* Upper Right - Profile
-* Select your username - First Option
-* Resources - Lower Left
-  * API Keys
-  * Add API Key
-  * Generate API key pair
-    * Download private key
-    * Download public key
-  * Add
-  * Configure file preview
-    * Copy the contents of "Configuration file preview"
-      * Create file in your home folder .oci/config and paste the contents
-      * Change [DEFAULT] to [ops-ms]
-      * key_file=~/secrets/\<name of your private key>.pem
-
-
-  ```
-  mkdir /root/{secrets,.oci}
-  chown 997:995 /root/{secrets,.oci}
-  chmod 550 /root/{secrets,.oci}
-  chmod 600 /root/.oci/config
-  chown 997:995 /root/.oci/config
-  chmod 600 /root/secrets/<public key>
-  chmod 997:995 /root/secrets/<public key>
-  ```
+* Secrets have been moved to a secret store
+* Contact me to get the info
